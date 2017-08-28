@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:orientation="vertical"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/SettingsViewLinearLayout"
+    p1:minWidth="25px"
+    p1:minHeight="25px">
+    <Spinner
+        p1:layout_width="match_parent"
+        p1:layout_height="53.0dp"
+        p1:id="@+id/ApiSelectionSpinner" />
+    <CheckBox
+        p1:text="Release Date"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/ReleaseDateCheckbox" />
+    <CheckBox
+        p1:text="Critic Score"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/CriticScoreCheckbox" />
+    <CheckBox
+        p1:text="User Score"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/UserScoreCheckbox" />
+    <CheckBox
+        p1:text="Publisher/Developer"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/PubusherDeveloperCheckbox" />
+    <CheckBox
+        p1:text="ESRB Rating/Descriptors"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/EsrbRatingCheckbox" />
+    <CheckBox
+        p1:text="Player Count"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/PlayerCountCheckbox" />
+    <CheckBox
+        p1:text="Description"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/DescriptionCheckbox" />
+    <CheckBox
+        p1:text="Genres"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/GenresCheckbox" />
+    <CheckBox
+        p1:text="Other Available Platforms"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/OtherAvailablePlatformsCheckbox" />
+    <CheckBox
+        p1:text="(Media) Box Front Image"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/BoxFrontImageCheckbox" />
+    <CheckBox
+        p1:text="(Media) Box Back Image"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/BoxBackImageCheckbox" />
+    <CheckBox
+        p1:text="(Media) Screenshot Image"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/ScreenshotImageCheckbox" />
+</LinearLayout>

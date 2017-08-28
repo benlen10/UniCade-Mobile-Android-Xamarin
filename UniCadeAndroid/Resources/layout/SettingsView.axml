@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:orientation="vertical"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/SettingsViewLinearLayout"
+    p1:minWidth="25px"
+    p1:minHeight="25px">
+    <RelativeLayout
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="57.0dp"
+        p1:id="@+id/SettingsViewRelativeLayout0">
+        <Button
+            p1:id="@+id/LoadDatabaseButton"
+            p1:text="Load Database"
+            p1:layout_width="158.5dp"
+            p1:layout_height="wrap_content"
+            p1:layout_marginLeft="11.0dp" />
+        <Button
+            p1:id="@+id/LoadBackupButton"
+            p1:text="Load Backup"
+            p1:layout_width="160.0dp"
+            p1:layout_height="wrap_content"
+            p1:layout_marginLeft="183.0dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="57.0dp"
+        p1:id="@+id/SettingsViewRelativeLayout1">
+        <Button
+            p1:id="@+id/SaveDatabaseButton"
+            p1:text="Save Database"
+            p1:layout_width="154.5dp"
+            p1:layout_height="wrap_content"
+            p1:layout_marginLeft="12.0dp" />
+        <Button
+            p1:id="@+id/BackupDatabaseButton"
+            p1:text="Backup Database"
+            p1:layout_width="159.0dp"
+            p1:layout_height="wrap_content"
+            p1:layout_marginLeft="183.5dp" />
+    </RelativeLayout>
+    <CheckBox
+        p1:text="Load Database On Startup"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/LoadDatabaseOnStartupCheckbox" />
+    <CheckBox
+        p1:text="Rescan Local Libraries On Startup"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/RescanLocalLibrariesOnStartupCheckbox" />
+    <CheckBox
+        p1:text="Display Console Logo"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/DisplayConsoleLogoCheckbox" />
+    <CheckBox
+        p1:text="Display ESRB Logo"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/DisplayEsrbLogoCheckbox" />
+    <RelativeLayout
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="54.5dp"
+        p1:id="@+id/SettingsViewRelativeLayout2">
+        <Button
+            p1:text="Delete All Local Images"
+            p1:layout_width="162.0dp"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/DeleteAllLocalImagesButton"
+            p1:layout_marginLeft="13.0dp" />
+        <Button
+            p1:text="UniCade Cloud"
+            p1:layout_width="157.5dp"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/UniCadeCloudButton"
+            p1:layout_marginLeft="184.0dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        p1:layout_width="match_parent"
+        p1:layout_height="53.0dp"
+        p1:id="@+id/SettingsViewRelativeLayout3">
+        <Button
+            p1:text="Web Scraper Settings"
+            p1:layout_width="157.0dp"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/WebScraperSettingsButton"
+            p1:layout_marginLeft="16.0dp" />
+        <Button
+            p1:text="Enter License Key"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/EnterLicenseKeyButton"
+            p1:layout_marginLeft="189.0dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        p1:layout_width="match_parent"
+        p1:layout_height="56.0dp"
+        p1:id="@+id/SettingsViewRelativeLayout4">
+        <EditText
+            p1:layout_width="331.0dp"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/PasswordEditText"
+            p1:layout_marginLeft="12.5dp"
+            p1:layout_marginTop="8.0dp"
+            p1:layout_marginRight="33.5dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="49.5dp"
+        p1:id="@+id/relativeLayout5">
+        <Button
+            p1:text="Close"
+            p1:layout_width="128.0dp"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/CloseButton"
+            p1:layout_marginLeft="207.0dp" />
+        <Button
+            p1:text="Apply"
+            p1:layout_width="133.0dp"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/ApplyButton"
+            p1:layout_marginLeft="15.5dp" />
+    </RelativeLayout>
+</LinearLayout>
