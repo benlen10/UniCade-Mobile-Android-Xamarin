@@ -108,6 +108,16 @@ namespace UniCadeAndroid.Activities
             }
         }
 
+        private void SaveGameInfo()
+        {
+            MainActivity.CurrentGame.PublisherName = _publisherTextView.Text;
+            MainActivity.CurrentGame.CriticReviewScore = _criticScoreTextView.Text;
+            MainActivity.CurrentGame.SupportedPlayerCount = _playersTextView.Text;
+            MainActivity.CurrentGame.ReleaseDate = _releaseDateTextView.Text;
+            MainActivity.CurrentGame.Description = _descriptionTextView.Text;
+            //TODO: Properly save ESRB info
+        }
+
 
         private void FindElementsById()
         {
@@ -159,7 +169,7 @@ namespace UniCadeAndroid.Activities
 
             _saveInfoButton.Click += (sender, e) =>
             {
-               // SaveGameInfo();
+               SaveGameInfo();
             };
 
             _closeInfoButton.Click += (sender, e) =>
