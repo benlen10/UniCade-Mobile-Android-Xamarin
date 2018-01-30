@@ -117,7 +117,7 @@ namespace UniCadeAndroid.Activities
             _showFavoritesCheckbox = FindViewById<CheckBox>(Resource.Id.ShowFavoritesCheckbox);
             _globalSearchCheckbox = FindViewById<CheckBox>(Resource.Id.GlobalfavoritesCheckbox);
             _gameSelectionListView = FindViewById<ListView>(Resource.Id.GameSelectionListView);
-            _consoleSelectionSpinner = FindViewById<Spinner>(Resource.Id.ConsoleTextView);
+            _consoleSelectionSpinner = FindViewById<Spinner>(Resource.Id.ConsoleSelectionSpinner);
             _searchBarEditText = FindViewById<EditText>(Resource.Id.SearchBarEditTExt);
             _consoleImageView = FindViewById<ImageView>(Resource.Id.ConsoleImageView);
         }
