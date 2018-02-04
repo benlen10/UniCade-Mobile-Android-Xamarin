@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using UniCadeAndroid.Constants;
 
@@ -12,14 +13,7 @@ namespace UniCadeAndroid.Backend
         /// </summary>
         public static bool IsAllDigits(string str)
         {
-            foreach (var c in str)
-            {
-                if (!Char.IsDigit(c))
-                {
-                    return false;
-                }
-            }
-            return true;
+            return str.All(c => Char.IsDigit(c));
         }
 
         /// <summary>
@@ -106,40 +100,34 @@ namespace UniCadeAndroid.Backend
             return Enums.EsrbRatings.Null;
         }
 
-        /*
         /// <summary>
         /// Return the coresponding ESRB logo for the rating
         /// </summary>
         /// <param name="rating">An EsrbRating enum</param>
         /// <returns>The BitMap image corresponding to the rating enum</returns>
-        internal static BitmapImage GetEsrbLogoImage(Enums.EsrbRatings rating)
+        internal static Uri GetEsrbLogoImage(Enums.EsrbRatings rating)
         {
             //Choose between classic and modern logos
             string logoType = Program.UseModernEsrbLogos ? "ModernEsrbLogos" : "EsrbLogos";
 
             if (rating.Equals(Enums.EsrbRatings.Everyone))
             {
-                return new BitmapImage(new Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/E.png".Replace("EsrbLogos", logoType)));
+                return new Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/E.png".Replace("EsrbLogos", logoType));
             }
             if (rating.Equals(Enums.EsrbRatings.Everyone10))
             {
-                return new BitmapImage(new Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/E10.png".Replace("EsrbLogos", logoType)));
+                return new  Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/E10.png".Replace("EsrbLogos", logoType));
             }
             if (rating.Equals(Enums.EsrbRatings.Teen))
             {
-                return new BitmapImage(new Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/T.png".Replace("EsrbLogos", logoType)));
+                return new  Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/T.png".Replace("EsrbLogos", logoType));
             }
             if (rating.Equals(Enums.EsrbRatings.Mature))
             {
-                return new BitmapImage(new Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/M.png".Replace("EsrbLogos", logoType)));
+                return new Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/M.png".Replace("EsrbLogos", logoType));
             }
-            if (rating.Equals(Enums.EsrbRatings.Ao))
-            {
-                return new BitmapImage(new Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/AO.png".Replace("EsrbLogos", logoType)));
-            }
-            return null;
+            return rating.Equals(Enums.EsrbRatings.Ao) ? new Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/AO.png".Replace("EsrbLogos", logoType)) : null;
         }
-        */
 
         /// <summary>
         /// Return true if the specified folder has write access
