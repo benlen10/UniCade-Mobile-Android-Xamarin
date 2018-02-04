@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml;
+using Android.Widget;
 using UniCadeAndroid.Constants;
 using UniCadeAndroid.Interfaces;
 using UniCadeAndroid.Objects;
 using Console = UniCadeAndroid.Objects.Console;
+using Android.OS;
+
 
 namespace UniCadeAndroid.Backend
 {
@@ -325,11 +326,9 @@ namespace UniCadeAndroid.Backend
         /// <summary>
         /// Display a timed popup notification in the lower right corner of the interface
         /// </summary>
-        private static void ShowNotification(string title, string body)
+        private static void ShowNotification(string body)
         {
-            //NotificationWindow notification = new NotificationWindow(title, body);
-            //notification.Show();
-            // TODO: display android notication
+            Toast.MakeText(ApplicationContext, "Please select a game", ToastLength.Long).Show();
         }
 
         #endregion

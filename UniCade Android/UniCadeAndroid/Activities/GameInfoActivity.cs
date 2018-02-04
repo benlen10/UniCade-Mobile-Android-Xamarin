@@ -1,5 +1,4 @@
 ﻿using Android.App;
-using Android.Content;
 using System.IO;
 using Android.Graphics;
 using Android.OS;
@@ -27,8 +26,6 @@ namespace UniCadeAndroid.Activities
         private TextView _esrbRatingTextView;
 
         private TextView _esrbDescriptorsTextView;
-
-        private TextView _playersCountTextView;
 
         private TextView _releaseDateTextView;
 
