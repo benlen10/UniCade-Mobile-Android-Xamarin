@@ -5,7 +5,6 @@ using Android.Widget;
 using UniCadeAndroid.Backend;
 using System.Collections.Generic;
 using System.Linq;
-using UniCadeAndroid.Interfaces;
 using UniCadeAndroid.Objects;
 
 namespace UniCadeAndroid.Activities
@@ -90,14 +89,7 @@ namespace UniCadeAndroid.Activities
             _gameSelectionListView.Adapter = null;
             var currentConsole = _consoleSelectionSpinner.SelectedItem.ToString();
             var gameList = new List<string>();
-            if (_favoritesViewEnabled)
-            {
-                 gameList = new List<string>(Database.GetConsole(currentConsole).GetFavoriteGameList());
-            }
-            else
-            {
-                gameList = new List<string>(Database.GetConsole(currentConsole).GetGameList());
-            }
+            gameList = _favoritesViewEnabled ? new List<string>(Database.GetConsole(currentConsole).GetFavoriteGameList()) : new List<string>(Database.GetConsole(currentConsole).GetGameList());
             var gameListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, gameList);
             _gameSelectionListView.Adapter = gameListAdapter;
         }

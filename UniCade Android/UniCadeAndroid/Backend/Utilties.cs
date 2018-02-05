@@ -13,7 +13,7 @@ namespace UniCadeAndroid.Backend
         /// </summary>
         public static bool IsAllDigits(string str)
         {
-            return str.All(c => Char.IsDigit(c));
+            return str.All(char.IsDigit);
         }
 
         /// <summary>
@@ -127,24 +127,6 @@ namespace UniCadeAndroid.Backend
                 return new Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/M.png".Replace("EsrbLogos", logoType));
             }
             return rating.Equals(Enums.EsrbRatings.Ao) ? new Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/AO.png".Replace("EsrbLogos", logoType)) : null;
-        }
-
-        /// <summary>
-        /// Return true if the specified folder has write access
-        /// </summary>
-        /// <param name="folderPath">The folder path to test</param>
-        /// <returns>true if the specified folder has write access </returns>
-        internal static bool HasWriteAccessToFolder(string folderPath)
-        {
-            try
-            {
-                Directory.GetAccessControl(folderPath);
-                return true;
-            }
-            catch (UnauthorizedAccessException)
-            {
-                return false;
-            }
         }
     }
 }
