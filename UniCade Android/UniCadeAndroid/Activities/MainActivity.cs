@@ -90,7 +90,7 @@ namespace UniCadeAndroid.Activities
             var currentConsole = _consoleSelectionSpinner.SelectedItem.ToString();
             var gameList = new List<string>();
             gameList = _favoritesViewEnabled ? new List<string>(Database.GetConsole(currentConsole).GetFavoriteGameList()) : new List<string>(Database.GetConsole(currentConsole).GetGameList());
-            var gameListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, gameList);
+            var gameListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItemActivated2, gameList);
             _gameSelectionListView.Adapter = gameListAdapter;
         }
 
