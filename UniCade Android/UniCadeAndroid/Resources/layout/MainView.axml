@@ -9,6 +9,7 @@
         p1:id="@+id/GameSelectionListView"
         p1:layout_width="257.5dp"
         p1:layout_height="522.0dp"
+        p1:cacheColorHint="#FFDAFF7F"
         p1:layout_marginBottom="86.0dp"
         p1:layout_marginRight="126.0dp"
         p1:layout_marginLeft="4.5dp" />
