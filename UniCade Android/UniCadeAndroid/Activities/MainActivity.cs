@@ -37,6 +37,9 @@ namespace UniCadeAndroid.Activities
 
         private bool _globalSearchEnabled;
 
+        private List<CustomModel> viewItems;
+
+
         #endregion
 
         #region Properties
@@ -66,6 +69,8 @@ namespace UniCadeAndroid.Activities
 
             SetContentView(Resource.Layout.MainView);
 
+            viewItems = new List<CustomModel>();
+
             FindElementsById();
 
             CreateEventHandlers();
@@ -86,12 +91,28 @@ namespace UniCadeAndroid.Activities
 
         private void RefreshGameList()
         {
+            /*
             _gameSelectionListView.Adapter = null;
             var currentConsole = _consoleSelectionSpinner.SelectedItem.ToString();
             var gameList = new List<string>();
             gameList = _favoritesViewEnabled ? new List<string>(Database.GetConsole(currentConsole).GetFavoriteGameList()) : new List<string>(Database.GetConsole(currentConsole).GetGameList());
             var gameListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItemActivated2, gameList);
             _gameSelectionListView.Adapter = gameListAdapter;
+            */
+
+            for (int i = 1; i <= 5; i++)
+ 
+            {
+                var model = new CustomModel
+                {
+                    Title = "Title " + i,
+                    Author = "Author " + i,
+                    Description = "Description " + i
+                };
+                viewItems.Add(model);
+            }
+
+            _gameSelectionListView.Adapter = new CustomActivity(this, viewItems);
         }
 
         private void SelectedGameChanged()

@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\CustomActivity.cs" />
     <Compile Include="Backend\CryptoEngine.cs" />
     <Compile Include="Backend\Database.cs" />
     <Compile Include="Backend\FileOps.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Network\MobyGamesApi.cs" />
     <Compile Include="Network\SqlLiteClient.cs" />
     <Compile Include="Network\WebOps.cs" />
+    <Compile Include="Objects\CustomModel.cs" />
     <Compile Include="Objects\Console.cs" />
     <Compile Include="Objects\CurrentSettings.cs" />
     <Compile Include="Objects\Game.cs" />
@@ -109,6 +111,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\LoginView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\CustomList.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
