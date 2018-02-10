@@ -5,6 +5,8 @@ using Android.Widget;
 using UniCadeAndroid.Backend;
 using System.Collections.Generic;
 using System.Linq;
+using Android.Views;
+using Java.Lang;
 using UniCadeAndroid.Objects;
 
 namespace UniCadeAndroid.Activities
@@ -100,23 +102,34 @@ namespace UniCadeAndroid.Activities
             _gameSelectionListView.Adapter = gameListAdapter;
             */
 
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 30; i++)
  
             {
                 var model = new CustomModel
                 {
-                    Title = "Title " + i,
-                    Author = "Author " + i,
-                    Description = "Description " + i
+                    Heading = "Title " + i,
+                    SubHeading = "Author " + i,
+                    ImageResourceId =  i
                 };
                 viewItems.Add(model);
             }
 
-            _gameSelectionListView.Adapter = new CustomActivity(this, viewItems);
+            _gameSelectionListView.ChoiceMode = ChoiceMode.Single;
+
+            _gameSelectionListView.Adapter = new HomeScreenAdapter(this, viewItems);
+            _gameSelectionListView.ItemClick += OnListItemClick;
+        }
+
+        void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var listView = sender as ListView;
+            //var t = tableItems[e.Position];
+           Toast.MakeText(this, e.Position.ToString(), ToastLength.Long).Show();
         }
 
         private void SelectedGameChanged()
         {
+            Toast.MakeText(ApplicationContext, _gameSelectionListView.SelectedItemPosition, ToastLength.Long).Show();
             string consoleName = _consoleSelectionSpinner.SelectedItem.ToString();
             string gameName = _gameSelectionListView.SelectedItem.ToString();
             CurrentGame = (Game) Database.GetConsole(consoleName).GetGame(gameName);
@@ -204,6 +217,8 @@ namespace UniCadeAndroid.Activities
             {
                 SearchBarTextChanged();
             };
+
+          
         }
     }
 }
