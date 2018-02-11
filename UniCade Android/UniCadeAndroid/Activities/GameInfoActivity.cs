@@ -56,7 +56,7 @@ namespace UniCadeAndroid.Activities
             base.OnCreate(savedInstanceState);
 
 			// Set the view
-			SetContentView(Resource.Layout.SettingsView);
+			SetContentView(Resource.Layout.GameInfoView);
 
 			FindElementsById();
 

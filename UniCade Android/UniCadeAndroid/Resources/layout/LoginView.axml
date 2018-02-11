@@ -3,7 +3,7 @@
     p1:orientation="vertical"
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
-    p1:id="@+id/SettingsViewLinearLayout"
+    p1:id="@+id/LoginViewLinearLayout"
     p1:minWidth="25px"
     p1:minHeight="25px">
     <TextView
@@ -28,7 +28,7 @@
         p1:minHeight="25px"
         p1:layout_width="match_parent"
         p1:layout_height="57.0dp"
-        p1:id="@+id/SettingsViewRelativeLayout1">
+        p1:id="@+id/LoginViewRelativeLayout1">
         <Button
             p1:id="@+id/LoginButton"
             p1:text="Login"

@@ -39,7 +39,7 @@ namespace UniCadeAndroid.Activities
 
         private bool _globalSearchEnabled;
 
-        private List<CustomModel> viewItems;
+        private List<GameListObject> viewItems;
 
 
         #endregion
@@ -71,7 +71,7 @@ namespace UniCadeAndroid.Activities
 
             SetContentView(Resource.Layout.MainView);
 
-            viewItems = new List<CustomModel>();
+            viewItems = new List<GameListObject>();
 
             FindElementsById();
 
@@ -93,46 +93,53 @@ namespace UniCadeAndroid.Activities
 
         private void RefreshGameList()
         {
-            /*
+
             _gameSelectionListView.Adapter = null;
             var currentConsole = _consoleSelectionSpinner.SelectedItem.ToString();
             var gameList = new List<string>();
-            gameList = _favoritesViewEnabled ? new List<string>(Database.GetConsole(currentConsole).GetFavoriteGameList()) : new List<string>(Database.GetConsole(currentConsole).GetGameList());
+
+            foreach (var gameTitle in Database.GetConsole(currentConsole).GetGameList())
+            {
+                var item = new GameListObject
+                {
+                    Title = gameTitle,
+                    Console = currentConsole,
+                    ImageResourceId = 0
+                };
+                viewItems.Add(item);
+            }
+
             var gameListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItemActivated2, gameList);
             _gameSelectionListView.Adapter = gameListAdapter;
-            */
-
-            for (int i = 1; i <= 30; i++)
- 
-            {
-                var model = new CustomModel
-                {
-                    Heading = "Title " + i,
-                    SubHeading = "Author " + i,
-                    ImageResourceId =  i
-                };
-                viewItems.Add(model);
-            }
 
             _gameSelectionListView.ChoiceMode = ChoiceMode.Single;
 
-            _gameSelectionListView.Adapter = new HomeScreenAdapter(this, viewItems);
+            _gameSelectionListView.Adapter = new GameListViewActivity(this, viewItems);
             _gameSelectionListView.ItemClick += OnListItemClick;
         }
 
         void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             var listView = sender as ListView;
-            //var t = tableItems[e.Position];
-           Toast.MakeText(this, e.Position.ToString(), ToastLength.Long).Show();
-        }
+            if (listView != null)
+            {
+                var gameName = listView.FindViewById<TextView>(Resource.Id.Text1).Text;
+                var consoleName = listView.FindViewById<TextView>(Resource.Id.Text2).Text;
 
-        private void SelectedGameChanged()
-        {
-            Toast.MakeText(ApplicationContext, _gameSelectionListView.SelectedItemPosition, ToastLength.Long).Show();
-            string consoleName = _consoleSelectionSpinner.SelectedItem.ToString();
-            string gameName = _gameSelectionListView.SelectedItem.ToString();
-            CurrentGame = (Game) Database.GetConsole(consoleName).GetGame(gameName);
+
+                CurrentGame = (Game) Database.GetConsole(consoleName).GetGame(gameName);
+
+                if (CurrentGame != null)
+                {
+                    var intent = new Intent(this, typeof(GameInfoActivity));
+                    StartActivity(intent);
+                }
+                else
+                {
+                    Toast.MakeText(ApplicationContext, "Please select a game", ToastLength.Long).Show();
+                }
+            }
+
         }
 
         private void FindElementsById()
@@ -181,26 +188,12 @@ namespace UniCadeAndroid.Activities
 
             _infoButton.Click += (sender, e) =>
             {
-                if (CurrentGame != null)
-                {
-                    var intent = new Intent(this, typeof(GameInfoActivity));
-                    StartActivity(intent);
-                }
-                else
-                {
-                    Toast.MakeText(ApplicationContext, "Please select a game", ToastLength.Long).Show();
-                }
+                
             };
 
             _consoleSelectionSpinner.ItemSelected += (sender, e) =>
             {
                 RefreshGameList();
-            };
-
-            _gameSelectionListView.ItemSelected += (sender, e) =>
-            {
-                SelectedGameChanged();
-
             };
 
             _showFavoritesCheckbox.CheckedChange += (sender, e) =>
