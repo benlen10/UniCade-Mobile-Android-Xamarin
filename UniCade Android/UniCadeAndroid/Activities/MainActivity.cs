@@ -39,8 +39,6 @@ namespace UniCadeAndroid.Activities
 
         private bool _globalSearchEnabled;
 
-        private List<GameListObject> viewItems;
-
 
         #endregion
 
@@ -71,8 +69,6 @@ namespace UniCadeAndroid.Activities
 
             SetContentView(Resource.Layout.MainView);
 
-            viewItems = new List<GameListObject>();
-
             FindElementsById();
 
             CreateEventHandlers();
@@ -96,7 +92,7 @@ namespace UniCadeAndroid.Activities
 
             _gameSelectionListView.Adapter = null;
             var currentConsole = _consoleSelectionSpinner.SelectedItem.ToString();
-            var gameList = new List<string>();
+            var gameList = new List<GameListObject>();
 
             foreach (var gameTitle in Database.GetConsole(currentConsole).GetGameList())
             {
@@ -106,7 +102,7 @@ namespace UniCadeAndroid.Activities
                     Console = currentConsole,
                     ImageResourceId = 0
                 };
-                viewItems.Add(item);
+                gameList.Add(item);
             }
 
             var gameListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItemActivated2, gameList);
@@ -114,7 +110,7 @@ namespace UniCadeAndroid.Activities
 
             _gameSelectionListView.ChoiceMode = ChoiceMode.Single;
 
-            _gameSelectionListView.Adapter = new GameListViewActivity(this, viewItems);
+            _gameSelectionListView.Adapter = new GameListViewActivity(this, gameList);
             _gameSelectionListView.ItemClick += OnListItemClick;
         }
 

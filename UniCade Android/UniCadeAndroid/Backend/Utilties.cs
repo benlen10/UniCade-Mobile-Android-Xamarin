@@ -1,8 +1,8 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UniCadeAndroid.Constants;
+using Uri = Android.Net.Uri;
 
 namespace UniCadeAndroid.Backend
 {
@@ -112,21 +112,21 @@ namespace UniCadeAndroid.Backend
 
             if (rating.Equals(Enums.EsrbRatings.Everyone))
             {
-                return new Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/E.png".Replace("EsrbLogos", logoType));
+                return Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/E.png".Replace("EsrbLogos", logoType));
             }
             if (rating.Equals(Enums.EsrbRatings.Everyone10))
             {
-                return new  Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/E10.png".Replace("EsrbLogos", logoType));
+                return Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/E10.png".Replace("EsrbLogos", logoType));
             }
             if (rating.Equals(Enums.EsrbRatings.Teen))
             {
-                return new  Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/T.png".Replace("EsrbLogos", logoType));
+                return Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/T.png".Replace("EsrbLogos", logoType));
             }
             if (rating.Equals(Enums.EsrbRatings.Mature))
             {
-                return new Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/M.png".Replace("EsrbLogos", logoType));
+                return Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/M.png".Replace("EsrbLogos", logoType));
             }
-            return rating.Equals(Enums.EsrbRatings.Ao) ? new Uri("pack://application:,,,/UniCade;component/Resources/EsrbLogos/AO.png".Replace("EsrbLogos", logoType)) : null;
+            return rating.Equals(Enums.EsrbRatings.Ao) ? Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/AO.png".Replace("EsrbLogos", logoType)) : null;
         }
     }
 }

@@ -70,14 +70,14 @@ namespace UniCadeAndroid.Activities
         private void PopulateGameInfo()
         {
             _titleTextView.Text = MainActivity.CurrentGame.Title;
-            _consoleTextView.Text = MainActivity.CurrentGame.Title;
-            _publisherTextView.Text = MainActivity.CurrentGame.Title;
-            _criticScoreTextView.Text = MainActivity.CurrentGame.Title;
-            _playersTextView.Text = MainActivity.CurrentGame.Title;
-            _esrbRatingTextView.Text = MainActivity.CurrentGame.Title;
-            _esrbDescriptorsTextView.Text = MainActivity.CurrentGame.Title;
-            _releaseDateTextView.Text = MainActivity.CurrentGame.Title;
-            _descriptionTextView.Text = MainActivity.CurrentGame.Title;
+            _consoleTextView.Text = MainActivity.CurrentGame.ConsoleName;
+            _publisherTextView.Text = MainActivity.CurrentGame.PublisherName;
+            _criticScoreTextView.Text = MainActivity.CurrentGame.CriticReviewScore;
+            _playersTextView.Text = MainActivity.CurrentGame.SupportedPlayerCount;
+            _esrbRatingTextView.Text = MainActivity.CurrentGame.EsrbRating.GetStringValue();
+            _esrbDescriptorsTextView.Text = MainActivity.CurrentGame.GetEsrbDescriptorsString();
+            _releaseDateTextView.Text = MainActivity.CurrentGame.ReleaseDate;
+            _descriptionTextView.Text = MainActivity.CurrentGame.Description;
         }
 
         private void PopulateGameImages()
@@ -103,6 +103,8 @@ namespace UniCadeAndroid.Activities
                 Bitmap bitmap = BitmapFactory.DecodeFile(imagePath);
                 _screenshotImageView.SetImageBitmap(bitmap);
             }
+
+            _esrbLogoImageView.SetImageURI(Backend.Utilties.GetEsrbLogoImage(MainActivity.CurrentGame.EsrbRating));
         }
 
         private void SaveGameInfo()
