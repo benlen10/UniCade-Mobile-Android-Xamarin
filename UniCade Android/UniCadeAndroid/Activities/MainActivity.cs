@@ -39,6 +39,8 @@ namespace UniCadeAndroid.Activities
 
         private bool _globalSearchEnabled;
 
+        private List<GameListObject> _currentGameList;
+
 
         #endregion
 
@@ -92,7 +94,7 @@ namespace UniCadeAndroid.Activities
 
             _gameSelectionListView.Adapter = null;
             var currentConsole = _consoleSelectionSpinner.SelectedItem.ToString();
-            var gameList = new List<GameListObject>();
+            _currentGameList = new List<GameListObject>();
 
             foreach (var gameTitle in Database.GetConsole(currentConsole).GetGameList())
             {
@@ -102,15 +104,15 @@ namespace UniCadeAndroid.Activities
                     Console = currentConsole,
                     ImageResourceId = 0
                 };
-                gameList.Add(item);
+                _currentGameList.Add(item);
             }
 
-            var gameListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItemActivated2, gameList);
+            var gameListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItemActivated2, _currentGameList);
             _gameSelectionListView.Adapter = gameListAdapter;
 
             _gameSelectionListView.ChoiceMode = ChoiceMode.Single;
 
-            _gameSelectionListView.Adapter = new GameListViewActivity(this, gameList);
+            _gameSelectionListView.Adapter = new GameListViewActivity(this, _currentGameList);
             _gameSelectionListView.ItemClick += OnListItemClick;
         }
 
@@ -119,11 +121,9 @@ namespace UniCadeAndroid.Activities
             var listView = sender as ListView;
             if (listView != null)
             {
-                var gameName = listView.FindViewById<TextView>(Resource.Id.Text1).Text;
-                var consoleName = listView.FindViewById<TextView>(Resource.Id.Text2).Text;
+                var listItem = _currentGameList[e.Position];
 
-
-                CurrentGame = (Game) Database.GetConsole(consoleName).GetGame(gameName);
+                CurrentGame = (Game) Database.GetConsole(listItem.Console).GetGame(listItem.Title);
 
                 if (CurrentGame != null)
                 {
