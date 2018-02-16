@@ -21,8 +21,6 @@ namespace UniCadeAndroid.Activities
 
         private Button _loginButton;
 
-        private Button _infoButton;
-
         private CheckBox _showFavoritesCheckbox;
 
         private CheckBox _globalSearchCheckbox;
@@ -142,7 +140,6 @@ namespace UniCadeAndroid.Activities
         {
             _settingsButton = FindViewById<Button>(Resource.Id.SettingsButton);
             _loginButton = FindViewById<Button>(Resource.Id.LoginButton);
-            _infoButton = FindViewById<Button>(Resource.Id.InfoButton);
             _showFavoritesCheckbox = FindViewById<CheckBox>(Resource.Id.ShowFavoritesCheckbox);
             _globalSearchCheckbox = FindViewById<CheckBox>(Resource.Id.GlobalfavoritesCheckbox);
             _gameSelectionListView = FindViewById<ListView>(Resource.Id.GameSelectionListView);
@@ -180,11 +177,6 @@ namespace UniCadeAndroid.Activities
             {
                 var intent = new Intent(this, typeof(LoginActivity));
                 StartActivity(intent);
-            };
-
-            _infoButton.Click += (sender, e) =>
-            {
-                
             };
 
             _consoleSelectionSpinner.ItemSelected += (sender, e) =>
