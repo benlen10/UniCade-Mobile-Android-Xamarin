@@ -11,15 +11,13 @@ using UniCadeAndroid.Objects;
 
 namespace UniCadeAndroid.Activities
 {
-    [Activity(Label = "UniCadeAndroid", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "UniCade Mobile", MainLauncher = true, Icon = "@drawable/UniCadeIcon")]
     public class MainActivity : Activity
     {
 
         #region Private Instance Variables 
 
         private Button _settingsButton;
-
-        private Button _loginButton;
 
         private CheckBox _showFavoritesCheckbox;
 
@@ -139,7 +137,6 @@ namespace UniCadeAndroid.Activities
         private void FindElementsById()
         {
             _settingsButton = FindViewById<Button>(Resource.Id.SettingsButton);
-            _loginButton = FindViewById<Button>(Resource.Id.LoginButton);
             _showFavoritesCheckbox = FindViewById<CheckBox>(Resource.Id.ShowFavoritesCheckbox);
             _globalSearchCheckbox = FindViewById<CheckBox>(Resource.Id.GlobalfavoritesCheckbox);
             _gameSelectionListView = FindViewById<ListView>(Resource.Id.GameSelectionListView);
@@ -170,12 +167,6 @@ namespace UniCadeAndroid.Activities
             _settingsButton.Click += (sender, e) =>
             {
                 var intent = new Intent(this, typeof(SettingsActivity));
-                StartActivity(intent);
-            };
-
-            _loginButton.Click += (sender, e) =>
-            {
-                var intent = new Intent(this, typeof(LoginActivity));
                 StartActivity(intent);
             };
 

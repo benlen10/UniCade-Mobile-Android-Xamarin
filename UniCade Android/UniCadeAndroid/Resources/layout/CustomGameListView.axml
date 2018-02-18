@@ -14,7 +14,7 @@
             android:id="@+id/Text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FF7F3300"
+            android:textColor="#ffffff"
             android:textSize="20dip"
             android:textStyle="italic" />
         <TextView
@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14dip"
-            android:textColor="#FF267F00"
+            android:textColor="#00BCD4"
             android:paddingLeft="100dip" />
     </LinearLayout>
     <ImageView
@@ -30,6 +30,6 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:padding="5dp"
-        android:src="@drawable/icon"
+        android:src="@drawable/UniCadeIcon"
         android:layout_alignParentRight="true" />
 </RelativeLayout>

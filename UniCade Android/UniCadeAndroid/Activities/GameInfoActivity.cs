@@ -7,7 +7,7 @@ using UniCadeAndroid.Constants;
 
 namespace UniCadeAndroid.Activities
 {
-    [Activity(Label = "GameInfoActivity")]
+    [Activity(Label = "Game Info")]
     public class GameInfoActivity : Activity
     {
 
@@ -69,35 +69,35 @@ namespace UniCadeAndroid.Activities
 
         private void PopulateGameInfo()
         {
-            _titleTextView.Text = MainActivity.CurrentGame.Title;
-            _consoleTextView.Text = MainActivity.CurrentGame.ConsoleName;
-            _publisherTextView.Text = MainActivity.CurrentGame.PublisherName;
-            _criticScoreTextView.Text = MainActivity.CurrentGame.CriticReviewScore;
-            _playersTextView.Text = MainActivity.CurrentGame.SupportedPlayerCount;
-            _esrbRatingTextView.Text = MainActivity.CurrentGame.EsrbRating.GetStringValue();
-            _esrbDescriptorsTextView.Text = MainActivity.CurrentGame.GetEsrbDescriptorsString();
-            _releaseDateTextView.Text = MainActivity.CurrentGame.ReleaseDate;
-            _descriptionTextView.Text = MainActivity.CurrentGame.Description;
+            _titleTextView.Text = "Title: " + MainActivity.CurrentGame.Title;
+            _consoleTextView.Text = "Console: " + MainActivity.CurrentGame.ConsoleName;
+            _publisherTextView.Text = "Publisher: " + MainActivity.CurrentGame.PublisherName;
+            _criticScoreTextView.Text = "Critic Score: " + MainActivity.CurrentGame.CriticReviewScore;
+            _playersTextView.Text = "Player Count: " + MainActivity.CurrentGame.SupportedPlayerCount;
+            _esrbRatingTextView.Text = "ESRB Rating: " + MainActivity.CurrentGame.EsrbRating.GetStringValue();
+            _esrbDescriptorsTextView.Text = "ESRB Descriptors: " + MainActivity.CurrentGame.GetEsrbDescriptorsString();
+            _releaseDateTextView.Text = "Release Date: " + MainActivity.CurrentGame.ReleaseDate;
+            _descriptionTextView.Text = "Description:" + MainActivity.CurrentGame.Description;
         }
 
         private void PopulateGameImages()
         {
             var sdCardPath = Environment.ExternalStorageDirectory.Path;
-            string imagePath = sdCardPath + ConstValues.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "\\" + MainActivity.CurrentGame.Title + "_BoxFront.jpg";
+            string imagePath = sdCardPath + ConstValues.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_BoxFront.jpg";
             if (File.Exists(imagePath))
             {
                 Bitmap bitmap = BitmapFactory.DecodeFile(imagePath);
                 _boxFrontImageView.SetImageBitmap(bitmap);
             }
 
-            imagePath = sdCardPath + ConstValues.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "\\" + MainActivity.CurrentGame.Title + "_BoxBack.jpg";
+            imagePath = sdCardPath + ConstValues.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_BoxBack.jpg";
             if (File.Exists(imagePath))
             {
                 Bitmap bitmap = BitmapFactory.DecodeFile(imagePath);
                 _boxBackImageView.SetImageBitmap(bitmap);
             }
 
-            imagePath = sdCardPath + ConstValues.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "\\" + MainActivity.CurrentGame.Title + "_Screenshot.jpg";
+            imagePath = sdCardPath + ConstValues.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_Screenshot.jpg";
             if (File.Exists(imagePath))
             {
                 Bitmap bitmap = BitmapFactory.DecodeFile(imagePath);

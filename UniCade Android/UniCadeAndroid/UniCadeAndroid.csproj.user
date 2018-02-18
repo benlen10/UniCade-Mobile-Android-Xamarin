@@ -4,6 +4,6 @@
     <SelectedDevice>Samsung SM-G950U</SelectedDevice>
     <DefaultDevice>Galaxy_S6_API_23</DefaultDevice>
     <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
-    <AndroidDesignerPreferredTheme>Theme.Material.Light</AndroidDesignerPreferredTheme>
+    <AndroidDesignerPreferredTheme>Theme.Material</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

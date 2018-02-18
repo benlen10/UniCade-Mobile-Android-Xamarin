@@ -3,5 +3,5 @@
 	<uses-sdk android:minSdkVersion="23" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<application android:label="UniCade" android:icon="@drawable/Icon"></application>
+	<application android:label="UniCade" android:theme="@android:style/Theme.Material" android:icon="@drawable/UniCadeIcon"></application>
 </manifest>
