@@ -8,18 +8,11 @@
     <ListView
         p1:id="@+id/GameSelectionListView"
         p1:layout_width="257.5dp"
-        p1:layout_height="522.0dp"
+        p1:layout_height="480.0dp"
         p1:cacheColorHint="#FFDAFF7F"
         p1:layout_marginBottom="86.0dp"
         p1:layout_marginRight="126.0dp"
         p1:layout_marginLeft="4.5dp" />
-    <Button
-        p1:id="@+id/InfoButton"
-        p1:layout_width="90.0dp"
-        p1:layout_height="45.5dp"
-        p1:layout_marginTop="464.0dp"
-        p1:layout_marginLeft="8.0dp"
-        p1:text="Info" />
     <Button
         p1:id="@+id/SettingsButton"
         p1:layout_width="90.0dp"
@@ -47,31 +40,31 @@
     <CheckBox
         p1:id="@+id/ShowFavoritesCheckbox"
         p1:layout_width="120.0dp"
-        p1:layout_height="30.0dp"
+        p1:layout_height="40.0dp"
         p1:layout_marginLeft="255.0dp"
-        p1:layout_marginTop="329.0dp"
+        p1:layout_marginTop="349.0dp"
         p1:layout_marginRight="10.0dp"
         p1:text="Show Favorites" />
     <CheckBox
         p1:id="@+id/GlobalfavoritesCheckbox"
-        p1:layout_width="117.5dp"
-        p1:layout_height="30.0dp"
+        p1:layout_width="120.0dp"
+        p1:layout_height="40.0dp"
         p1:layout_marginLeft="256.5dp"
-        p1:layout_marginTop="388.5dp"
+        p1:layout_marginTop="408.5dp"
         p1:layout_marginRight="12.5dp"
         p1:text="Global Search" />
     <EditText
         p1:id="@+id/SearchBarEditTExt"
         p1:layout_width="114.5dp"
         p1:layout_height="30.0dp"
-        p1:layout_marginTop="431.0dp"
+        p1:layout_marginTop="451.0dp"
         p1:layout_marginLeft="263.0dp"
         p1:layout_marginRight="0.0dp" />
     <Spinner
         p1:id="@+id/ConsoleSelectionSpinner"
-        p1:layout_width="184.5dp"
+        p1:layout_width="250.5dp"
         p1:layout_height="30.0dp"
-        p1:layout_marginTop="509.5dp"
+        p1:layout_marginTop="530.0dp"
         p1:layout_marginLeft="12.5dp"
         p1:layout_marginRight="188.0dp" />
 </RelativeLayout>
