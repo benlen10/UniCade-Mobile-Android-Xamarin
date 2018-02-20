@@ -80,7 +80,7 @@ namespace UniCadeAndroid.Activities
             List<string> consoleList = Database.GetConsoleList().ToList();
 
             var consoleSpinnerAdapter =
-                new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, consoleList);
+                new ArrayAdapter(this, Resource.Layout.CustomSpinnerItem, consoleList);
 
             _consoleSelectionSpinner.Adapter = consoleSpinnerAdapter;
         }
