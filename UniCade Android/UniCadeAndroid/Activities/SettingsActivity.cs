@@ -95,7 +95,12 @@ namespace UniCadeAndroid.Activities
                 var intent = new Intent(this, typeof(LoginActivity));
 				StartActivity(intent);
 			};
-		}
+
+		    _closeSettingsButton.Click += (sender, e) =>
+		    {
+		        Finish();
+		    };
+        }
 
 	}
 }

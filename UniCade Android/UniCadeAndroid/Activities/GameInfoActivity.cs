@@ -173,7 +173,7 @@ namespace UniCadeAndroid.Activities
 
             _closeInfoButton.Click += (sender, e) =>
             {
-                //TODO:
+                Finish();
             };
 
             _refreshInfoButton.Click += (sender, e) =>
