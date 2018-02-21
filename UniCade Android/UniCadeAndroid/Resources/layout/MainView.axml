@@ -4,6 +4,8 @@
     p1:minHeight="25px"
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
+    p1:focusable="true"
+    p1:focusableInTouchMode="true"
     p1:id="@+id/relativeLayout">
     <ListView
         p1:id="@+id/GameSelectionListView"
@@ -53,7 +55,7 @@
     <Spinner
         p1:id="@+id/ConsoleSelectionSpinner"
         p1:layout_width="250.5dp"
-        p1:layout_height="30.0dp"
+        p1:layout_height="40.0dp"
         p1:layout_marginTop="540.0dp"
         p1:layout_marginLeft="1.5dp" />
 </RelativeLayout>
