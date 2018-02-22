@@ -70,4 +70,23 @@
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
         p1:id="@+id/ScreenshotImageCheckbox" />
+  <RelativeLayout
+    p1:minWidth="25px"
+    p1:minHeight="25px"
+    p1:layout_width="match_parent"
+    p1:layout_height="49.5dp"
+    p1:id="@+id/relativeLayout5">
+    <Button
+      p1:text="Close"
+      p1:layout_width="128.0dp"
+      p1:layout_height="wrap_content"
+      p1:id="@+id/CloseButton"
+      p1:layout_marginLeft="207.0dp" />
+    <Button
+      p1:text="Apply"
+      p1:layout_width="133.0dp"
+      p1:layout_height="wrap_content"
+      p1:id="@+id/ApplyButton"
+      p1:layout_marginLeft="15.5dp" />
+  </RelativeLayout>
 </LinearLayout>
