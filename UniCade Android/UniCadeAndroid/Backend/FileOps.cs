@@ -5,11 +5,16 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml;
+using Android;
 using Android.App;
+using Android.Content.PM;
 using Android.Widget;
 using UniCadeAndroid.Constants;
 using UniCadeAndroid.Interfaces;
 using UniCadeAndroid.Objects;
+using Android.Support.V4.App;
+using Android.Support.V4.Content;
+using UniCadeAndroid.Activities;
 using Console = UniCadeAndroid.Objects.Console;
 
 

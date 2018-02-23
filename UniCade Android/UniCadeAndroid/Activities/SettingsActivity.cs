@@ -100,6 +100,11 @@ namespace UniCadeAndroid.Activities
 		    {
 		        Finish();
 		    };
+
+		    _applyButton.Click += (sender, e) =>
+		    {
+		        //TODO:  Apply Settings
+		    };
         }
 
 	}

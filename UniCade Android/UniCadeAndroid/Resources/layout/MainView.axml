@@ -48,8 +48,8 @@
     <EditText
         p1:id="@+id/SearchBarEditTExt"
         p1:layout_width="123.0dp"
-        p1:layout_height="30.0dp"
-        p1:layout_marginTop="451.0dp"
+        p1:layout_height="50.0dp"
+        p1:layout_marginTop="470.0dp"
         p1:layout_marginLeft="257.0dp"
         p1:layout_marginRight="0.0dp" />
     <Spinner

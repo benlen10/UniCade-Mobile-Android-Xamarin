@@ -5,6 +5,10 @@ using Android.Widget;
 using UniCadeAndroid.Backend;
 using System.Collections.Generic;
 using System.Linq;
+using Android;
+using Android.Content.PM;
+using Android.Support.V4.App;
+using Android.Support.V4.Content;
 using Android.Views;
 using Java.Lang;
 using UniCadeAndroid.Objects;
@@ -53,6 +57,8 @@ namespace UniCadeAndroid.Activities
         {
             base.OnCreate(bundle);
 
+            CheckPermissions();
+
             //Initalize the database, preform an initial scan and refresh the total game count
             Database.Initalize();
 
@@ -83,6 +89,20 @@ namespace UniCadeAndroid.Activities
                 new ArrayAdapter(this, Resource.Layout.CustomSpinnerItem, consoleList);
 
             _consoleSelectionSpinner.Adapter = consoleSpinnerAdapter;
+        }
+
+        private void CheckPermissions()
+        {
+            string[] requiredPermissions =
+            {
+                Manifest.Permission.ReadExternalStorage,
+                Manifest.Permission.WriteExternalStorage
+            };
+
+            if (ContextCompat.CheckSelfPermission(this, requiredPermissions[0]) != (int)Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, requiredPermissions, 0);
+            }
         }
 
         private void RefreshGameList()
