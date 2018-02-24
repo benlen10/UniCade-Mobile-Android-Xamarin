@@ -41,6 +41,12 @@ namespace UniCadeAndroid.Activities
 
         private List<GameListObject> _currentGameList;
 
+        string[] requiredPermissions =
+        {
+            Manifest.Permission.ReadExternalStorage,
+            Manifest.Permission.WriteExternalStorage
+        };
+
 
         #endregion
 
@@ -58,7 +64,10 @@ namespace UniCadeAndroid.Activities
             base.OnCreate(bundle);
 
             CheckPermissions();
+        }
 
+        private void Startup()
+        {
             //Initalize the database, preform an initial scan and refresh the total game count
             Database.Initalize();
 
@@ -93,16 +102,31 @@ namespace UniCadeAndroid.Activities
 
         private void CheckPermissions()
         {
-            string[] requiredPermissions =
-            {
-                Manifest.Permission.ReadExternalStorage,
-                Manifest.Permission.WriteExternalStorage
-            };
 
-            if (ContextCompat.CheckSelfPermission(this, requiredPermissions[0]) != (int)Permission.Granted)
+            if (ContextCompat.CheckSelfPermission(this, requiredPermissions[0]) == (int) Permission.Granted)
+            {
+                Startup();
+            }
+            else
             {
                 ActivityCompat.RequestPermissions(this, requiredPermissions, 0);
             }
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            if (ContextCompat.CheckSelfPermission(this, requiredPermissions[0]) == (int) Permission.Granted)
+            {
+                Startup();
+            }
+            else
+            {
+                Toast.MakeText(ApplicationContext, "Fatal Error: Storage Access Required", ToastLength.Long).Show();
+                Finish();
+            }
+
         }
 
         private void RefreshGameList()
