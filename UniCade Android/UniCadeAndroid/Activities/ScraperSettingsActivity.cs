@@ -10,9 +10,35 @@ namespace UniCadeAndroid.Activities
     {
         #region Private Instance Variables
 
+        private Spinner _apiSelectionSpinner;
+
         private Button _applyButton;
 
         private Button _closeButton;
+
+        private CheckBox _releaseDateCheckbox;
+
+        private CheckBox _criticScoreCheckBox;
+
+        private CheckBox _userScoreCheckbox;
+
+        private CheckBox _publisherDeveloperCheckbox;
+
+        private CheckBox _esrbRatingDescriptorsCheckbox;
+
+        private CheckBox _playerCountCheckBox;
+
+        private CheckBox _descriptionCheckbox;
+
+        private CheckBox _genresCheckbox;
+
+        private CheckBox _otherAvailableConsolesheckbox;
+
+        private CheckBox _boxFrontCheckBox;
+
+        private CheckBox _boxBackCheckBox;
+
+        private CheckBox _screenshotCheckBox;
 
         #endregion
 
