@@ -55,8 +55,21 @@ namespace UniCadeAndroid.Activities
 
         private void FindElementsById()
         {
+            _apiSelectionSpinner = FindViewById<Spinner>(Resource.Id.ApiSelectionSpinner);
             _applyButton = FindViewById<Button>(Resource.Id.ApplyButton);
             _closeButton = FindViewById<Button>(Resource.Id.CloseButton);
+            _releaseDateCheckbox = FindViewById<CheckBox>(Resource.Id.ReleaseDateCheckbox);
+            _criticScoreCheckBox = FindViewById<CheckBox>(Resource.Id.CriticScoreCheckbox);
+            _userScoreCheckbox = FindViewById<CheckBox>(Resource.Id.UserScoreCheckbox);
+            _publisherDeveloperCheckbox = FindViewById<CheckBox>(Resource.Id.PubusherDeveloperCheckbox);
+            _esrbRatingDescriptorsCheckbox = FindViewById<CheckBox>(Resource.Id.EsrbRatingCheckbox);
+            _playerCountCheckBox = FindViewById<CheckBox>(Resource.Id.PlayerCountCheckbox);
+            _descriptionCheckbox = FindViewById<CheckBox>(Resource.Id.DescriptionCheckbox);
+            _genresCheckbox = FindViewById<CheckBox>(Resource.Id.GenresCheckbox);
+            _otherAvailableConsolesheckbox = FindViewById<CheckBox>(Resource.Id.OtherAvailablePlatformsCheckbox);
+            _boxFrontCheckBox = FindViewById<CheckBox>(Resource.Id.BoxBackImageCheckbox);
+            _boxBackCheckBox = FindViewById<CheckBox>(Resource.Id.BoxBackImageCheckbox);
+            _screenshotCheckBox = FindViewById<CheckBox>(Resource.Id.ScreenshotImageCheckbox);
         }
 
         private void LinkClickHandlers()
