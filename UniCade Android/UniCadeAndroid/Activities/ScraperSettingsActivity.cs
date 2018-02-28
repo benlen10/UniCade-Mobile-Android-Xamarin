@@ -2,6 +2,7 @@
 using Android.App;
 using Android.OS;
 using Android.Widget;
+using UniCadeAndroid.Network;
 
 namespace UniCadeAndroid.Activities
 {
@@ -81,7 +82,21 @@ namespace UniCadeAndroid.Activities
 
             _applyButton.Click += (sender, e) =>
             {
-                //TODO:  Apply Settings
+                //WebOps.CurrentApi = _apiSelectionSpinner.SelectedItemPosition;
+                WebOps.ParseReleaseDate = _releaseDateCheckbox.Checked;
+                WebOps.ParseCriticScore = _criticScoreCheckBox.Checked;
+                WebOps.ParseUserScore = _userScoreCheckbox.Checked;
+                WebOps.ParsePublisher = _publisherDeveloperCheckbox.Checked;
+                WebOps.ParseDeveloper = _publisherDeveloperCheckbox.Checked;
+                WebOps.ParseEsrbRating = _esrbRatingDescriptorsCheckbox.Checked;
+                WebOps.ParseEsrbDescriptors = _esrbRatingDescriptorsCheckbox.Checked;
+                WebOps.ParsePlayerCount = _playerCountCheckBox.Checked;
+                WebOps.ParseDescription = _descriptionCheckbox.Checked;
+                WebOps.ParseGenres = _genresCheckbox.Checked;
+                WebOps.ParseOtherPlatforms = _otherAvailableConsolesheckbox.Checked;
+                WebOps.ParseBoxFrontImage = _boxFrontCheckBox.Checked;
+                WebOps.ParseBoxBackImage = _boxBackCheckBox.Checked;
+                WebOps.ParseScreenshot = _screenshotCheckBox.Checked;
             };
 
         }
