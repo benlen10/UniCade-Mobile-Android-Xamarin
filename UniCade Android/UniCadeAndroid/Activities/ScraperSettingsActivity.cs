@@ -54,6 +54,27 @@ namespace UniCadeAndroid.Activities
             LinkClickHandlers();
         }
 
+        private void PopulateCheckboxes()
+        {
+            _releaseDateCheckbox.Checked = WebOps.ParseReleaseDate;
+            _criticScoreCheckBox.Checked = WebOps.ParseCriticScore;
+            _userScoreCheckbox.Checked = WebOps.ParseUserScore;
+            _publisherDeveloperCheckbox.Checked = WebOps.ParsePublisher;
+            _esrbRatingDescriptorsCheckbox.Checked = WebOps.ParseEsrbRating;
+            _playerCountCheckBox.Checked = WebOps.ParsePlayerCount;
+            _descriptionCheckbox.Checked = WebOps.ParseDescription;
+            _genresCheckbox.Checked = WebOps.ParseGenres;
+            _otherAvailableConsolesheckbox.Checked = WebOps.ParseOtherPlatforms;
+            _boxFrontCheckBox.Checked = WebOps.ParseBoxFrontImage;
+            _boxBackCheckBox.Checked = WebOps.ParseBoxBackImage;
+            _screenshotCheckBox.Checked = WebOps.ParseScreenshot;
+        }
+
+        private void PopulateApiSelectionSpinner()
+        {
+            
+        }
+
         private void FindElementsById()
         {
             _apiSelectionSpinner = FindViewById<Spinner>(Resource.Id.ApiSelectionSpinner);
