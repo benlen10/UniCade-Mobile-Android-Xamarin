@@ -1,7 +1,10 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Android.App;
 using Android.OS;
 using Android.Widget;
+using UniCadeAndroid.Constants;
 using UniCadeAndroid.Network;
 
 namespace UniCadeAndroid.Activities
@@ -52,6 +55,10 @@ namespace UniCadeAndroid.Activities
             FindElementsById();
 
             LinkClickHandlers();
+
+            PopulateCheckboxes();
+
+            PopulateApiSelectionSpinner();
         }
 
         private void PopulateCheckboxes()
@@ -72,7 +79,11 @@ namespace UniCadeAndroid.Activities
 
         private void PopulateApiSelectionSpinner()
         {
-            
+            List<string> apiList = (from Enums.Api item in Enum.GetValues(typeof(Enums.Api)) select item.GetStringValue()).ToList();
+
+            var consoleSpinnerAdapter = new ArrayAdapter(this, Resource.Layout.CustomSpinnerItem, apiList);
+
+            _apiSelectionSpinner.Adapter = consoleSpinnerAdapter;
         }
 
         private void FindElementsById()
@@ -103,7 +114,7 @@ namespace UniCadeAndroid.Activities
 
             _applyButton.Click += (sender, e) =>
             {
-                //WebOps.CurrentApi = _apiSelectionSpinner.SelectedItemPosition;
+                WebOps.CurrentApi = (Enums.Api) _apiSelectionSpinner.SelectedItemPosition;
                 WebOps.ParseReleaseDate = _releaseDateCheckbox.Checked;
                 WebOps.ParseCriticScore = _criticScoreCheckBox.Checked;
                 WebOps.ParseUserScore = _userScoreCheckbox.Checked;
@@ -119,7 +130,6 @@ namespace UniCadeAndroid.Activities
                 WebOps.ParseBoxBackImage = _boxBackCheckBox.Checked;
                 WebOps.ParseScreenshot = _screenshotCheckBox.Checked;
             };
-
         }
     }
 }
