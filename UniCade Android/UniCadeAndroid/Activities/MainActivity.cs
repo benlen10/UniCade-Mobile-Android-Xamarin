@@ -133,18 +133,37 @@ namespace UniCadeAndroid.Activities
         {
 
             _gameSelectionListView.Adapter = null;
-            var currentConsole = _consoleSelectionSpinner.SelectedItem.ToString();
+            var currentConsoleName = _consoleSelectionSpinner.SelectedItem.ToString();
             _currentGameList = new List<GameListObject>();
 
-            foreach (var gameTitle in Database.GetConsole(currentConsole).GetGameList())
+            if (currentConsoleName == "All Games")
             {
-                var item = new GameListObject
+                foreach (string consoleName in Database.GetConsoleList())
                 {
-                    Title = gameTitle,
-                    Console = currentConsole,
-                    ImageResourceId = 0
-                };
-                _currentGameList.Add(item);
+                    foreach (string gameTitle in Database.GetConsole(consoleName).GetGameList())
+                    {
+                        var item = new GameListObject
+                        {
+                            Title = gameTitle,
+                            Console = currentConsoleName,
+                            ImageResourceId = 0
+                        };
+                        _currentGameList.Add(item);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var gameTitle in Database.GetConsole(currentConsoleName).GetGameList())
+                {
+                    var item = new GameListObject
+                    {
+                        Title = gameTitle,
+                        Console = currentConsoleName,
+                        ImageResourceId = 0
+                    };
+                    _currentGameList.Add(item);
+                }
             }
 
             var gameListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItemActivated2, _currentGameList);
