@@ -23,10 +23,6 @@ namespace UniCadeAndroid.Activities
 
         private Button _settingsButton;
 
-        private CheckBox _showFavoritesCheckbox;
-
-        private CheckBox _globalSearchCheckbox;
-
         private ListView _gameSelectionListView;
 
         private Spinner _consoleSelectionSpinner;
@@ -35,13 +31,11 @@ namespace UniCadeAndroid.Activities
 
         private ImageView _consoleImageView;
 
-        private bool _favoritesViewEnabled;
-
-        private bool _globalSearchEnabled;
+        private string _searchText;
 
         private List<GameListObject> _currentGameList;
 
-        string[] requiredPermissions =
+        readonly string[] _requiredPermissions =
         {
             Manifest.Permission.ReadExternalStorage,
             Manifest.Permission.WriteExternalStorage
@@ -103,13 +97,13 @@ namespace UniCadeAndroid.Activities
         private void CheckPermissions()
         {
 
-            if (ContextCompat.CheckSelfPermission(this, requiredPermissions[0]) == (int) Permission.Granted)
+            if (ContextCompat.CheckSelfPermission(this, _requiredPermissions[0]) == (int) Permission.Granted)
             {
                 Startup();
             }
             else
             {
-                ActivityCompat.RequestPermissions(this, requiredPermissions, 0);
+                ActivityCompat.RequestPermissions(this, _requiredPermissions, 0);
             }
         }
 
@@ -117,7 +111,7 @@ namespace UniCadeAndroid.Activities
         {
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
-            if (ContextCompat.CheckSelfPermission(this, requiredPermissions[0]) == (int) Permission.Granted)
+            if (ContextCompat.CheckSelfPermission(this, _requiredPermissions[0]) == (int) Permission.Granted)
             {
                 Startup();
             }
@@ -200,8 +194,6 @@ namespace UniCadeAndroid.Activities
         private void FindElementsById()
         {
             _settingsButton = FindViewById<Button>(Resource.Id.SettingsButton);
-            _showFavoritesCheckbox = FindViewById<CheckBox>(Resource.Id.ShowFavoritesCheckbox);
-            _globalSearchCheckbox = FindViewById<CheckBox>(Resource.Id.GlobalfavoritesCheckbox);
             _gameSelectionListView = FindViewById<ListView>(Resource.Id.GameSelectionListView);
             _consoleSelectionSpinner = FindViewById<Spinner>(Resource.Id.ConsoleSelectionSpinner);
             _searchBarEditText = FindViewById<EditText>(Resource.Id.SearchBarEditTExt);
@@ -236,16 +228,6 @@ namespace UniCadeAndroid.Activities
             _consoleSelectionSpinner.ItemSelected += (sender, e) =>
             {
                 RefreshGameList();
-            };
-
-            _showFavoritesCheckbox.CheckedChange += (sender, e) =>
-            {
-                _favoritesViewEnabled = _showFavoritesCheckbox.Checked;
-            };
-
-            _globalSearchCheckbox.CheckedChange += (sender, e) =>
-            {
-                _globalSearchEnabled = _globalSearchCheckbox.Checked;
             };
 
             _searchBarEditText.TextChanged += (sender, e) =>

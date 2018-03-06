@@ -29,22 +29,6 @@
         p1:layout_marginBottom="337.5dp"
         p1:layout_marginLeft="278.5dp"
         p1:layout_marginRight="20.5dp" />
-    <CheckBox
-        p1:id="@+id/ShowFavoritesCheckbox"
-        p1:layout_width="120.0dp"
-        p1:layout_height="40.0dp"
-        p1:layout_marginLeft="255.0dp"
-        p1:layout_marginTop="349.0dp"
-        p1:layout_marginRight="10.0dp"
-        p1:text="Show Favorites" />
-    <CheckBox
-        p1:id="@+id/GlobalfavoritesCheckbox"
-        p1:layout_width="120.0dp"
-        p1:layout_height="40.0dp"
-        p1:layout_marginLeft="256.5dp"
-        p1:layout_marginTop="408.5dp"
-        p1:layout_marginRight="12.5dp"
-        p1:text="Global Search" />
     <EditText
         p1:id="@+id/SearchBarEditTExt"
         p1:layout_width="123.0dp"
