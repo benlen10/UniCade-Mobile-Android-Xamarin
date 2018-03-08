@@ -31,7 +31,7 @@ namespace UniCadeAndroid.Activities
 
         private ImageView _consoleImageView;
 
-        private string _searchText;
+        private string _searchText = "";
 
         private List<GameListObject> _currentGameList;
 
@@ -97,7 +97,7 @@ namespace UniCadeAndroid.Activities
         private void CheckPermissions()
         {
 
-            if (ContextCompat.CheckSelfPermission(this, _requiredPermissions[0]) == (int) Permission.Granted)
+            if (ContextCompat.CheckSelfPermission(this, _requiredPermissions[0]) == (int)Permission.Granted)
             {
                 Startup();
             }
@@ -111,7 +111,7 @@ namespace UniCadeAndroid.Activities
         {
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
-            if (ContextCompat.CheckSelfPermission(this, _requiredPermissions[0]) == (int) Permission.Granted)
+            if (ContextCompat.CheckSelfPermission(this, _requiredPermissions[0]) == (int)Permission.Granted)
             {
                 Startup();
             }
@@ -142,7 +142,10 @@ namespace UniCadeAndroid.Activities
                             Console = currentConsoleName,
                             ImageResourceId = 0
                         };
-                        _currentGameList.Add(item);
+                        if ((_searchText.Length > 0 && item.Title.Contains(_searchText)) || _searchText.Length == 0)
+                        {
+                            _currentGameList.Add(item);
+                        }
                     }
                 }
             }
@@ -156,7 +159,10 @@ namespace UniCadeAndroid.Activities
                         Console = currentConsoleName,
                         ImageResourceId = 0
                     };
-                    _currentGameList.Add(item);
+                    if ((_searchText.Length > 0 && item.Title.Contains(_searchText)) || _searchText.Length == 0)
+                    {
+                        _currentGameList.Add(item);
+                    }
                 }
             }
 
@@ -169,14 +175,13 @@ namespace UniCadeAndroid.Activities
             _gameSelectionListView.ItemClick += OnListItemClick;
         }
 
-        void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        private void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            var listView = sender as ListView;
-            if (listView != null)
+            if (sender is ListView listView)
             {
                 var listItem = _currentGameList[e.Position];
 
-                CurrentGame = (Game) Database.GetConsole(listItem.Console).GetGame(listItem.Title);
+                CurrentGame = (Game)Database.GetConsole(listItem.Console).GetGame(listItem.Title);
 
                 if (CurrentGame != null)
                 {
@@ -202,19 +207,8 @@ namespace UniCadeAndroid.Activities
 
         private void SearchBarTextChanged()
         {
-            _gameSelectionListView.Adapter = null;
-            if (_searchBarEditText.Text.Length > 0)
-            {
-                var currentSearchText = _searchBarEditText.Text;
-                var currentConsole = _consoleSelectionSpinner.SelectedItem.ToString();
-                var gameList = Database.GetConsole(currentConsole).GetGameList().Where(gameName => gameName.Contains(currentSearchText)).ToList();
-                var gameListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, gameList);
-                _gameSelectionListView.Adapter = gameListAdapter;
-            }
-            else
-            {
-                RefreshGameList();
-            }
+            _searchText = _searchBarEditText.Text;
+            RefreshGameList();
         }
 
         private void CreateEventHandlers()
@@ -235,7 +229,7 @@ namespace UniCadeAndroid.Activities
                 SearchBarTextChanged();
             };
 
-          
+
         }
     }
 }

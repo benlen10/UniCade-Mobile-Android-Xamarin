@@ -84,19 +84,49 @@ namespace UniCadeAndroid.Activities
 
 		private void LinkClickHandlers()
 		{
+		    _loadDatabaseButton.Click += (sender, e) =>
+		    {
+
+		    };
+
+		    _loadBackupButton.Click += (sender, e) =>
+		    {
+
+		    };
+
+		    _saveDatabaseButton.Click += (sender, e) =>
+		    {
+
+		    };
+
+		    _backupDatabaseButton.Click += (sender, e) =>
+		    {
+
+		    };
+
+		    _deleteAllLocalImagesButton.Click += (sender, e) =>
+		    {
+
+		    };
+
+		    _unicadeCloudButton.Click += (sender, e) =>
+		    {
+		        var intent = new Intent(this, typeof(LoginActivity));
+		        StartActivity(intent);
+		    };
+
             _webScraperSettingsButton.Click += (sender, e) =>
 			{
                 var intent = new Intent(this, typeof(ScraperSettingsActivity));
 				StartActivity(intent);
 			};
 
-			_unicadeCloudButton.Click += (sender, e) =>
-			{
-                var intent = new Intent(this, typeof(LoginActivity));
-				StartActivity(intent);
-			};
+		    _enterLicenseButton.Click += (sender, e) =>
+		    {
 
-		    _closeSettingsButton.Click += (sender, e) =>
+		    };
+
+            _closeSettingsButton.Click += (sender, e) =>
 		    {
 		        Finish();
 		    };
