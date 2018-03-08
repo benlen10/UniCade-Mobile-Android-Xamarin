@@ -139,11 +139,11 @@ namespace UniCadeAndroid
 			// aapt resource value: 0x7f06000e
 			public const int DescriptonTextView = 2131099662;
 			
-			// aapt resource value: 0x7f060040
-			public const int DisplayConsoleLogoCheckbox = 2131099712;
-			
 			// aapt resource value: 0x7f060041
-			public const int DisplayEsrbLogoCheckbox = 2131099713;
+			public const int DisplayModernESRBIconsCheckbox = 2131099713;
+			
+			// aapt resource value: 0x7f060040
+			public const int EnableFingerprintSecurityCheckbox = 2131099712;
 			
 			// aapt resource value: 0x7f060047
 			public const int EnterLicenseKeyButton = 2131099719;
@@ -193,9 +193,6 @@ namespace UniCadeAndroid
 			// aapt resource value: 0x7f060039
 			public const int LoadDatabaseButton = 2131099705;
 			
-			// aapt resource value: 0x7f06003e
-			public const int LoadDatabaseOnStartupCheckbox = 2131099710;
-			
 			// aapt resource value: 0x7f060021
 			public const int LoginButton = 2131099681;
 			
@@ -213,6 +210,9 @@ namespace UniCadeAndroid
 			
 			// aapt resource value: 0x7f06001f
 			public const int PasswordEditText = 2131099679;
+			
+			// aapt resource value: 0x7f06003f
+			public const int PasswordProtectSettingsCheckbox = 2131099711;
 			
 			// aapt resource value: 0x7f06002f
 			public const int PlayerCountCheckbox = 2131099695;
@@ -234,9 +234,6 @@ namespace UniCadeAndroid
 			
 			// aapt resource value: 0x7f06000d
 			public const int ReleaseDateTextView = 2131099661;
-			
-			// aapt resource value: 0x7f06003f
-			public const int RescanLocalLibrariesOnStartupCheckbox = 2131099711;
 			
 			// aapt resource value: 0x7f060017
 			public const int RescrapeConsoleButton = 2131099671;
@@ -279,6 +276,9 @@ namespace UniCadeAndroid
 			
 			// aapt resource value: 0x7f060048
 			public const int SettingsViewRelativeLayout4 = 2131099720;
+			
+			// aapt resource value: 0x7f06003e
+			public const int ShowSplashScreenCheckbox = 2131099710;
 			
 			// aapt resource value: 0x7f060000
 			public const int Text = 2131099648;

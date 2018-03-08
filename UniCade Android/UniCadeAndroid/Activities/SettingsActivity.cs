@@ -26,13 +26,13 @@ namespace UniCadeAndroid.Activities
 
         private Button _backupDatabaseButton;
 
-        private CheckBox _loadDatabaseOnStartupCheckbox;
+        private CheckBox _showSplashScreenCheckbox;
 
-        private CheckBox _rescanLocalLibrariesOnStartupCheckbox;
+        private CheckBox _passwordProtectSettingsCheckBox;
 
-        private CheckBox _displayConsoleLogoCheckbox;
+        private CheckBox _enableFingerprintProtectionCheckbox;
 
-        private CheckBox _displayEsrbLogoCheckbox;
+        private CheckBox _displayModernEsrbIconsCheckBox;
 
         private Button _deleteAllLocalImagesButton;
 
@@ -69,10 +69,10 @@ namespace UniCadeAndroid.Activities
             _loadBackupButton = FindViewById<Button>(Resource.Id.LoadBackupButton);
             _saveDatabaseButton = FindViewById<Button>(Resource.Id.SaveDatabaseButton);
             _backupDatabaseButton = FindViewById<Button>(Resource.Id.BackupDatabaseButton);
-            _loadDatabaseOnStartupCheckbox = FindViewById<CheckBox>(Resource.Id.LoadDatabaseOnStartupCheckbox);
-            _rescanLocalLibrariesOnStartupCheckbox = FindViewById<CheckBox>(Resource.Id.RescanLocalLibrariesOnStartupCheckbox);
-            _displayConsoleLogoCheckbox = FindViewById<CheckBox>(Resource.Id.DisplayConsoleLogoCheckbox);
-            _displayEsrbLogoCheckbox = FindViewById<CheckBox>(Resource.Id.DisplayEsrbLogoCheckbox);
+            _showSplashScreenCheckbox = FindViewById<CheckBox>(Resource.Id.ShowSplashScreenCheckbox);
+            _passwordProtectSettingsCheckBox = FindViewById<CheckBox>(Resource.Id.PasswordProtectSettingsCheckbox);
+            _enableFingerprintProtectionCheckbox = FindViewById<CheckBox>(Resource.Id.EnableFingerprintSecurityCheckbox);
+            _displayModernEsrbIconsCheckBox = FindViewById<CheckBox>(Resource.Id.DisplayModernESRBIconsCheckbox);
             _deleteAllLocalImagesButton = FindViewById<Button>(Resource.Id.DeleteAllLocalImagesButton);
             _unicadeCloudButton = FindViewById<Button>(Resource.Id.UniCadeCloudButton);
             _webScraperSettingsButton = FindViewById<Button>(Resource.Id.WebScraperSettingsButton);
