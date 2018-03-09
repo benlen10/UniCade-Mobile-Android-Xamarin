@@ -186,16 +186,6 @@ namespace UniCadeAndroid.Constants
         internal const int MaxGameFileNameLength = 30;
 
         /// <summary>
-        /// The min length for a game filename
-        /// </summary>
-        internal const string DatabaseFilePath = @"/UniCade/database.xml";
-
-        /// <summary>
-        /// The min length for a game filename
-        /// </summary>
-        internal const string PreferencesFilePath = @"/UniCade/preferences.xml";
-
-        /// <summary>
         /// The current hash key used to generate the license key
         /// </summary>
         internal const string HashKey = "JI3vgsD6Nc6VSMrNw0b4wvuJmDw6Lrld";
@@ -209,21 +199,6 @@ namespace UniCadeAndroid.Constants
         /// The current path for the SQL database file
         /// </summary>
         internal const string SqlDatabaseFileName = @"/UniCade/Unicade.sqlite";
-
-        /// <summary>
-        /// The path to the console images media folder
-        /// </summary>
-        internal const string ConsoleImagesPath = @"/UniCade/Media/Consoles/";
-
-        /// <summary>
-        /// The path to the console images media folder
-        /// </summary>
-        internal const string ConsoleLogoImagesPath = @"/UniCade/Media/ConsolesLogos/";
-
-        /// <summary>
-        /// The path to the game images base folder
-        /// </summary>
-        internal const string GameImagesPath = @"/UniCade/Media/Games/";
 
         #endregion
 

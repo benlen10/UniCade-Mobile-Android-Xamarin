@@ -10,6 +10,8 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using UniCadeAndroid.Backend;
+using UniCadeAndroid.Constants;
 
 namespace UniCadeAndroid.Activities
 {
@@ -86,22 +88,22 @@ namespace UniCadeAndroid.Activities
 		{
 		    _loadDatabaseButton.Click += (sender, e) =>
 		    {
-
+		        FileOps.LoadDatabase();
 		    };
 
 		    _loadBackupButton.Click += (sender, e) =>
 		    {
-
-		    };
+		        FileOps.LoadDatabase(ConstPaths.DatabaseFileBackupPath);
+            };
 
 		    _saveDatabaseButton.Click += (sender, e) =>
 		    {
-
+		        FileOps.SaveDatabase();
 		    };
 
 		    _backupDatabaseButton.Click += (sender, e) =>
 		    {
-
+		        FileOps.SaveDatabase(ConstPaths.DatabaseFileBackupPath);
 		    };
 
 		    _deleteAllLocalImagesButton.Click += (sender, e) =>
