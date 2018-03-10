@@ -9,7 +9,7 @@ using UniCadeAndroid.Network;
 
 namespace UniCadeAndroid.Activities
 {
-    [Activity(Label = "Web Scraper Settings")]
+    [Activity(Label = "UniCAde Web Scraper Settings")]
     public class ScraperSettingsActivity : Activity
     {
         #region Private Instance Variables

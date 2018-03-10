@@ -1,21 +1,13 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using UniCadeAndroid.Backend;
 using UniCadeAndroid.Constants;
 
 namespace UniCadeAndroid.Activities
 {
-    [Activity(Label = "SettingsActivity")]
+    [Activity(Label = "UniCade Mobile Settings")]
     public class SettingsActivity : Activity
     {
         #region Private Instance Variables

@@ -5,16 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml;
-using Android;
 using Android.App;
-using Android.Content.PM;
 using Android.Widget;
 using UniCadeAndroid.Constants;
 using UniCadeAndroid.Interfaces;
 using UniCadeAndroid.Objects;
-using Android.Support.V4.App;
-using Android.Support.V4.Content;
-using UniCadeAndroid.Activities;
 using Console = UniCadeAndroid.Objects.Console;
 
 
@@ -37,7 +32,7 @@ namespace UniCadeAndroid.Backend
         /// Load the database file from the specified path
         /// </summary>
         /// <returns>false if the database file does not exist</returns>
-        public static bool LoadDatabase(string path = ConstValues.DatabaseFilePath)
+        public static bool LoadDatabase(string path = ConstPaths.DatabaseFilePath)
         {
             var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
             var filePath = sdCardPath + path;
@@ -63,7 +58,7 @@ namespace UniCadeAndroid.Backend
         /// <summary>
         /// Save the database to the specified path. Delete any preexisting database files
         /// </summary>
-        public static bool SaveDatabase(string path = ConstValues.DatabaseFilePath)
+        public static bool SaveDatabase(string path = ConstPaths.DatabaseFilePath)
         {
             var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
             var filePath = sdCardPath + path;
@@ -90,7 +85,7 @@ namespace UniCadeAndroid.Backend
         /// Load preferences from the specified file path
         /// </summary>
         [SuppressMessage("ReSharper", "PossibleNullReferenceException")]
-        public static bool LoadPreferences(string path = ConstValues.PreferencesFilePath)
+        public static bool LoadPreferences(string path = ConstPaths.PreferencesFilePath)
         {
             var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
             var filePath = sdCardPath + path;
@@ -128,7 +123,7 @@ namespace UniCadeAndroid.Backend
         /// <summary>
         /// Save preferences file to the specified path
         /// </summary>
-        public static bool SavePreferences(string path = ConstValues.PreferencesFilePath)
+        public static bool SavePreferences(string path = ConstPaths.PreferencesFilePath)
         {
             var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
             var filePath = sdCardPath + path;
@@ -315,7 +310,7 @@ namespace UniCadeAndroid.Backend
             //Generate folders within the Console directory
             foreach (string consoleName in Database.GetConsoleList())
             {
-                string consoleDirectory = sdCardPath + ConstValues.GameImagesPath + consoleName;
+                string consoleDirectory = sdCardPath + ConstPaths.GameImagesPath + consoleName;
                 if (!Directory.Exists(consoleDirectory))
                 {
                     Directory.CreateDirectory(consoleDirectory);

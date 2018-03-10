@@ -91,6 +91,7 @@
     <Compile Include="Backend\FileOps.cs" />
     <Compile Include="Backend\Program.cs" />
     <Compile Include="Backend\Utilties.cs" />
+    <Compile Include="Constants\ConstPaths.cs" />
     <Compile Include="Constants\ConstValues.cs" />
     <Compile Include="Constants\Enums.cs" />
     <Compile Include="Constants\SqlCommands.cs" />

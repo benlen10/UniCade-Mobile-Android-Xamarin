@@ -83,21 +83,21 @@ namespace UniCadeAndroid.Activities
         private void PopulateGameImages()
         {
             var sdCardPath = Environment.ExternalStorageDirectory.Path;
-            string imagePath = sdCardPath + ConstValues.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_BoxFront.jpg";
+            string imagePath = sdCardPath + ConstPaths.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_BoxFront.jpg";
             if (File.Exists(imagePath))
             {
                 Bitmap bitmap = BitmapFactory.DecodeFile(imagePath);
                 _boxFrontImageView.SetImageBitmap(bitmap);
             }
 
-            imagePath = sdCardPath + ConstValues.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_BoxBack.jpg";
+            imagePath = sdCardPath + ConstPaths.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_BoxBack.jpg";
             if (File.Exists(imagePath))
             {
                 Bitmap bitmap = BitmapFactory.DecodeFile(imagePath);
                 _boxBackImageView.SetImageBitmap(bitmap);
             }
 
-            imagePath = sdCardPath + ConstValues.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_Screenshot.jpg";
+            imagePath = sdCardPath + ConstPaths.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_Screenshot.jpg";
             if (File.Exists(imagePath))
             {
                 Bitmap bitmap = BitmapFactory.DecodeFile(imagePath);

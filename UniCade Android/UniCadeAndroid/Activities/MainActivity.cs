@@ -9,8 +9,6 @@ using Android;
 using Android.Content.PM;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
-using Android.Views;
-using Java.Lang;
 using UniCadeAndroid.Objects;
 
 namespace UniCadeAndroid.Activities
@@ -177,23 +175,19 @@ namespace UniCadeAndroid.Activities
 
         private void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            if (sender is ListView listView)
+            var listItem = _currentGameList[e.Position];
+
+            CurrentGame = (Game)Database.GetConsole(listItem.Console).GetGame(listItem.Title);
+
+            if (CurrentGame != null)
             {
-                var listItem = _currentGameList[e.Position];
-
-                CurrentGame = (Game)Database.GetConsole(listItem.Console).GetGame(listItem.Title);
-
-                if (CurrentGame != null)
-                {
-                    var intent = new Intent(this, typeof(GameInfoActivity));
-                    StartActivity(intent);
-                }
-                else
-                {
-                    Toast.MakeText(ApplicationContext, "Please select a game", ToastLength.Long).Show();
-                }
+                var intent = new Intent(this, typeof(GameInfoActivity));
+                StartActivity(intent);
             }
-
+            else
+            {
+                Toast.MakeText(ApplicationContext, "Please select a game", ToastLength.Long).Show();
+            }
         }
 
         private void FindElementsById()
