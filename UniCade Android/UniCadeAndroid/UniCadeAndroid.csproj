@@ -117,6 +117,7 @@
     <Compile Include="Activities\LoginActivity.cs" />
     <Compile Include="Activities\GameInfoActivity.cs" />
     <Compile Include="Activities\ScraperSettingsActivity.cs" />
+    <Compile Include="Backend\Extensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\SettingsView.axml">

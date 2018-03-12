@@ -140,7 +140,7 @@ namespace UniCadeAndroid.Activities
                             Console = currentConsoleName,
                             ImageResourceId = 0
                         };
-                        if ((_searchText.Length > 0 && item.Title.Contains(_searchText)) || _searchText.Length == 0)
+                        if ((_searchText.Length > 0 && item.Title.ContainsIgnoreCase(_searchText)) || _searchText.Length == 0)
                         {
                             _currentGameList.Add(item);
                         }
@@ -157,7 +157,7 @@ namespace UniCadeAndroid.Activities
                         Console = currentConsoleName,
                         ImageResourceId = 0
                     };
-                    if ((_searchText.Length > 0 && item.Title.Contains(_searchText)) || _searchText.Length == 0)
+                    if ((_searchText.Length > 0 && item.Title.ContainsIgnoreCase(_searchText)) || _searchText.Length == 0)
                     {
                         _currentGameList.Add(item);
                     }
