@@ -117,7 +117,11 @@ namespace UniCadeAndroid.Activities
 
 		    _enterLicenseButton.Click += (sender, e) =>
 		    {
-
+				EditText et = new EditText(this);
+				AlertDialog.Builder ad = new AlertDialog.Builder(this);
+				ad.SetTitle("Enter License");
+				ad.SetView(et); // <----
+				ad.Show();
 		    };
 
             _closeSettingsButton.Click += (sender, e) =>
@@ -127,7 +131,7 @@ namespace UniCadeAndroid.Activities
 
 		    _applyButton.Click += (sender, e) =>
 		    {
-		        //TODO:  Apply Settings
+                Program.UseModernEsrbLogos = _displayModernEsrbIconsCheckBox.Checked;
 		    };
         }
 
