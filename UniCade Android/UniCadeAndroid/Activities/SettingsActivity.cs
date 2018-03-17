@@ -35,8 +35,6 @@ namespace UniCadeAndroid.Activities
 
         private Button _webScraperSettingsButton;
 
-        private EditText _passwordEditText;
-
         private Button _enterLicenseButton;
 
         private Button _applyButton;
@@ -71,7 +69,6 @@ namespace UniCadeAndroid.Activities
             _deleteAllLocalImagesButton = FindViewById<Button>(Resource.Id.DeleteAllLocalImagesButton);
             _unicadeCloudButton = FindViewById<Button>(Resource.Id.UniCadeCloudButton);
             _webScraperSettingsButton = FindViewById<Button>(Resource.Id.WebScraperSettingsButton);
-            _passwordEditText = FindViewById<EditText>(Resource.Id.PasswordEditText);
             _enterLicenseButton = FindViewById<Button>(Resource.Id.EnterLicenseKeyButton);
             _applyButton = FindViewById<Button>(Resource.Id.ApplyButton);
             _closeSettingsButton = FindViewById<Button>(Resource.Id.CloseButton);
@@ -97,8 +94,13 @@ namespace UniCadeAndroid.Activities
 		}
 
         private void HandleLicenseKey(string text){
-            Toast.MakeText(this, "License:" + text, ToastLength.Short).Show();
+            Toast.MakeText(this, "License: " + text, ToastLength.Short).Show();
         }
+
+		private void HandleSetPassword(string text)
+		{
+			Toast.MakeText(this, "New Password: " + text, ToastLength.Short).Show();
+		}
 
 		private void LinkClickHandlers()
 		{
@@ -137,6 +139,13 @@ namespace UniCadeAndroid.Activities
 			{
                 var intent = new Intent(this, typeof(ScraperSettingsActivity));
 				StartActivity(intent);
+			};
+
+            _passwordProtectSettingsCheckBox.Click += (sender, e) =>
+			{
+                if(_passwordProtectSettingsCheckBox.Checked){
+                    ShowInputDialog("Please enter a new password", HandleSetPassword);
+                }
 			};
 
 		    _enterLicenseButton.Click += (sender, e) =>

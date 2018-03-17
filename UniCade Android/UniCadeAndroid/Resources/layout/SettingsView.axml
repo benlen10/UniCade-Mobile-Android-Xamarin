@@ -101,18 +101,6 @@
             p1:layout_marginLeft="189.0dp" />
     </RelativeLayout>
     <RelativeLayout
-        p1:layout_width="match_parent"
-        p1:layout_height="56.0dp"
-        p1:id="@+id/SettingsViewRelativeLayout4">
-        <EditText
-            p1:layout_width="331.0dp"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/PasswordEditText"
-            p1:layout_marginLeft="12.5dp"
-            p1:layout_marginTop="8.0dp"
-            p1:layout_marginRight="33.5dp" />
-    </RelativeLayout>
-    <RelativeLayout
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:layout_width="match_parent"

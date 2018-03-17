@@ -274,9 +274,6 @@ namespace UniCadeAndroid
 			// aapt resource value: 0x7f060047
 			public const int SettingsViewRelativeLayout3 = 2131099719;
 			
-			// aapt resource value: 0x7f06004a
-			public const int SettingsViewRelativeLayout4 = 2131099722;
-			
 			// aapt resource value: 0x7f060040
 			public const int ShowSplashScreenCheckbox = 2131099712;
 			
