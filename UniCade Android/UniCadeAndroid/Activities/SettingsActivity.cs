@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
@@ -76,7 +77,7 @@ namespace UniCadeAndroid.Activities
             _closeSettingsButton = FindViewById<Button>(Resource.Id.CloseButton);
 		}
 
-		protected void ShowInputDialog(string title)
+		protected void ShowInputDialog(string title, Action<string> handlerFunction)
 		{
 
             EditText editText = new EditText(this);
@@ -84,8 +85,7 @@ namespace UniCadeAndroid.Activities
 			dialogBuilder.SetTitle(title);
 			dialogBuilder.SetPositiveButton("Enter", (senderAlert, args) =>
 			{
-
-                HandleDialogClose(editText.Text);
+                handlerFunction(editText.Text);
 			});
 
 			dialogBuilder.SetNegativeButton("Cancel", (senderAlert, args) =>
@@ -96,8 +96,8 @@ namespace UniCadeAndroid.Activities
 			dialogBuilder.Show();
 		}
 
-        private void HandleDialogClose(string text){
-            Toast.MakeText(this, text, ToastLength.Short).Show();
+        private void HandleLicenseKey(string text){
+            Toast.MakeText(this, "License:" + text, ToastLength.Short).Show();
         }
 
 		private void LinkClickHandlers()
@@ -141,7 +141,7 @@ namespace UniCadeAndroid.Activities
 
 		    _enterLicenseButton.Click += (sender, e) =>
 		    {
-                ShowInputDialog("Enter License Key");
+                ShowInputDialog("Enter License Key", HandleLicenseKey);
 		    };
 
             _closeSettingsButton.Click += (sender, e) =>
