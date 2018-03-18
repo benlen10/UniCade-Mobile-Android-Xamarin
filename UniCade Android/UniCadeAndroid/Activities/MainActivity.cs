@@ -11,6 +11,7 @@ using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using UniCadeAndroid.Objects;
 using Android.Views;
+using System;
 
 namespace UniCadeAndroid.Activities
 {
@@ -187,7 +188,7 @@ namespace UniCadeAndroid.Activities
             }
             else
             {
-                Toast.MakeText(ApplicationContext, "Please select a game", ToastLength.Long).Show();
+                Toast.MakeText(ApplicationContext, "Invalid game", ToastLength.Long).Show();
             }
         }
 
@@ -200,18 +201,49 @@ namespace UniCadeAndroid.Activities
             _consoleImageView = FindViewById<ImageView>(Resource.Id.ConsoleImageView);
         }
 
-        private void SearchBarTextChanged()
-        {
-            _searchText = _searchBarEditText.Text;
-            RefreshGameList();
+
+		protected void ShowInputDialog(string title, Action<string> handlerFunction)
+		{
+
+			EditText editText = new EditText(this);
+			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+			dialogBuilder.SetTitle(title);
+			dialogBuilder.SetPositiveButton("Enter", (senderAlert, args) =>
+			{
+				handlerFunction(editText.Text);
+			});
+
+			dialogBuilder.SetNegativeButton("Cancel", (senderAlert, args) =>
+			{
+
+			});
+			dialogBuilder.SetView(editText);
+			dialogBuilder.Show();
+		}
+
+        private void HandleEnteredPassword(string text){
+            if(text == Program.PasswordProtection){
+				var intent = new Intent(this, typeof(SettingsActivity));
+				StartActivity(intent);
+            }
+            else{
+                Toast.MakeText(ApplicationContext, "Invalid Password", ToastLength.Long).Show();
+            }
         }
 
         private void CreateEventHandlers()
         {
             _settingsButton.Click += (sender, e) =>
             {
-                var intent = new Intent(this, typeof(SettingsActivity));
-                StartActivity(intent);
+               
+                if (Program.PasswordProtection.Length > 4)
+                {
+                    ShowInputDialog("Please Enter Password", HandleEnteredPassword);
+                }
+                else{
+					var intent = new Intent(this, typeof(SettingsActivity));
+					StartActivity(intent);
+                }
             };
 
             _consoleSelectionSpinner.ItemSelected += (sender, e) =>
@@ -221,7 +253,8 @@ namespace UniCadeAndroid.Activities
 
             _searchBarEditText.TextChanged += (sender, e) =>
             {
-                SearchBarTextChanged();
+				_searchText = _searchBarEditText.Text;
+				RefreshGameList();
             };
 
 
