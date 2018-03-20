@@ -99,7 +99,25 @@ namespace UniCadeAndroid.Activities
 
 		private void HandleSetPassword(string text)
 		{
-			Toast.MakeText(this, "New Password: " + text, ToastLength.Short).Show();
+            if (Utilties.CheckForInvalidChars(text))
+            {
+                Toast.MakeText(this, "Password contains invalid chars", ToastLength.Short).Show();
+                _passwordProtectSettingsCheckBox.Checked = false;
+                return;
+            }
+            if(text.Length < ConstValues.MinUserPasswordLength){
+                Toast.MakeText(this, $"Password must be at least {ConstValues.MinUserPasswordLength} chars", ToastLength.Short).Show();
+                _passwordProtectSettingsCheckBox.Checked = false;
+				return;
+            }
+            if (text.Length > ConstValues.MaxUserPasswordLength)
+			{
+				Toast.MakeText(this, $"Password must be less than {ConstValues.MinUserPasswordLength} chars", ToastLength.Short).Show();
+                _passwordProtectSettingsCheckBox.Checked = false;
+				return;
+			}
+            _passwordProtectSettingsCheckBox.Checked = true;
+            Program.PasswordProtection = text;
 		}
 
 		private void LinkClickHandlers()
@@ -144,6 +162,10 @@ namespace UniCadeAndroid.Activities
             _passwordProtectSettingsCheckBox.Click += (sender, e) =>
 			{
                 if(_passwordProtectSettingsCheckBox.Checked){
+                    Program.PasswordProtection = "";
+                    Toast.MakeText(this, "Password cleared", ToastLength.Short).Show();
+                }
+                else{
                     ShowInputDialog("Please enter a new password", HandleSetPassword);
                 }
 			};
