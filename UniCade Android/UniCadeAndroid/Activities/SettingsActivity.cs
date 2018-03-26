@@ -41,6 +41,8 @@ namespace UniCadeAndroid.Activities
 
         private Button _closeSettingsButton;
 
+        private string _licenseName;
+
         #endregion
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -93,9 +95,20 @@ namespace UniCadeAndroid.Activities
 			dialogBuilder.Show();
 		}
 
-        private void HandleLicenseKey(string text){
-            Toast.MakeText(this, "License: " + text, ToastLength.Short).Show();
+        private void HandleLicenseName(string text){
+            _licenseName = text;
+            ShowInputDialog("Please Enter License Key", HandleLicenseKey);
         }
+
+		private void HandleLicenseKey(string text)
+		{
+            if(CryptoEngine.ValidateLicense(_licenseName, text)){
+                Toast.MakeText(this, "License is valid", ToastLength.Short).Show();
+            }
+            else{
+                Toast.MakeText(this, "License is invalid", ToastLength.Short).Show();
+            }
+		}
 
 		private void HandleSetPassword(string text)
 		{
