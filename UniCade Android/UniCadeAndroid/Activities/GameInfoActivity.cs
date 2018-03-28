@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using System.IO;
+using System;
 using Android.Graphics;
 using Android.OS;
 using Android.Widget;
@@ -62,12 +63,12 @@ namespace UniCadeAndroid.Activities
 
 			CreateEventHandlers();
 
-            PopulateGameInfo();
+            RefreshsGameInfo();
 
             PopulateGameImages();
         }
 
-        private void PopulateGameInfo()
+        private void RefreshsGameInfo()
         {
             _titleTextView.Text = "Title: " + MainActivity.CurrentGame.Title;
             _consoleTextView.Text = "Console: " + MainActivity.CurrentGame.ConsoleName;
@@ -80,7 +81,27 @@ namespace UniCadeAndroid.Activities
             _descriptionTextView.Text = "Description:" + MainActivity.CurrentGame.Description;
         }
 
-        private void PopulateGameImages()
+		protected void ShowInputDialog(string title, Action<string> handlerFunction)
+		{
+
+			EditText editText = new EditText(this);
+			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+			dialogBuilder.SetTitle(title);
+			dialogBuilder.SetPositiveButton("Enter", (senderAlert, args) =>
+			{
+				handlerFunction(editText.Text);
+			});
+
+			dialogBuilder.SetNegativeButton("Cancel", (senderAlert, args) =>
+			{
+
+			});
+			dialogBuilder.SetView(editText);
+			dialogBuilder.Show();
+		}
+
+
+		private void PopulateGameImages()
         {
             var sdCardPath = Environment.ExternalStorageDirectory.Path;
             string imagePath = sdCardPath + ConstPaths.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_BoxFront.jpg";
