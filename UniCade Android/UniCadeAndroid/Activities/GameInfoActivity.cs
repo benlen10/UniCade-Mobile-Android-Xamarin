@@ -30,6 +30,8 @@ namespace UniCadeAndroid.Activities
 
         private TextView _releaseDateTextView;
 
+        private TextView _launchCountTextView;
+
         private TextView _descriptionTextView;
 
         private Button _rescrapeGameButton;
@@ -77,6 +79,7 @@ namespace UniCadeAndroid.Activities
             _playersTextView.Text = "Player Count: " + MainActivity.CurrentGame.SupportedPlayerCount;
             _esrbRatingTextView.Text = "ESRB Rating: " + MainActivity.CurrentGame.EsrbRating.GetStringValue();
             _esrbDescriptorsTextView.Text = "ESRB Descriptors: " + MainActivity.CurrentGame.GetEsrbDescriptorsString();
+            _launchCountTextView.Text = "Launch Count: " + MainActivity.CurrentGame.GetLaunchCount().ToString();
             _releaseDateTextView.Text = "Release Date: " + MainActivity.CurrentGame.ReleaseDate;
             _descriptionTextView.Text = "Description:" + MainActivity.CurrentGame.Description;
         }
@@ -103,7 +106,7 @@ namespace UniCadeAndroid.Activities
 
 		private void PopulateGameImages()
         {
-            var sdCardPath = Environment.ExternalStorageDirectory.Path;
+            var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
             string imagePath = sdCardPath + ConstPaths.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_BoxFront.jpg";
             if (File.Exists(imagePath))
             {
@@ -162,6 +165,42 @@ namespace UniCadeAndroid.Activities
         }
 
         private void CreateEventHandlers(){
+
+            _publisherTextView.Click += (sender, e) =>
+			{
+
+			};
+
+            _criticScoreTextView.Click += (sender, e) =>
+			{
+
+			};
+
+            _playersTextView.Click += (sender, e) =>
+			{
+
+			};
+
+            _esrbRatingTextView.Click += (sender, e) =>
+			{
+
+			};
+
+            _esrbDescriptorsTextView.Click += (sender, e) =>
+			{
+
+			};
+
+            _releaseDateTextView.Click += (sender, e) =>
+			{
+
+			};
+
+            _descriptionTextView.Click += (sender, e) =>
+			{
+
+			};
+            
             _boxFrontImageView.Click += (sender, e) =>
             {
                 //TODO: Expand box front image
