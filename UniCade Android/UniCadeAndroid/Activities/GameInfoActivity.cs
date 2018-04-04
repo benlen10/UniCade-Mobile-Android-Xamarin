@@ -168,37 +168,38 @@ namespace UniCadeAndroid.Activities
 
             _publisherTextView.Click += (sender, e) =>
 			{
+                  ShowInputDialog("Enter Publisher", HandlePublisher);
 
 			};
 
             _criticScoreTextView.Click += (sender, e) =>
 			{
-
+                ShowInputDialog("Enter Critic Score", HandleCriticScore);
 			};
 
             _playersTextView.Click += (sender, e) =>
 			{
-
+                ShowInputDialog("Enter Player Count", HandlePlayersCount);
 			};
 
             _esrbRatingTextView.Click += (sender, e) =>
 			{
-
+                ShowInputDialog("Enter ESRB Rating", HandleEsrbRating);
 			};
 
             _esrbDescriptorsTextView.Click += (sender, e) =>
 			{
-
+                ShowInputDialog("Enter ESRB Descriptors", HandleEsrbRating);
 			};
 
             _releaseDateTextView.Click += (sender, e) =>
 			{
-
+                ShowInputDialog("Enter Release Date", HandleReleaseDate);
 			};
 
             _descriptionTextView.Click += (sender, e) =>
 			{
-
+                ShowInputDialog("Enter Description", HandleDescription);
 			};
             
             _boxFrontImageView.Click += (sender, e) =>
@@ -240,7 +241,90 @@ namespace UniCadeAndroid.Activities
             {
                 //TODO: 
             };
-
         }
+
+		private void HandlePublisher(string text)
+		{
+               try
+               {
+                   MainActivity.CurrentGame.PublisherName = text;
+               }
+               catch (ArgumentException exception)
+               {
+                   Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
+               }
+		}
+
+		private void HandleCriticScore(string text)
+		{
+			try
+			{
+                MainActivity.CurrentGame.CriticReviewScore = text;
+			}
+			catch (ArgumentException exception)
+			{
+				Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
+			}
+		}
+
+		private void HandlePlayersCount(string text)
+		{
+			try
+			{
+                MainActivity.CurrentGame.SupportedPlayerCount = text;
+			}
+			catch (ArgumentException exception)
+			{
+				Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
+			}
+		}
+
+		private void HandleEsrbRating(string text)
+		{
+			try
+			{
+                MainActivity.CurrentGame.EsrbRating = Backend.Utilties.ParseEsrbRating(text);
+			}
+			catch (ArgumentException exception)
+			{
+				Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
+			}
+		}
+
+		private void HandleEsrbDescriptors(string text)
+		{
+			try
+			{
+                MainActivity.CurrentGame.AddEsrbDescriptorsFromString(text);
+			}
+			catch (ArgumentException exception)
+			{
+				Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
+			}
+		}
+
+		private void HandleReleaseDate(string text)
+		{
+			try
+			{
+                MainActivity.CurrentGame.ReleaseDate = text;
+			}
+			catch (ArgumentException exception)
+			{
+				Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
+			}
+		}
+
+		private void HandleDescription(string text)
+		{
+			try
+			{
+                MainActivity.CurrentGame.Description = text;
+			}
+			catch (ArgumentException exception)
+			{
+				Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
+			}
+		}
     }
 }
