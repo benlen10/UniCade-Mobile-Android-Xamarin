@@ -87,6 +87,7 @@ namespace UniCadeAndroid.Activities
         {
 
             List<string> consoleList = Database.GetConsoleList().ToList();
+            consoleList.Add("All Games");
 
             var consoleSpinnerAdapter =
                 new ArrayAdapter(this, Resource.Layout.CustomSpinnerItem, consoleList);

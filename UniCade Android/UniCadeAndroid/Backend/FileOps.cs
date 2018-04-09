@@ -308,21 +308,39 @@ namespace UniCadeAndroid.Backend
                 }
             }
             //Generate folders within the Console directory
-            foreach (string consoleName in Database.GetConsoleList())
-            {
-                string consoleDirectory = sdCardPath + ConstPaths.GameImagesPath + consoleName;
-                if (!Directory.Exists(consoleDirectory))
-                {
-                    Directory.CreateDirectory(consoleDirectory);
-                }
-            }
+            RegenerateMediaFolders();
 
             return true;
+        }
+
+        public static void DeleteAllLocalMedia(){
+			var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
+			foreach (string consoleName in Database.GetConsoleList())
+			{
+				string consoleDirectory = sdCardPath + ConstPaths.GameImagesPath + consoleName;
+				if (!Directory.Exists(consoleDirectory))
+				{
+                    Directory.Delete(consoleDirectory, true);
+				}
+			}
+            RegenerateMediaFolders();
         }
 
         #endregion
 
         #region Helper Methods
+
+        private static void RegenerateMediaFolders(){
+            var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
+			foreach (string consoleName in Database.GetConsoleList())
+			{
+				string consoleDirectory = sdCardPath + ConstPaths.GameImagesPath + consoleName;
+				if (!Directory.Exists(consoleDirectory))
+				{
+					Directory.CreateDirectory(consoleDirectory);
+				}
+			}
+        }
 
         /// <summary>
         /// Display a timed popup notification in the lower right corner of the interface

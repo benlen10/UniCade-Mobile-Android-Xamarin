@@ -157,7 +157,7 @@ namespace UniCadeAndroid.Activities
 
 		    _deleteAllLocalImagesButton.Click += (sender, e) =>
 		    {
-
+                FileOps.DeleteAllLocalMedia();
 		    };
 
 		    _unicadeCloudButton.Click += (sender, e) =>
