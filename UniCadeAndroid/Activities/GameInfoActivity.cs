@@ -5,6 +5,8 @@ using Android.Graphics;
 using Android.OS;
 using Android.Widget;
 using UniCadeAndroid.Constants;
+using UniCadeAndroid.Backend;
+using UniCadeAndroid.Network;
 
 namespace UniCadeAndroid.Activities
 {
@@ -34,9 +36,7 @@ namespace UniCadeAndroid.Activities
 
         private TextView _descriptionTextView;
 
-        private Button _rescrapeGameButton;
-
-        private Button _rescrapeConsoleButton;
+        private Button _downloadInfoButton;
 
         private Button _saveInfoButton;
 
@@ -132,16 +132,6 @@ namespace UniCadeAndroid.Activities
             _esrbLogoImageView.SetImageURI(Backend.Utilties.GetEsrbLogoImage(MainActivity.CurrentGame.EsrbRating));
         }
 
-        private void SaveGameInfo()
-        {
-            MainActivity.CurrentGame.PublisherName = _publisherTextView.Text;
-            MainActivity.CurrentGame.CriticReviewScore = _criticScoreTextView.Text;
-            MainActivity.CurrentGame.SupportedPlayerCount = _playersTextView.Text;
-            MainActivity.CurrentGame.ReleaseDate = _releaseDateTextView.Text;
-            MainActivity.CurrentGame.Description = _descriptionTextView.Text;
-            //TODO: Properly save ESRB info
-        }
-
 
         private void FindElementsById()
         {
@@ -155,8 +145,7 @@ namespace UniCadeAndroid.Activities
             _launchCountTextView = FindViewById<TextView>(Resource.Id.LaunchCountTextView);
             _releaseDateTextView = FindViewById<TextView>(Resource.Id.ReleaseDateTextView);
             _descriptionTextView = FindViewById<TextView>(Resource.Id.DescriptonTextView);
-            _rescrapeGameButton = FindViewById<Button>(Resource.Id.RescrapeGameButton);
-            _rescrapeConsoleButton = FindViewById<Button>(Resource.Id.RescrapeConsoleButton);
+            _downloadInfoButton = FindViewById<Button>(Resource.Id.DownloadInfoButton);
             _saveInfoButton = FindViewById<Button>(Resource.Id.SaveButton);
             _closeInfoButton = FindViewById<Button>(Resource.Id.CloseButton);
             _refreshInfoButton = FindViewById<Button>(Resource.Id.RefreshButton);
@@ -219,19 +208,14 @@ namespace UniCadeAndroid.Activities
                 //TODO: Expand screenshot image
             };
 
-            _rescrapeGameButton.Click += (sender, e) =>
-            {
-                //TODO: 
-            };
-
-            _rescrapeConsoleButton.Click += (sender, e) =>
+            _downloadInfoButton.Click += (sender, e) =>
             {
                 //TODO: 
             };
 
             _saveInfoButton.Click += (sender, e) =>
             {
-               SaveGameInfo();
+                FileOps.SaveDatabase();
             };
 
             _closeInfoButton.Click += (sender, e) =>
@@ -241,7 +225,7 @@ namespace UniCadeAndroid.Activities
 
             _refreshInfoButton.Click += (sender, e) =>
             {
-                //TODO: 
+                RefreshGameInfo();
             };
         }
 
@@ -255,6 +239,7 @@ namespace UniCadeAndroid.Activities
                {
                    Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
                }
+            RefreshGameInfo();
 		}
 
 		private void HandleCriticScore(string text)
@@ -267,6 +252,7 @@ namespace UniCadeAndroid.Activities
 			{
 				Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
 			}
+            RefreshGameInfo();
 		}
 
 		private void HandlePlayersCount(string text)
@@ -279,6 +265,7 @@ namespace UniCadeAndroid.Activities
 			{
 				Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
 			}
+            RefreshGameInfo();
 		}
 
 		private void HandleEsrbRating(string text)
@@ -291,6 +278,7 @@ namespace UniCadeAndroid.Activities
 			{
 				Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
 			}
+            RefreshGameInfo();
 		}
 
 		private void HandleEsrbDescriptors(string text)
@@ -303,6 +291,7 @@ namespace UniCadeAndroid.Activities
 			{
 				Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
 			}
+            RefreshGameInfo();
 		}
 
 		private void HandleReleaseDate(string text)
@@ -315,6 +304,7 @@ namespace UniCadeAndroid.Activities
 			{
 				Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
 			}
+            RefreshGameInfo();
 		}
 
 		private void HandleDescription(string text)
@@ -327,6 +317,7 @@ namespace UniCadeAndroid.Activities
 			{
 				Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
 			}
+            RefreshGameInfo();
 		}
     }
 }

@@ -10,8 +10,8 @@ using Android.Content.PM;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using UniCadeAndroid.Objects;
-using Android.Views;
 using System;
+using Android.Hardware.Fingerprints;
 
 namespace UniCadeAndroid.Activities
 {
@@ -38,7 +38,8 @@ namespace UniCadeAndroid.Activities
         readonly string[] _requiredPermissions =
         {
             Manifest.Permission.ReadExternalStorage,
-            Manifest.Permission.WriteExternalStorage
+            Manifest.Permission.WriteExternalStorage,
+            Manifest.Permission.UseFingerprint
         };
 
 
@@ -81,6 +82,28 @@ namespace UniCadeAndroid.Activities
             CreateEventHandlers();
 
             PopulateConsoleSpinner();
+        }
+
+        private bool SetupFingerprintScanner(){
+            FingerprintManager fingerprintManager = this.GetSystemService(FingerprintService) as FingerprintManager;
+            if (!fingerprintManager.IsHardwareDetected){
+                Toast.MakeText(ApplicationContext, "Fingerprint hardware not detected", ToastLength.Long).Show();
+                return false;
+			}
+            if (!fingerprintManager.HasEnrolledFingerprints)
+			{
+				Toast.MakeText(ApplicationContext, "No fingerprints are currently enrolled", ToastLength.Long).Show();
+				return false;
+			}
+
+            //Check for permissions
+            Android.Content.PM.Permission permissionResult = ContextCompat.CheckSelfPermission(this, Manifest.Permission.UseFingerprint);
+            if(permissionResult == Android.Content.PM.Permission.Denied){
+				Toast.MakeText(ApplicationContext, "Fingerprint permission denied", ToastLength.Long).Show();
+				return false;
+            }
+
+            return true;
         }
 
         public void PopulateConsoleSpinner()
