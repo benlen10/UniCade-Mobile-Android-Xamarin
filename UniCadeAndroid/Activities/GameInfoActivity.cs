@@ -65,13 +65,14 @@ namespace UniCadeAndroid.Activities
 
 			CreateEventHandlers();
 
-            RefreshsGameInfo();
+            RefreshGameInfo();
 
             PopulateGameImages();
         }
 
-        private void RefreshsGameInfo()
+        private void RefreshGameInfo()
         {
+            System.Console.WriteLine("Debug");
             _titleTextView.Text = "Title: " + MainActivity.CurrentGame.Title;
             _consoleTextView.Text = "Console: " + MainActivity.CurrentGame.ConsoleName;
             _publisherTextView.Text = "Publisher: " + MainActivity.CurrentGame.PublisherName;
@@ -151,6 +152,7 @@ namespace UniCadeAndroid.Activities
             _playersTextView = FindViewById<TextView>(Resource.Id.PlayersTextView);
             _esrbRatingTextView = FindViewById<TextView>(Resource.Id.EsrbRatingTextView);
             _esrbDescriptorsTextView = FindViewById<TextView>(Resource.Id.EsrbDescriptorsTextView);
+            _launchCountTextView = FindViewById<TextView>(Resource.Id.LaunchCountTextView);
             _releaseDateTextView = FindViewById<TextView>(Resource.Id.ReleaseDateTextView);
             _descriptionTextView = FindViewById<TextView>(Resource.Id.DescriptonTextView);
             _rescrapeGameButton = FindViewById<Button>(Resource.Id.RescrapeGameButton);

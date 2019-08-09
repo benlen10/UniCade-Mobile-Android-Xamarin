@@ -130,7 +130,7 @@ namespace UniCadeAndroid.Activities
 				return;
 			}
             _passwordProtectSettingsCheckBox.Checked = true;
-            Program.PasswordProtection = text;
+            Preferences.PasswordProtection = text;
 		}
 
 		private void LinkClickHandlers()
@@ -175,7 +175,7 @@ namespace UniCadeAndroid.Activities
             _passwordProtectSettingsCheckBox.Click += (sender, e) =>
 			{
                 if(_passwordProtectSettingsCheckBox.Checked){
-                    Program.PasswordProtection = "";
+                    Preferences.PasswordProtection = "";
                     Toast.MakeText(this, "Password cleared", ToastLength.Short).Show();
                 }
                 else{
@@ -195,7 +195,7 @@ namespace UniCadeAndroid.Activities
 
 		    _applyButton.Click += (sender, e) =>
 		    {
-                Program.UseModernEsrbLogos = _displayModernEsrbIconsCheckBox.Checked;
+                Preferences.UseModernEsrbLogos = _displayModernEsrbIconsCheckBox.Checked;
 		    };
         }
 

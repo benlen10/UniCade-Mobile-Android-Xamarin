@@ -32,15 +32,15 @@ namespace UniCadeAndroid.Backend
 
         public static bool ValidateLicense(string licenseUserName, string licenseKey)
         {
-			Program.UserLicenseKey = licenseKey;
-			Program.UserLicenseName = licenseUserName;
+			Preferences.UserLicenseKey = licenseKey;
+			Preferences.UserLicenseName = licenseUserName;
 
             if(Sha256Hash(licenseUserName + ConstValues.HashKey).Equals(licenseKey)){
-                Program.IsLicenseValid = true;
+                Preferences.IsLicenseValid = true;
                 return true;
             }
             else{
-                Program.IsLicenseValid = false;
+                Preferences.IsLicenseValid = false;
                 return false;
             }
         }

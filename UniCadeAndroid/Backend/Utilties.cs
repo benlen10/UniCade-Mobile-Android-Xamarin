@@ -108,7 +108,7 @@ namespace UniCadeAndroid.Backend
         internal static Uri GetEsrbLogoImage(Enums.EsrbRatings rating)
         {
             //Choose between classic and modern logos
-            string logoType = Program.UseModernEsrbLogos ? "ModernEsrbLogos" : "EsrbLogos";
+            string logoType = Preferences.UseModernEsrbLogos ? "ModernEsrbLogos" : "EsrbLogos";
 
             if (rating.Equals(Enums.EsrbRatings.Everyone))
             {

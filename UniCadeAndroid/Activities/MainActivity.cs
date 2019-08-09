@@ -87,7 +87,7 @@ namespace UniCadeAndroid.Activities
         {
 
             List<string> consoleList = Database.GetConsoleList().ToList();
-            consoleList.Add("All Games");
+            //consoleList.Add("All Games");
 
             var consoleSpinnerAdapter =
                 new ArrayAdapter(this, Resource.Layout.CustomSpinnerItem, consoleList);
@@ -223,7 +223,7 @@ namespace UniCadeAndroid.Activities
 		}
 
         private void HandleEnteredPassword(string text){
-            if(text == Program.PasswordProtection){
+            if(text == Preferences.PasswordProtection){
 				var intent = new Intent(this, typeof(SettingsActivity));
 				StartActivity(intent);
             }
@@ -237,7 +237,7 @@ namespace UniCadeAndroid.Activities
             _settingsButton.Click += (sender, e) =>
             {
                
-                if (Program.PasswordProtection.Length > 4)
+                if (Preferences.PasswordProtection.Length > 4)
                 {
                     ShowInputDialog("Please Enter Password", HandleEnteredPassword);
                 }

@@ -104,16 +104,11 @@ namespace UniCadeAndroid.Backend
                 currentSettings = (CurrentSettings)dataContractSerializer.ReadObject(fileStream);
             }
 
-            Program.ShowSplashScreen = currentSettings.ShowSplashScreen;
-            Program.RescanOnStartup = currentSettings.RescanOnStartup;
-            Program.RestrictGlobalEsrbRatings = currentSettings.RestrictGlobalEsrbRatings;
-            Program.UseModernEsrbLogos = currentSettings.UseModernEsrbLogos;
-            Program.PerferCmdInterface = currentSettings.PerferCmdInterface;
-            Program.ShowLoadingScreen = currentSettings.ShowLoadingScreen;
-            Program.EnforceFileExtensions = currentSettings.EnforceFileExtensions;
-            Program.UserLicenseKey = currentSettings.UserLicenseKey;
-            Program.UserLicenseName = currentSettings.UserLicenseName;
-            Program.PasswordProtection = currentSettings.PasswordProtection;
+            Preferences.ShowSplashScreen = currentSettings.ShowSplashScreen;
+            Preferences.UseModernEsrbLogos = currentSettings.UseModernEsrbLogos;
+            Preferences.UserLicenseKey = currentSettings.UserLicenseKey;
+            Preferences.UserLicenseName = currentSettings.UserLicenseName;
+            Preferences.PasswordProtection = currentSettings.PasswordProtection;
             currentSettings.UserList.ForEach(u => Database.AddUser(u));
             
             return true;
@@ -130,17 +125,11 @@ namespace UniCadeAndroid.Backend
 
             var currentSettings = new CurrentSettings
             {
-                ShowSplashScreen = Program.ShowSplashScreen,
-                RescanOnStartup = Program.RescanOnStartup,
-                RestrictGlobalEsrbRatings = Program.RestrictGlobalEsrbRatings,
-                UseModernEsrbLogos = Program.UseModernEsrbLogos,
-                PerferCmdInterface = Program.PerferCmdInterface,
-                EnforceFileExtensions = Program.EnforceFileExtensions,
-                ShowLoadingScreen = Program.ShowLoadingScreen,
-   
-                UserLicenseKey = Program.UserLicenseKey,
-                UserLicenseName = Program.UserLicenseName,
-                PasswordProtection = Program.PasswordProtection
+                ShowSplashScreen = Preferences.ShowSplashScreen,
+                UseModernEsrbLogos = Preferences.UseModernEsrbLogos,
+                UserLicenseKey = Preferences.UserLicenseKey,
+                UserLicenseName = Preferences.UserLicenseName,
+                PasswordProtection = Preferences.PasswordProtection
             };
 
             foreach (string userName in Database.GetUserList())
@@ -265,12 +254,8 @@ namespace UniCadeAndroid.Backend
         public static void RestoreDefaultPreferences()
         {
             Database.RestoreDefaultUser();
-            Program.ShowSplashScreen = false;
-            Program.RescanOnStartup = false;
-            Program.RestrictGlobalEsrbRatings = Enums.EsrbRatings.Null;
-            Program.PerferCmdInterface = false;
-            Program.ShowLoadingScreen = false;
-        }
+            Preferences.ShowSplashScreen = false;
+          }
 
         /// <summary>
         /// Preforms the initial file system operations when the program is launched
@@ -289,7 +274,7 @@ namespace UniCadeAndroid.Backend
             }
 
             //Verify the current user license and set flag
-            Program.IsLicenseValid = CryptoEngine.ValidateLicense(Program.UserLicenseName, Program.UserLicenseKey);
+            Preferences.IsLicenseValid = CryptoEngine.ValidateLicense(Preferences.UserLicenseName, Preferences.UserLicenseKey);
 
             //If the database file does not exist in the specified location, load default values and rescan rom directories
             if (!LoadDatabase())
