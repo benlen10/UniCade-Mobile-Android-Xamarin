@@ -89,7 +89,7 @@
     <Compile Include="Backend\CryptoEngine.cs" />
     <Compile Include="Backend\Database.cs" />
     <Compile Include="Backend\FileOps.cs" />
-    <Compile Include="Backend\Program.cs" />
+    <Compile Include="Backend\Preferences.cs" />
     <Compile Include="Backend\Utilties.cs" />
     <Compile Include="Constants\ConstPaths.cs" />
     <Compile Include="Constants\ConstValues.cs" />
