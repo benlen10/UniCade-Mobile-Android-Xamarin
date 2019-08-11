@@ -17,14 +17,6 @@ namespace UniCadeAndroid.Backend
 {
     internal class FileOps
     {
-        #region Properties
-
-        /// <summary>
-        /// True if the current game is a steam URL
-        /// </summary>
-        public static bool IsSteamGame;
-
-        #endregion
 
         #region Public Methods
 

@@ -175,7 +175,7 @@ namespace UniCadeAndroid.Activities
             _passwordProtectSettingsCheckBox.Click += (sender, e) =>
 			{
                 if(_passwordProtectSettingsCheckBox.Checked){
-                    Preferences.PasswordProtection = "";
+                    Preferences.PasswordProtection = null;
                     Toast.MakeText(this, "Password cleared", ToastLength.Short).Show();
                 }
                 else{

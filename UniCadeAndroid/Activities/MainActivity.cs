@@ -275,7 +275,7 @@ namespace UniCadeAndroid.Activities
             _settingsButton.Click += (sender, e) =>
             {
                
-                if (Preferences.PasswordProtection.Length > 4)
+                if (Preferences.PasswordProtection != null)
                 {
                     ShowInputDialog("Please Enter Password", HandleEnteredPassword);
                 }
