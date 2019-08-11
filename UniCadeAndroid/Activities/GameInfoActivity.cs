@@ -220,11 +220,13 @@ namespace UniCadeAndroid.Activities
             _downloadInfoButton.Click += (sender, e) =>
             {
                 WebOps.ScrapeInfo(MainActivity.CurrentGame);
+                Toast.MakeText(ApplicationContext, "Game Metadata Downloaded", ToastLength.Long).Show();
             };
 
             _saveInfoButton.Click += (sender, e) =>
             {
                 FileOps.SaveDatabase();
+                Toast.MakeText(ApplicationContext, "Database Saved", ToastLength.Long).Show();
             };
 
             _closeInfoButton.Click += (sender, e) =>

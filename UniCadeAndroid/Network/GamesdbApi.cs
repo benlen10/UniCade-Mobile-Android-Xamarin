@@ -86,7 +86,6 @@ namespace UniCadeAndroid.Network
 
                 xmlDocument = new XmlDocument();
                 xmlDocument.Load(@"http://thegamesdb.net/api/GetGame.php?id=" + gameId);
-                xmlDocument.Save("gameinfo.xml");
 
                 rootNode = xmlDocument.DocumentElement;
 
@@ -145,7 +144,7 @@ namespace UniCadeAndroid.Network
                             gameImages.LoadFromNode(attributeNode);
 
                             //If the media directory does not exist, create it
-                            string directoryPath = Directory.GetCurrentDirectory() + @"\Media\Games\" + game.ConsoleName + "\\";
+                            string directoryPath = Directory.GetCurrentDirectory() + @"/Media/Games/" + game.ConsoleName + "//";
                             if (!Directory.Exists(directoryPath))
                             {
                                 Directory.CreateDirectory(directoryPath);

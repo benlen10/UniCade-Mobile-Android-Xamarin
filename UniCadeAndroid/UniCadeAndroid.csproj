@@ -119,6 +119,7 @@
     <Compile Include="Activities\GameInfoActivity.cs" />
     <Compile Include="Activities\ScraperSettingsActivity.cs" />
     <Compile Include="Backend\Extensions.cs" />
+    <Compile Include="Backend\CryptoObjectHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\SettingsView.axml">

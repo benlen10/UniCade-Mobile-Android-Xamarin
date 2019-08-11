@@ -122,9 +122,9 @@ namespace UniCadeAndroid.Backend
             {
                 return Uri.Parse("android.resource://UniCadeAndroid/drawable/EsrbLogos/T.png".Replace("EsrbLogos", logoType));
             }
-            if (rating.Equals(Enums.EsrbRatings.Mature)
+            if (rating.Equals(Enums.EsrbRatings.Mature))
             {
-                return Uri.Parse("android.resource://UUniCadeAndroid/drawable/EsrbLogos/M.png".Replace("EsrbLogos", logoType));
+                return Uri.Parse("android.resource://UniCadeAndroid/drawable/EsrbLogos/M.png".Replace("EsrbLogos", logoType));
             }
             return rating.Equals(Enums.EsrbRatings.Ao) ? Uri.Parse("android.resource://UniCadeAndroid/drawable/EsrbLogos/AO.png".Replace("EsrbLogos", logoType)) : null;
         }
