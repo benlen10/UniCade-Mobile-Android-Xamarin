@@ -236,7 +236,7 @@ namespace UniCadeAndroid.Activities
             _gameSelectionListView = FindViewById<ListView>(Resource.Id.GameSelectionListView);
             _consoleSelectionSpinner = FindViewById<Spinner>(Resource.Id.ConsoleSelectionSpinner);
             _searchBarEditText = FindViewById<EditText>(Resource.Id.SearchBarEditTExt);
-            _gameCountTextView = FindViewById<TextView>(Resource.Id.GameCountEditText);
+            _gameCountTextView = FindViewById<TextView>(Resource.Id.GameCountTextView);
             _consoleImageView = FindViewById<ImageView>(Resource.Id.ConsoleImageView);
         }
 
