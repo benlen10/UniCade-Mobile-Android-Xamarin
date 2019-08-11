@@ -120,6 +120,7 @@
     <Compile Include="Activities\ScraperSettingsActivity.cs" />
     <Compile Include="Backend\Extensions.cs" />
     <Compile Include="Backend\CryptoObjectHelper.cs" />
+    <Compile Include="Backend\FingerprintManagerApiDialogFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\SettingsView.axml">
