@@ -127,6 +127,18 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\InputDialogView.xml" />
+    <AndroidResource Include="Resources\layout\activity_fingerprintmanager_api.axml" />
+    <AndroidResource Include="Resources\layout\dialog_scanning_for_fingerprint.axml" />
+    <AndroidResource Include="Resources\layout\panel_authenticated.xml" />
+    <AndroidResource Include="Resources\layout\panel_error.xml" />
+    <AndroidResource Include="Resources\layout\panel_fingerprint_scan_in_progress.xml" />
+    <AndroidResource Include="Resources\layout\panel_initial.xml" />
+    <AndroidResource Include="Resources\values\dimens.xml" />
+    <AndroidResource Include="Resources\drawable\ic_error.xml" />
+    <AndroidResource Include="Resources\drawable\ic_fingerprint_error.xml" />
+    <AndroidResource Include="Resources\drawable\ic_fingerprint_success.xml" />
+    <AndroidResource Include="Resources\drawable\ic_secure.xml" />
+    <AndroidResource Include="Resources\drawable\ic_fp_40px.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml">
@@ -148,6 +160,11 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <None Include="packages.config" />
+    <None Include="Resources\drawable\drawable-hdpi\ic_fp_40px.png" />
+    <None Include="Resources\drawable\drawable-mdpi\ic_fp_40px.png" />
+    <None Include="Resources\drawable\drawable-xhdpi\ic_fp_40px.png" />
+    <None Include="Resources\drawable\drawable-xxhdpi\ic_fp_40px.png" />
+    <None Include="Resources\drawable\drawable-xxxhdpi\ic_fp_40px.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />

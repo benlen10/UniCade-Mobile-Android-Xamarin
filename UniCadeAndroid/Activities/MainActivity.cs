@@ -12,6 +12,8 @@ using Android.Support.V4.Content;
 using UniCadeAndroid.Objects;
 using System;
 using Android.Hardware.Fingerprints;
+using Android.Views;
+using Android.Support.V4.Hardware.Fingerprint;
 
 namespace UniCadeAndroid.Activities
 {
@@ -36,6 +38,11 @@ namespace UniCadeAndroid.Activities
         private string _searchText = "";
 
         private List<GameListObject> _currentGameList;
+
+		FingerprintManagerApiDialogFragment _dialogFrag;
+		View _errorPanel, _authenticatedPanel, _initialPanel, _scanInProgressPanel;
+		FingerprintManagerCompat _fingerprintManager;
+		Button _startAuthenticationScanButtonon;
 
         readonly string[] _requiredPermissions =
         {
@@ -84,6 +91,8 @@ namespace UniCadeAndroid.Activities
             CreateEventHandlers();
 
             PopulateConsoleSpinner();
+
+            SetupFingerprintScanner();
         }
 
         private bool SetupFingerprintScanner(){
@@ -105,8 +114,29 @@ namespace UniCadeAndroid.Activities
 				return false;
             }
 
+            _dialogFrag = FingerprintManagerApiDialogFragment.NewInstance(_fingerprintManager);
             return true;
         }
+
+		void StartFingerprintScan(object sender, EventArgs args)
+		{
+			Permission permissionResult = ContextCompat.CheckSelfPermission(this,
+																				   Manifest.Permission.UseFingerprint);
+			if (permissionResult == Permission.Granted)
+			{
+				_initialPanel.Visibility = ViewStates.Gone;
+				_authenticatedPanel.Visibility = ViewStates.Gone;
+				_errorPanel.Visibility = ViewStates.Gone;
+				_scanInProgressPanel.Visibility = ViewStates.Visible;
+				_dialogFrag.Init();
+				_dialogFrag.Show(FragmentManager, "fingerprint_auth_fragment");
+			}
+			else
+			{
+				Toast.MakeText(ApplicationContext, "Fingerprint permission denied", ToastLength.Long).Show();
+
+			}
+		}
 
         public void PopulateConsoleSpinner()
         {
@@ -148,6 +178,26 @@ namespace UniCadeAndroid.Activities
             }
 
         }
+
+		public void AuthenticationSuccessful()
+		{
+			_initialPanel.Visibility = ViewStates.Gone;
+			_authenticatedPanel.Visibility = ViewStates.Visible;
+			_errorPanel.Visibility = ViewStates.Gone;
+			_scanInProgressPanel.Visibility = ViewStates.Gone;
+		}
+
+		public void AuthenticationFailed()
+		{
+			Toast.MakeText(ApplicationContext, "Fingerprint Authentication Failed", ToastLength.Long).Show();
+
+		}
+
+		public void FingerprintScanFailed()
+		{
+			Toast.MakeText(ApplicationContext, "Fingerprint Scan Failed", ToastLength.Long).Show();
+
+		}
 
         private void RefreshGameList()
         {
@@ -238,6 +288,13 @@ namespace UniCadeAndroid.Activities
             _searchBarEditText = FindViewById<EditText>(Resource.Id.SearchBarEditTExt);
             _gameCountTextView = FindViewById<TextView>(Resource.Id.GameCountTextView);
             _consoleImageView = FindViewById<ImageView>(Resource.Id.ConsoleImageView);
+
+
+			_scanInProgressPanel = FindViewById(Resource.Id.scan_in_progress);
+			_initialPanel = FindViewById(Resource.Id.initial_panel);
+            _startAuthenticationScanButtonon = FindViewById<Button>(Resource.Id.start_authentication_scan_buton);
+			_errorPanel = FindViewById(Resource.Id.error_panel);
+        	_authenticatedPanel = FindViewById(Resource.Id.authenticated_panel);
         }
 
 
@@ -274,7 +331,7 @@ namespace UniCadeAndroid.Activities
         {
             _settingsButton.Click += (sender, e) =>
             {
-               
+                StartFingerprintScan(sender, e);
                 if (Preferences.PasswordProtection != null)
                 {
                     ShowInputDialog("Please Enter Password", HandleEnteredPassword);

@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Java.Lang;
 using Javax.Crypto;
+using UniCadeAndroid.Activities;
 using CancellationSignal = Android.Support.V4.OS.CancellationSignal;
 using Res = Android.Resource;
 
@@ -177,23 +178,23 @@ namespace UniCadeAndroid.Backend
 
             void ReportSuccess()
             {
-                FingerprintManagerApiActivity activity = (FingerprintManagerApiActivity) _fragment.Activity;
+                MainActivity activity = (MainActivity) _fragment.Activity;
                 activity.AuthenticationSuccessful();
                 _fragment.Dismiss();
             }
 
             void ReportScanFailure(int errMsgId, string errorMessage)
             {
-                FingerprintManagerApiActivity activity = (FingerprintManagerApiActivity) _fragment.Activity;
-                activity.ShowError(errorMessage, string.Format("Error message id {0}.", errMsgId));
+                MainActivity activity = (MainActivity) _fragment.Activity;
+                activity.AuthenticationFailed();
                 _fragment.Dismiss();
             }
 
             void ReportAuthenticationFailed()
             {
-                FingerprintManagerApiActivity activity = (FingerprintManagerApiActivity) _fragment.Activity;
+                MainActivity activity = (MainActivity) _fragment.Activity;
                 string msg = _fragment.Resources.GetString(Resource.String.authentication_failed_message);
-                activity.ShowError(msg);
+                activity.FingerprintScanFailed();
                 _fragment.Dismiss();
             }
 

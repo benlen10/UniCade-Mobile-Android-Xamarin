@@ -138,10 +138,6 @@ namespace UniCadeAndroid.Network
             {
                 var result = MobyGamesApi.FetchGameInfo(game);
             }
-            else if (CurrentApi.Equals(Enums.Api.Igdb))
-            {
-                //TODO
-            }
             return true;
         }
 
