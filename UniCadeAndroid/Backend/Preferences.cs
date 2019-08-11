@@ -20,10 +20,16 @@ namespace UniCadeAndroid.Backend
         /// </summary>
         public static string PasswordProtection = "";
 
-        /// <summary>
-        /// The user name for the current license holder
-        /// </summary>
-        public static string UserLicenseName;
+		/// <summary>
+		/// Specifies if fingerprint protection is enabled
+		/// </summary>
+		public static  bool FingerprintProtectionEnabled;
+
+
+		/// <summary>
+		/// The user name for the current license holder
+		/// </summary>
+		public static string UserLicenseName;
 
         /// <summary>
         /// The curent license key

@@ -184,6 +184,19 @@ namespace UniCadeAndroid.Activities
                 }
 			};
 
+            _enableFingerprintProtectionCheckbox.Click += (sender, e) =>
+            {
+                if (_passwordProtectSettingsCheckBox.Checked)
+                {
+                    Preferences.PasswordProtection = null;
+                    Preferences.FingerprintProtectionEnabled = true;
+                    Toast.MakeText(this, "Fingerprint Authentication Enabled", ToastLength.Short).Show();
+                }
+                else{
+                    Preferences.FingerprintProtectionEnabled = true;
+                }
+            };
+
 		    _enterLicenseButton.Click += (sender, e) =>
 		    {
                 ShowInputDialog("Enter License Key", HandleLicenseKey);

@@ -181,18 +181,14 @@ namespace UniCadeAndroid.Activities
 
 		public void AuthenticationSuccessful()
 		{
-			//_initialPanel.Visibility = ViewStates.Gone;
-			//_authenticatedPanel.Visibility = ViewStates.Visible;
-			//_errorPanel.Visibility = ViewStates.Gone;
-			//_scanInProgressPanel.Visibility = ViewStates.Gone;
-
             Toast.MakeText(ApplicationContext, "Fingerprint Authentication Successful!", ToastLength.Long).Show();
+			var intent = new Intent(this, typeof(SettingsActivity));
+			StartActivity(intent);
 		}
 
 		public void AuthenticationFailed()
 		{
 			Toast.MakeText(ApplicationContext, "Fingerprint Authentication Failed", ToastLength.Long).Show();
-
 		}
 
 		public void FingerprintScanFailed()
@@ -326,14 +322,20 @@ namespace UniCadeAndroid.Activities
         {
             _settingsButton.Click += (sender, e) =>
             {
-                StartFingerprintScan(sender, e);
-                if (Preferences.PasswordProtection != null)
+                if (Preferences.FingerprintProtectionEnabled)
                 {
-                    ShowInputDialog("Please Enter Password", HandleEnteredPassword);
+                    StartFingerprintScan(sender, e);
                 }
                 else{
-					var intent = new Intent(this, typeof(SettingsActivity));
-					StartActivity(intent);
+					if (Preferences.PasswordProtection != null)
+					{
+						ShowInputDialog("Please Enter Password", HandleEnteredPassword);
+					}
+					else
+					{
+						var intent = new Intent(this, typeof(SettingsActivity));
+						StartActivity(intent);
+					}
                 }
             };
 
@@ -347,8 +349,6 @@ namespace UniCadeAndroid.Activities
 				_searchText = _searchBarEditText.Text;
 				RefreshGameList();
             };
-
-
         }
     }
 }
