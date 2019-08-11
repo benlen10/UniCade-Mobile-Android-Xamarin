@@ -5,6 +5,7 @@ using Android.OS;
 using Android.Widget;
 using UniCadeAndroid.Backend;
 using UniCadeAndroid.Constants;
+using UniCadeAndroid.Security;
 
 namespace UniCadeAndroid.Activities
 {

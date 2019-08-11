@@ -87,7 +87,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\GameListViewActivity.cs" />
-    <Compile Include="Backend\CryptoEngine.cs" />
     <Compile Include="Backend\Database.cs" />
     <Compile Include="Backend\FileOps.cs" />
     <Compile Include="Backend\Preferences.cs" />
@@ -119,26 +118,19 @@
     <Compile Include="Activities\GameInfoActivity.cs" />
     <Compile Include="Activities\ScraperSettingsActivity.cs" />
     <Compile Include="Backend\Extensions.cs" />
-    <Compile Include="Backend\CryptoObjectHelper.cs" />
-    <Compile Include="Backend\FingerprintManagerApiDialogFragment.cs" />
+    <Compile Include="Security\CryptoEngine.cs" />
+    <Compile Include="Security\CryptoObjectHelper.cs" />
+    <Compile Include="Security\FingerprintManagerApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\SettingsView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\InputDialogView.xml" />
-    <AndroidResource Include="Resources\layout\activity_fingerprintmanager_api.axml" />
-    <AndroidResource Include="Resources\layout\dialog_scanning_for_fingerprint.axml" />
-    <AndroidResource Include="Resources\layout\panel_authenticated.xml" />
-    <AndroidResource Include="Resources\layout\panel_error.xml" />
-    <AndroidResource Include="Resources\layout\panel_fingerprint_scan_in_progress.xml" />
-    <AndroidResource Include="Resources\layout\panel_initial.xml" />
+    <AndroidResource Include="Resources\layout\FingerprintScanDialog.axml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
-    <AndroidResource Include="Resources\drawable\ic_error.xml" />
-    <AndroidResource Include="Resources\drawable\ic_fingerprint_error.xml" />
-    <AndroidResource Include="Resources\drawable\ic_fingerprint_success.xml" />
-    <AndroidResource Include="Resources\drawable\ic_secure.xml" />
-    <AndroidResource Include="Resources\drawable\ic_fp_40px.png" />
+    <AndroidResource Include="Resources\drawable\FingerprintIcon.png" />
+    <AndroidResource Include="Resources\drawable\UniCadeIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml">
@@ -168,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
+    <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">
@@ -188,9 +181,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\mipmap-xxxhdpi\ic_launcher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\UniCadeIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ModernEsrbLogos\AO.png" />

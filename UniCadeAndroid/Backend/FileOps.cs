@@ -10,6 +10,7 @@ using Android.Widget;
 using UniCadeAndroid.Constants;
 using UniCadeAndroid.Interfaces;
 using UniCadeAndroid.Objects;
+using UniCadeAndroid.Security;
 using Console = UniCadeAndroid.Objects.Console;
 
 

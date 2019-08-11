@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UniCadeAndroid.Backend;
+using UniCadeAndroid.Security;
 using UniCadeAndroid.Constants;
 using UniCadeAndroid.Interfaces;
 
