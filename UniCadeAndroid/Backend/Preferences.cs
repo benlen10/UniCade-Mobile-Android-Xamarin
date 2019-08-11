@@ -18,7 +18,7 @@ namespace UniCadeAndroid.Backend
         /// <summary>
         /// The password required to launch the settings window
         /// </summary>
-        public static string PasswordProtection;
+        public static string PasswordProtection = "";
 
         /// <summary>
         /// The user name for the current license holder

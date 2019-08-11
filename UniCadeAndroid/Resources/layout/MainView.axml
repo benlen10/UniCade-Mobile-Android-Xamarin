@@ -10,7 +10,7 @@
     <ListView
         p1:id="@+id/GameSelectionListView"
         p1:layout_width="257.5dp"
-        p1:layout_height="531.0dp"
+        p1:layout_height="509.5dp"
         p1:cacheColorHint="#FFDAFF7F"
         p1:layout_marginRight="126.0dp"
         p1:layout_marginLeft="4.5dp" />
@@ -36,6 +36,14 @@
         p1:layout_marginTop="470.0dp"
         p1:layout_marginLeft="257.0dp"
         p1:layout_marginRight="0.0dp" />
+    <TextView
+        p1:id="@+id/GameCountTextView"
+        p1:layout_width="250.5dp"
+        p1:layout_height="25.0dp"
+        p1:layout_marginTop="514.0dp"
+        p1:layout_marginLeft="1.5dp"
+        p1:text="Game Count"
+        p1:layout_below="@id/GameSelectionListView" />
     <Spinner
         p1:id="@+id/ConsoleSelectionSpinner"
         p1:layout_width="250.5dp"

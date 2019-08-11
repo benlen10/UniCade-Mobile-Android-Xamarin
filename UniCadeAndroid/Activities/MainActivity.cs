@@ -29,6 +29,8 @@ namespace UniCadeAndroid.Activities
 
         private EditText _searchBarEditText;
 
+        private TextView _gameCountTextView;
+
         private ImageView _consoleImageView;
 
         private string _searchText = "";
@@ -149,7 +151,7 @@ namespace UniCadeAndroid.Activities
 
         private void RefreshGameList()
         {
-
+            UpdateGameCount();
             _gameSelectionListView.Adapter = null;
             var currentConsoleName = _consoleSelectionSpinner.SelectedItem.ToString();
             _currentGameList = new List<GameListObject>();
@@ -199,6 +201,18 @@ namespace UniCadeAndroid.Activities
             _gameSelectionListView.ItemClick += OnListItemClick;
         }
 
+        private void UpdateGameCount(){
+            var currentConsoleName = _consoleSelectionSpinner.SelectedItem.ToString();
+            if (currentConsoleName == "All Games")
+            {
+                _gameCountTextView.Text = "Total Games: " + Database.GetTotalGameCount().ToString();
+            }
+            else{
+                int consoleGameCount = Database.GetConsole(currentConsoleName).GetGameCount();
+				_gameCountTextView.Text = "Total Games: " + Database.GetTotalGameCount().ToString() + " Console Games: " + consoleGameCount;
+            }
+        }
+
         private void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             var listItem = _currentGameList[e.Position];
@@ -222,6 +236,7 @@ namespace UniCadeAndroid.Activities
             _gameSelectionListView = FindViewById<ListView>(Resource.Id.GameSelectionListView);
             _consoleSelectionSpinner = FindViewById<Spinner>(Resource.Id.ConsoleSelectionSpinner);
             _searchBarEditText = FindViewById<EditText>(Resource.Id.SearchBarEditTExt);
+            _gameCountTextView = FindViewById<TextView>(Resource.Id.GameCountEditText);
             _consoleImageView = FindViewById<ImageView>(Resource.Id.ConsoleImageView);
         }
 

@@ -42,8 +42,6 @@ namespace UniCadeAndroid.Activities
 
         private Button _closeInfoButton;
 
-        private Button _refreshInfoButton;
-
         private ImageView _boxFrontImageView;
 
         private ImageView _boxBackImageView;
@@ -83,6 +81,7 @@ namespace UniCadeAndroid.Activities
             _launchCountTextView.Text = "Launch Count: " + MainActivity.CurrentGame.GetLaunchCount().ToString();
             _releaseDateTextView.Text = "Release Date: " + MainActivity.CurrentGame.ReleaseDate;
             _descriptionTextView.Text = "Description:" + MainActivity.CurrentGame.Description;
+			_esrbLogoImageView.SetImageURI(Utilties.GetEsrbLogoImage(MainActivity.CurrentGame.EsrbRating));
         }
 
 		protected void ShowInputDialog(string title, Action<string> handlerFunction)
@@ -128,8 +127,6 @@ namespace UniCadeAndroid.Activities
                 Bitmap bitmap = BitmapFactory.DecodeFile(imagePath);
                 _screenshotImageView.SetImageBitmap(bitmap);
             }
-
-            _esrbLogoImageView.SetImageURI(Backend.Utilties.GetEsrbLogoImage(MainActivity.CurrentGame.EsrbRating));
         }
 
 
@@ -148,7 +145,6 @@ namespace UniCadeAndroid.Activities
             _downloadInfoButton = FindViewById<Button>(Resource.Id.DownloadInfoButton);
             _saveInfoButton = FindViewById<Button>(Resource.Id.SaveButton);
             _closeInfoButton = FindViewById<Button>(Resource.Id.CloseButton);
-            _refreshInfoButton = FindViewById<Button>(Resource.Id.RefreshButton);
             _boxFrontImageView = FindViewById<ImageView>(Resource.Id.BoxFrontImageView);
             _boxBackImageView = FindViewById<ImageView>(Resource.Id.BoxBackImageView);
             _screenshotImageView = FindViewById<ImageView>(Resource.Id.ScreenshotImageView);
@@ -156,11 +152,19 @@ namespace UniCadeAndroid.Activities
         }
 
         private void CreateEventHandlers(){
+            _titleTextView.Click += (sender, e) =>
+			{
+				Toast.MakeText(ApplicationContext, "Title field is readonly", ToastLength.Long).Show();
+			};
+
+            _consoleTextView.Click += (sender, e) =>
+			{
+				Toast.MakeText(ApplicationContext, "Console field is readonly", ToastLength.Long).Show();
+			};
 
             _publisherTextView.Click += (sender, e) =>
 			{
                   ShowInputDialog("Enter Publisher", HandlePublisher);
-
 			};
 
             _criticScoreTextView.Click += (sender, e) =>
@@ -181,6 +185,11 @@ namespace UniCadeAndroid.Activities
             _esrbDescriptorsTextView.Click += (sender, e) =>
 			{
                 ShowInputDialog("Enter ESRB Descriptors", HandleEsrbRating);
+			};
+
+            _launchCountTextView.Click += (sender, e) =>
+			{
+				Toast.MakeText(ApplicationContext, "Launch count is readonly", ToastLength.Long).Show();
 			};
 
             _releaseDateTextView.Click += (sender, e) =>
@@ -210,7 +219,7 @@ namespace UniCadeAndroid.Activities
 
             _downloadInfoButton.Click += (sender, e) =>
             {
-                //TODO: 
+                WebOps.ScrapeInfo(MainActivity.CurrentGame);
             };
 
             _saveInfoButton.Click += (sender, e) =>
@@ -223,10 +232,6 @@ namespace UniCadeAndroid.Activities
                 Finish();
             };
 
-            _refreshInfoButton.Click += (sender, e) =>
-            {
-                RefreshGameInfo();
-            };
         }
 
 		private void HandlePublisher(string text)
