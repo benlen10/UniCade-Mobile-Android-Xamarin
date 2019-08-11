@@ -57,6 +57,7 @@ namespace UniCadeAndroid.Activities
 
             LinkClickHandlers();
 
+            PopulateSettings();
         }
 
 		private void FindElementsById()
@@ -76,6 +77,13 @@ namespace UniCadeAndroid.Activities
             _applyButton = FindViewById<Button>(Resource.Id.ApplyButton);
             _closeSettingsButton = FindViewById<Button>(Resource.Id.CloseButton);
 		}
+
+        private void PopulateSettings(){
+            _showSplashScreenCheckbox.Checked = Preferences.ShowSplashScreen;
+            _passwordProtectSettingsCheckBox.Checked = (Preferences.PasswordProtection == null);
+             _enableFingerprintProtectionCheckbox.Checked = Preferences.FingerprintProtectionEnabled;
+            _displayModernEsrbIconsCheckBox.Checked = Preferences.UseModernEsrbLogos;
+        }
 
 		protected void ShowInputDialog(string title, Action<string> handlerFunction)
 		{
@@ -186,7 +194,7 @@ namespace UniCadeAndroid.Activities
 
             _enableFingerprintProtectionCheckbox.Click += (sender, e) =>
             {
-                if (_passwordProtectSettingsCheckBox.Checked)
+                if (_enableFingerprintProtectionCheckbox.Checked)
                 {
                     Preferences.PasswordProtection = null;
                     Preferences.FingerprintProtectionEnabled = true;
