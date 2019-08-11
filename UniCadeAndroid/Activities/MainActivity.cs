@@ -50,7 +50,6 @@ namespace UniCadeAndroid.Activities
             Manifest.Permission.UseFingerprint
         };
 
-
         #endregion
 
         #region Properties
@@ -97,19 +96,19 @@ namespace UniCadeAndroid.Activities
         private bool SetupFingerprintScanner(){
             FingerprintManager fingerprintManager = this.GetSystemService(FingerprintService) as FingerprintManager;
             if (!fingerprintManager.IsHardwareDetected){
-                Toast.MakeText(ApplicationContext, "Fingerprint hardware not detected", ToastLength.Long).Show();
+                DisplayToast("Fingerprint hardware not detected");
                 return false;
 			}
             if (!fingerprintManager.HasEnrolledFingerprints)
 			{
-				Toast.MakeText(ApplicationContext, "No fingerprints are currently enrolled", ToastLength.Long).Show();
+                DisplayToast("No fingerprints are currently enrolled");
 				return false;
 			}
 
             //Check for permissions
             Android.Content.PM.Permission permissionResult = ContextCompat.CheckSelfPermission(this, Manifest.Permission.UseFingerprint);
             if(permissionResult == Android.Content.PM.Permission.Denied){
-				Toast.MakeText(ApplicationContext, "Fingerprint permission denied", ToastLength.Long).Show();
+                DisplayToast("Fingerprint Permission Denied");
 				return false;
             }
 
@@ -124,17 +123,12 @@ namespace UniCadeAndroid.Activities
 																				   Manifest.Permission.UseFingerprint);
 			if (permissionResult == Permission.Granted)
 			{
-				//_initialPanel.Visibility = ViewStates.Gone;
-				//_authenticatedPanel.Visibility = ViewStates.Gone;
-				//_errorPanel.Visibility = ViewStates.Gone;
-				//_scanInProgressPanel.Visibility = ViewStates.Visible;
 				_dialogFrag.Init();
 				_dialogFrag.Show(FragmentManager, "fingerprint_auth_fragment");
 			}
 			else
 			{
-				Toast.MakeText(ApplicationContext, "Fingerprint permission denied", ToastLength.Long).Show();
-
+				DisplayToast("Fingerprint Permission Denied");
 			}
 		}
 
@@ -173,7 +167,7 @@ namespace UniCadeAndroid.Activities
             }
             else
             {
-                Toast.MakeText(ApplicationContext, "Fatal Error: Storage Access Required", ToastLength.Long).Show();
+               DisplayToast("Fatal Error: Storage Access Required");
                 Finish();
             }
 
@@ -194,7 +188,6 @@ namespace UniCadeAndroid.Activities
 		public void FingerprintScanFailed()
 		{
 			Toast.MakeText(ApplicationContext, "Fingerprint Scan Failed", ToastLength.Long).Show();
-
 		}
 
         private void RefreshGameList()
@@ -349,6 +342,10 @@ namespace UniCadeAndroid.Activities
 				_searchText = _searchBarEditText.Text;
 				RefreshGameList();
             };
+        }
+
+        public void DisplayToast(string message, ToastLength length=ToastLength.Short){
+            Toast.MakeText(ApplicationContext, message, length).Show();
         }
     }
 }
