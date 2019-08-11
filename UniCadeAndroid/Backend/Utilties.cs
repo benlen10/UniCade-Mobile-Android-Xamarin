@@ -112,21 +112,21 @@ namespace UniCadeAndroid.Backend
 
             if (rating.Equals(Enums.EsrbRatings.Everyone))
             {
-                return Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/E.png".Replace("EsrbLogos", logoType));
+                return Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/EsrbLogos/E.png".Replace("EsrbLogos", logoType));
             }
             if (rating.Equals(Enums.EsrbRatings.Everyone10))
             {
-                return Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/E10.png".Replace("EsrbLogos", logoType));
+                return Uri.Parse("android.resource://UniCadeAndroid/drawable/EsrbLogos/E10.png".Replace("EsrbLogos", logoType));
             }
             if (rating.Equals(Enums.EsrbRatings.Teen))
             {
-                return Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/T.png".Replace("EsrbLogos", logoType));
+                return Uri.Parse("android.resource://UniCadeAndroid/drawable/EsrbLogos/T.png".Replace("EsrbLogos", logoType));
             }
-            if (rating.Equals(Enums.EsrbRatings.Mature))
+            if (rating.Equals(Enums.EsrbRatings.Mature)
             {
-                return Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/M.png".Replace("EsrbLogos", logoType));
+                return Uri.Parse("android.resource://UUniCadeAndroid/drawable/EsrbLogos/M.png".Replace("EsrbLogos", logoType));
             }
-            return rating.Equals(Enums.EsrbRatings.Ao) ? Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/AO.png".Replace("EsrbLogos", logoType)) : null;
+            return rating.Equals(Enums.EsrbRatings.Ao) ? Uri.Parse("android.resource://UniCadeAndroid/drawable/EsrbLogos/AO.png".Replace("EsrbLogos", logoType)) : null;
         }
     }
 }
