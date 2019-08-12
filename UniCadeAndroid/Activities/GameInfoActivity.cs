@@ -62,7 +62,7 @@ namespace UniCadeAndroid.Activities
 
         #region Properties
 
-        Bitmap CurrentImageBitmap;
+        public static Bitmap CurrentImageBitmap;
 
         #endregion
 

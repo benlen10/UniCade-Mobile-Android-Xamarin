@@ -4,7 +4,7 @@
     p1:layout_width="fill_parent"
     p1:layout_height="fill_parent">
     <UniCadeAndroid.Backend.ScaleImageView
-		p1:id="@+id/AnimateImage"
+		p1:id="@+id/FullscreenImageViewId"
         p1:layout_width="fill_parent"
         p1:layout_height="fill_parent"
         p1:src="@drawable/icon"/>
@@ -24,13 +24,13 @@
             p1:text="Delete"
             p1:layout_width="133.0dp"
             p1:layout_height="wrap_content"
-            p1:id="@+id/DeleteButton"
+            p1:id="@+id/DeleteImageButton"
             p1:layout_marginLeft="15.5dp" />
 		<Button
             p1:text="Close"
             p1:layout_width="133.0dp"
             p1:layout_height="wrap_content"
-            p1:id="@+id/CloseButton"
+            p1:id="@+id/CloseImageButton"
             p1:layout_marginLeft="50.5dp" />
     </RelativeLayout>
 </LinearLayout>

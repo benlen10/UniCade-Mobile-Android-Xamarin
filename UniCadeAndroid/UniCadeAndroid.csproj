@@ -121,7 +121,7 @@
     <Compile Include="Security\CryptoEngine.cs" />
     <Compile Include="Security\CryptoObjectHelper.cs" />
     <Compile Include="Security\FingerprintManagerApi.cs" />
-    <Compile Include="Activities\FullscreemImage.cs" />
+    <Compile Include="Activities\FullscreenImageActivity.cs" />
     <Compile Include="Backend\ScaleImageView.cs" />
   </ItemGroup>
   <ItemGroup>
