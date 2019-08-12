@@ -121,6 +121,8 @@
     <Compile Include="Security\CryptoEngine.cs" />
     <Compile Include="Security\CryptoObjectHelper.cs" />
     <Compile Include="Security\FingerprintManagerApi.cs" />
+    <Compile Include="Activities\FullscreemImage.cs" />
+    <Compile Include="Backend\ScaleImageView.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\SettingsView.axml">
@@ -137,6 +139,7 @@
     <AndroidResource Include="Resources\drawable\Esrb_M.png" />
     <AndroidResource Include="Resources\drawable\Esrb_AO.png" />
     <AndroidResource Include="Resources\drawable\Esrb_T.png" />
+    <AndroidResource Include="Resources\layout\ScaleImage.axml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml">

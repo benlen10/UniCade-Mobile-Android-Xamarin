@@ -167,23 +167,26 @@ namespace UniCadeAndroid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f07002f
-			public const int ApiSelectionSpinner = 2131165231;
+			// aapt resource value: 0x7f07002d
+			public const int AnimateImage = 2131165229;
+			
+			// aapt resource value: 0x7f070032
+			public const int ApiSelectionSpinner = 2131165234;
+			
+			// aapt resource value: 0x7f070040
+			public const int ApplyButton = 2131165248;
+			
+			// aapt resource value: 0x7f070046
+			public const int BackupDatabaseButton = 2131165254;
 			
 			// aapt resource value: 0x7f07003d
-			public const int ApplyButton = 2131165245;
-			
-			// aapt resource value: 0x7f070043
-			public const int BackupDatabaseButton = 2131165251;
-			
-			// aapt resource value: 0x7f07003a
-			public const int BoxBackImageCheckbox = 2131165242;
+			public const int BoxBackImageCheckbox = 2131165245;
 			
 			// aapt resource value: 0x7f070017
 			public const int BoxBackImageView = 2131165207;
 			
-			// aapt resource value: 0x7f070039
-			public const int BoxFrontImageCheckbox = 2131165241;
+			// aapt resource value: 0x7f07003c
+			public const int BoxFrontImageCheckbox = 2131165244;
 			
 			// aapt resource value: 0x7f070016
 			public const int BoxFrontImageView = 2131165206;
@@ -191,41 +194,44 @@ namespace UniCadeAndroid
 			// aapt resource value: 0x7f07001c
 			public const int CloseButton = 2131165212;
 			
-			// aapt resource value: 0x7f07002a
-			public const int ConsoleImageView = 2131165226;
+			// aapt resource value: 0x7f070029
+			public const int ConsoleImageView = 2131165225;
 			
-			// aapt resource value: 0x7f07002d
-			public const int ConsoleSelectionSpinner = 2131165229;
+			// aapt resource value: 0x7f07002c
+			public const int ConsoleSelectionSpinner = 2131165228;
 			
 			// aapt resource value: 0x7f07000b
 			public const int ConsoleTextView = 2131165195;
 			
-			// aapt resource value: 0x7f070031
-			public const int CriticScoreCheckbox = 2131165233;
+			// aapt resource value: 0x7f070034
+			public const int CriticScoreCheckbox = 2131165236;
 			
 			// aapt resource value: 0x7f07000d
 			public const int CriticScoreTextView = 2131165197;
 			
-			// aapt resource value: 0x7f070049
-			public const int DeleteAllLocalImagesButton = 2131165257;
+			// aapt resource value: 0x7f07004c
+			public const int DeleteAllLocalImagesButton = 2131165260;
 			
-			// aapt resource value: 0x7f070036
-			public const int DescriptionCheckbox = 2131165238;
+			// aapt resource value: 0x7f070030
+			public const int DeleteButton = 2131165232;
+			
+			// aapt resource value: 0x7f070039
+			public const int DescriptionCheckbox = 2131165241;
 			
 			// aapt resource value: 0x7f070013
 			public const int DescriptonTextView = 2131165203;
 			
-			// aapt resource value: 0x7f070047
-			public const int DisplayModernESRBIconsCheckbox = 2131165255;
+			// aapt resource value: 0x7f07004a
+			public const int DisplayModernESRBIconsCheckbox = 2131165258;
 			
 			// aapt resource value: 0x7f07001e
 			public const int DownloadInfoButton = 2131165214;
 			
-			// aapt resource value: 0x7f070046
-			public const int EnableFingerprintSecurityCheckbox = 2131165254;
+			// aapt resource value: 0x7f070049
+			public const int EnableFingerprintSecurityCheckbox = 2131165257;
 			
-			// aapt resource value: 0x7f07004d
-			public const int EnterLicenseKeyButton = 2131165261;
+			// aapt resource value: 0x7f070050
+			public const int EnterLicenseKeyButton = 2131165264;
 			
 			// aapt resource value: 0x7f070010
 			public const int EsrbDescriptorsTextView = 2131165200;
@@ -233,8 +239,8 @@ namespace UniCadeAndroid
 			// aapt resource value: 0x7f070019
 			public const int EsrbLogoImageView = 2131165209;
 			
-			// aapt resource value: 0x7f070034
-			public const int EsrbRatingCheckbox = 2131165236;
+			// aapt resource value: 0x7f070037
+			public const int EsrbRatingCheckbox = 2131165239;
 			
 			// aapt resource value: 0x7f07000f
 			public const int EsrbRatingTextView = 2131165199;
@@ -242,8 +248,8 @@ namespace UniCadeAndroid
 			// aapt resource value: 0x7f070014
 			public const int FavoriteCheckbox = 2131165204;
 			
-			// aapt resource value: 0x7f07002c
-			public const int GameCountTextView = 2131165228;
+			// aapt resource value: 0x7f07002b
+			public const int GameCountTextView = 2131165227;
 			
 			// aapt resource value: 0x7f070009
 			public const int GameInfoViewLinearLayout = 2131165193;
@@ -257,23 +263,26 @@ namespace UniCadeAndroid
 			// aapt resource value: 0x7f07001b
 			public const int GameInfoViewRelativeLayout3 = 2131165211;
 			
-			// aapt resource value: 0x7f070028
-			public const int GameSelectionListView = 2131165224;
+			// aapt resource value: 0x7f070027
+			public const int GameSelectionListView = 2131165223;
 			
-			// aapt resource value: 0x7f070037
-			public const int GenresCheckbox = 2131165239;
+			// aapt resource value: 0x7f07003a
+			public const int GenresCheckbox = 2131165242;
 			
 			// aapt resource value: 0x7f070003
 			public const int Image = 2131165187;
 			
+			// aapt resource value: 0x7f07002f
+			public const int ImportImageButton = 2131165231;
+			
 			// aapt resource value: 0x7f070011
 			public const int LaunchCountTextView = 2131165201;
 			
-			// aapt resource value: 0x7f070040
-			public const int LoadBackupButton = 2131165248;
+			// aapt resource value: 0x7f070043
+			public const int LoadBackupButton = 2131165251;
 			
-			// aapt resource value: 0x7f07003f
-			public const int LoadDatabaseButton = 2131165247;
+			// aapt resource value: 0x7f070042
+			public const int LoadDatabaseButton = 2131165250;
 			
 			// aapt resource value: 0x7f070026
 			public const int LoginButton = 2131165222;
@@ -287,17 +296,17 @@ namespace UniCadeAndroid
 			// aapt resource value: 0x7f070025
 			public const int LoginViewRelativeLayout1 = 2131165221;
 			
-			// aapt resource value: 0x7f070038
-			public const int OtherAvailablePlatformsCheckbox = 2131165240;
+			// aapt resource value: 0x7f07003b
+			public const int OtherAvailablePlatformsCheckbox = 2131165243;
 			
 			// aapt resource value: 0x7f070024
 			public const int PasswordEditText = 2131165220;
 			
-			// aapt resource value: 0x7f070045
-			public const int PasswordProtectSettingsCheckbox = 2131165253;
+			// aapt resource value: 0x7f070048
+			public const int PasswordProtectSettingsCheckbox = 2131165256;
 			
-			// aapt resource value: 0x7f070035
-			public const int PlayerCountCheckbox = 2131165237;
+			// aapt resource value: 0x7f070038
+			public const int PlayerCountCheckbox = 2131165240;
 			
 			// aapt resource value: 0x7f07000e
 			public const int PlayersTextView = 2131165198;
@@ -305,11 +314,11 @@ namespace UniCadeAndroid
 			// aapt resource value: 0x7f07000c
 			public const int PublisherTextView = 2131165196;
 			
-			// aapt resource value: 0x7f070033
-			public const int PubusherDeveloperCheckbox = 2131165235;
+			// aapt resource value: 0x7f070036
+			public const int PubusherDeveloperCheckbox = 2131165238;
 			
-			// aapt resource value: 0x7f070030
-			public const int ReleaseDateCheckbox = 2131165232;
+			// aapt resource value: 0x7f070033
+			public const int ReleaseDateCheckbox = 2131165235;
 			
 			// aapt resource value: 0x7f070012
 			public const int ReleaseDateTextView = 2131165202;
@@ -317,38 +326,38 @@ namespace UniCadeAndroid
 			// aapt resource value: 0x7f07001d
 			public const int SaveButton = 2131165213;
 			
-			// aapt resource value: 0x7f070042
-			public const int SaveDatabaseButton = 2131165250;
+			// aapt resource value: 0x7f070045
+			public const int SaveDatabaseButton = 2131165253;
 			
-			// aapt resource value: 0x7f07003b
-			public const int ScreenshotImageCheckbox = 2131165243;
+			// aapt resource value: 0x7f07003e
+			public const int ScreenshotImageCheckbox = 2131165246;
 			
 			// aapt resource value: 0x7f070018
 			public const int ScreenshotImageView = 2131165208;
 			
-			// aapt resource value: 0x7f07002b
-			public const int SearchBarEditTExt = 2131165227;
+			// aapt resource value: 0x7f07002a
+			public const int SearchBarEditTExt = 2131165226;
 			
-			// aapt resource value: 0x7f070029
-			public const int SettingsButton = 2131165225;
+			// aapt resource value: 0x7f070028
+			public const int SettingsButton = 2131165224;
 			
-			// aapt resource value: 0x7f07002e
-			public const int SettingsViewLinearLayout = 2131165230;
-			
-			// aapt resource value: 0x7f07003e
-			public const int SettingsViewRelativeLayout0 = 2131165246;
+			// aapt resource value: 0x7f070031
+			public const int SettingsViewLinearLayout = 2131165233;
 			
 			// aapt resource value: 0x7f070041
-			public const int SettingsViewRelativeLayout1 = 2131165249;
-			
-			// aapt resource value: 0x7f070048
-			public const int SettingsViewRelativeLayout2 = 2131165256;
-			
-			// aapt resource value: 0x7f07004b
-			public const int SettingsViewRelativeLayout3 = 2131165259;
+			public const int SettingsViewRelativeLayout0 = 2131165249;
 			
 			// aapt resource value: 0x7f070044
-			public const int ShowSplashScreenCheckbox = 2131165252;
+			public const int SettingsViewRelativeLayout1 = 2131165252;
+			
+			// aapt resource value: 0x7f07004b
+			public const int SettingsViewRelativeLayout2 = 2131165259;
+			
+			// aapt resource value: 0x7f07004e
+			public const int SettingsViewRelativeLayout3 = 2131165262;
+			
+			// aapt resource value: 0x7f070047
+			public const int ShowSplashScreenCheckbox = 2131165255;
 			
 			// aapt resource value: 0x7f070000
 			public const int Text = 2131165184;
@@ -362,17 +371,17 @@ namespace UniCadeAndroid
 			// aapt resource value: 0x7f07000a
 			public const int TitleTextView = 2131165194;
 			
-			// aapt resource value: 0x7f07004a
-			public const int UniCadeCloudButton = 2131165258;
+			// aapt resource value: 0x7f07004d
+			public const int UniCadeCloudButton = 2131165261;
 			
-			// aapt resource value: 0x7f070032
-			public const int UserScoreCheckbox = 2131165234;
+			// aapt resource value: 0x7f070035
+			public const int UserScoreCheckbox = 2131165237;
 			
 			// aapt resource value: 0x7f070023
 			public const int UsernameEditText = 2131165219;
 			
-			// aapt resource value: 0x7f07004c
-			public const int WebScraperSettingsButton = 2131165260;
+			// aapt resource value: 0x7f07004f
+			public const int WebScraperSettingsButton = 2131165263;
 			
 			// aapt resource value: 0x7f070008
 			public const int cancel_button = 2131165192;
@@ -392,11 +401,11 @@ namespace UniCadeAndroid
 			// aapt resource value: 0x7f070007
 			public const int fingerprint_status = 2131165191;
 			
-			// aapt resource value: 0x7f070027
-			public const int relativeLayout = 2131165223;
+			// aapt resource value: 0x7f07002e
+			public const int relativeLayout = 2131165230;
 			
-			// aapt resource value: 0x7f07003c
-			public const int relativeLayout5 = 2131165244;
+			// aapt resource value: 0x7f07003f
+			public const int relativeLayout5 = 2131165247;
 			
 			// aapt resource value: 0x7f07001f
 			public const int textView = 2131165215;
@@ -436,10 +445,13 @@ namespace UniCadeAndroid
 			public const int MainView = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int ScraperSettingsView = 2130903047;
+			public const int ScaleImage = 2130903047;
 			
 			// aapt resource value: 0x7f030008
-			public const int SettingsView = 2130903048;
+			public const int ScraperSettingsView = 2130903048;
+			
+			// aapt resource value: 0x7f030009
+			public const int SettingsView = 2130903049;
 			
 			static Layout()
 			{

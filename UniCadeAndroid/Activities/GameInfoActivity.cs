@@ -7,6 +7,7 @@ using Android.Widget;
 using UniCadeAndroid.Constants;
 using UniCadeAndroid.Backend;
 using UniCadeAndroid.Network;
+using Android.Content;
 
 namespace UniCadeAndroid.Activities
 {
@@ -50,9 +51,22 @@ namespace UniCadeAndroid.Activities
 
         private ImageView _esrbLogoImageView;
 
-		#endregion
+        private Bitmap _boxFrontBitmap;
 
-		protected override void OnCreate(Bundle savedInstanceState)
+        private Bitmap _boxBackBitmap;
+
+		private Bitmap _screenshotBitmap;
+
+        #endregion
+
+
+        #region Properties
+
+        Bitmap CurrentImageBitmap;
+
+        #endregion
+
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -101,6 +115,7 @@ namespace UniCadeAndroid.Activities
 			});
 			dialogBuilder.SetView(editText);
 			dialogBuilder.Show();
+
 		}
 
 
@@ -110,23 +125,34 @@ namespace UniCadeAndroid.Activities
             string imagePath = sdCardPath + ConstPaths.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_BoxFront.jpg";
             if (File.Exists(imagePath))
             {
-                Bitmap bitmap = BitmapFactory.DecodeFile(imagePath);
-                _boxFrontImageView.SetImageBitmap(bitmap);
+                _boxFrontBitmap = BitmapFactory.DecodeFile(imagePath);
+                _boxFrontImageView.SetImageBitmap(_boxFrontBitmap);
+            }
+            else{
+                _boxFrontBitmap = null;
             }
 
             imagePath = sdCardPath + ConstPaths.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_BoxBack.jpg";
             if (File.Exists(imagePath))
             {
-                Bitmap bitmap = BitmapFactory.DecodeFile(imagePath);
-                _boxBackImageView.SetImageBitmap(bitmap);
+                _boxBackBitmap = BitmapFactory.DecodeFile(imagePath);
+                _boxBackImageView.SetImageBitmap(_boxBackBitmap);
             }
+			else
+			{
+                _boxBackBitmap = null;
+			}
 
             imagePath = sdCardPath + ConstPaths.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_Screenshot.jpg";
             if (File.Exists(imagePath))
             {
-                Bitmap bitmap = BitmapFactory.DecodeFile(imagePath);
-                _screenshotImageView.SetImageBitmap(bitmap);
+                _screenshotBitmap = BitmapFactory.DecodeFile(imagePath);
+                _screenshotImageView.SetImageBitmap(_screenshotBitmap);
             }
+			else
+			{
+                _screenshotBitmap = null;
+			}
         }
 
 
@@ -204,17 +230,42 @@ namespace UniCadeAndroid.Activities
             
             _boxFrontImageView.Click += (sender, e) =>
             {
-                //TODO: Expand box front image
+                if(_boxFrontBitmap != null){
+                    CurrentImageBitmap = _boxFrontBitmap;
+                    var intent = new Intent(this, typeof(FullscreemImage));
+					StartActivity(intent);
+                }
+                else{
+                    DisplayToast("No box front image present");
+                }
             };
 
             _boxBackImageView.Click += (sender, e) =>
             {
-                //TODO: Expand box back image
+                if (_boxBackBitmap != null)
+				{
+					CurrentImageBitmap = _boxBackBitmap;
+					var intent = new Intent(this, typeof(FullscreemImage));
+					StartActivity(intent);
+				}
+				else
+				{
+					DisplayToast("No box back image present");
+				}
             };
 
             _screenshotImageView.Click += (sender, e) =>
             {
-                //TODO: Expand screenshot image
+                if (_screenshotBitmap != null)
+				{
+					CurrentImageBitmap = _screenshotBitmap;
+					var intent = new Intent(this, typeof(FullscreemImage));
+					StartActivity(intent);
+				}
+				else
+				{
+					DisplayToast("No screenshot image present");
+				}
             };
 
             _downloadInfoButton.Click += (sender, e) =>
@@ -325,6 +376,11 @@ namespace UniCadeAndroid.Activities
 				Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
 			}
             RefreshGameInfo();
+		}
+
+		public void DisplayToast(string message, ToastLength length = ToastLength.Short)
+		{
+			Toast.MakeText(ApplicationContext, message, length).Show();
 		}
     }
 }

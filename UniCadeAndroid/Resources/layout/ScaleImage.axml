@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:orientation="vertical"
+    p1:layout_width="fill_parent"
+    p1:layout_height="fill_parent">
+    <UniCadeAndroid.Backend.ScaleImageView
+		p1:id="@+id/AnimateImage"
+        p1:layout_width="fill_parent"
+        p1:layout_height="fill_parent"
+        p1:src="@drawable/icon"/>
+	<RelativeLayout
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="49.5dp"
+        p1:id="@+id/relativeLayout">
+        <Button
+            p1:text="Import"
+            p1:layout_width="128.0dp"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/ImportImageButton"
+            p1:layout_marginLeft="207.0dp" />
+        <Button
+            p1:text="Delete"
+            p1:layout_width="133.0dp"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/DeleteButton"
+            p1:layout_marginLeft="15.5dp" />
+		<Button
+            p1:text="Close"
+            p1:layout_width="133.0dp"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/CloseButton"
+            p1:layout_marginLeft="50.5dp" />
+    </RelativeLayout>
+</LinearLayout>

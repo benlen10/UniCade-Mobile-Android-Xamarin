@@ -144,7 +144,8 @@ namespace UniCadeAndroid.Network
                             gameImages.LoadFromNode(attributeNode);
 
                             //If the media directory does not exist, create it
-                            string directoryPath = Directory.GetCurrentDirectory() + @"/Media/Games/" + game.ConsoleName + "//";
+          
+                            string directoryPath = Android.OS.Environment.ExternalStorageDirectory.Path + @"/UniCade/Media/Games/" + game.ConsoleName + "//";
                             if (!Directory.Exists(directoryPath))
                             {
                                 Directory.CreateDirectory(directoryPath);
