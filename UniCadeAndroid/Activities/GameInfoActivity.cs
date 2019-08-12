@@ -81,7 +81,7 @@ namespace UniCadeAndroid.Activities
             _launchCountTextView.Text = "Launch Count: " + MainActivity.CurrentGame.GetLaunchCount().ToString();
             _releaseDateTextView.Text = "Release Date: " + MainActivity.CurrentGame.ReleaseDate;
             _descriptionTextView.Text = "Description:" + MainActivity.CurrentGame.Description;
-			_esrbLogoImageView.SetImageURI(Utilties.GetEsrbLogoImage(MainActivity.CurrentGame.EsrbRating));
+            _esrbLogoImageView.SetImageResource(Utilties.GetEsrbLogoImage(MainActivity.CurrentGame.EsrbRating));
         }
 
 		protected void ShowInputDialog(string title, Action<string> handlerFunction)

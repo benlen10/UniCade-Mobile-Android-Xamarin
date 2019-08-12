@@ -177,7 +177,7 @@ namespace UniCadeAndroid.Security
             void ReportScanFailure(int errMsgId, string errorMessage)
             {
                 MainActivity activity = (MainActivity) _fragment.Activity;
-                activity.AuthenticationFailed();
+                activity.FingerprintAuthenticationFailed();
                 _fragment.Dismiss();
             }
 
@@ -185,7 +185,7 @@ namespace UniCadeAndroid.Security
             {
                 MainActivity activity = (MainActivity) _fragment.Activity;
                 string msg = _fragment.Resources.GetString(Resource.String.authentication_failed_message);
-                activity.FingerprintScanFailed();
+                activity.FingerprintAuthenticationFailed();
                 _fragment.Dismiss();
             }
 

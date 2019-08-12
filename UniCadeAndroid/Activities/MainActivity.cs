@@ -175,19 +175,14 @@ namespace UniCadeAndroid.Activities
 
 		public void AuthenticationSuccessful()
 		{
-            Toast.MakeText(ApplicationContext, "Fingerprint Authentication Successful!", ToastLength.Long).Show();
+            DisplayToast("Fingerprint Authentication Successful!");
 			var intent = new Intent(this, typeof(SettingsActivity));
 			StartActivity(intent);
 		}
 
-		public void AuthenticationFailed()
+		public void FingerprintAuthenticationFailed()
 		{
-			Toast.MakeText(ApplicationContext, "Fingerprint Authentication Failed", ToastLength.Long).Show();
-		}
-
-		public void FingerprintScanFailed()
-		{
-			Toast.MakeText(ApplicationContext, "Fingerprint Scan Failed", ToastLength.Long).Show();
+            DisplayToast("Fingerprint Authentication Failed");
 		}
 
         private void RefreshGameList()
@@ -267,7 +262,7 @@ namespace UniCadeAndroid.Activities
             }
             else
             {
-                Toast.MakeText(ApplicationContext, "Invalid game", ToastLength.Long).Show();
+                DisplayToast("Cannot open settings window");
             }
         }
 
@@ -307,7 +302,7 @@ namespace UniCadeAndroid.Activities
 				StartActivity(intent);
             }
             else{
-                Toast.MakeText(ApplicationContext, "Invalid Password", ToastLength.Long).Show();
+                DisplayToast("Invalid Password");
             }
         }
 

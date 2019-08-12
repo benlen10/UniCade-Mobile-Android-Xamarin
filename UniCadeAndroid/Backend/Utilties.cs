@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Android.Content.Res;
+using Java.IO;
+using UniCadeAndroid.Activities;
 using UniCadeAndroid.Constants;
 using Uri = Android.Net.Uri;
 
@@ -105,28 +108,32 @@ namespace UniCadeAndroid.Backend
         /// </summary>
         /// <param name="rating">An EsrbRating enum</param>
         /// <returns>The BitMap image corresponding to the rating enum</returns>
-        internal static Uri GetEsrbLogoImage(Enums.EsrbRatings rating)
+        internal static int GetEsrbLogoImage(Enums.EsrbRatings rating)
         {
             //Choose between classic and modern logos
             string logoType = Preferences.UseModernEsrbLogos ? "ModernEsrbLogos" : "EsrbLogos";
 
             if (rating.Equals(Enums.EsrbRatings.Everyone))
             {
-                return Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid.UniCadeAndroid/drawable/EsrbLogos/E.png".Replace("EsrbLogos", logoType));
+                return Resource.Drawable.Esrb_E; // Esrb_E;
             }
             if (rating.Equals(Enums.EsrbRatings.Everyone10))
             {
-                return Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/EsrbLogos/E10.png".Replace("EsrbLogos", logoType));
+                return Resource.Drawable.Esrb_ET; //Esrb_E10;
             }
             if (rating.Equals(Enums.EsrbRatings.Teen))
             {
-                return Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/EsrbLogos/T.png".Replace("EsrbLogos", logoType));
+                return Resource.Drawable.Esrb_T; //Esrb_T;
             }
             if (rating.Equals(Enums.EsrbRatings.Mature))
             {
-                return Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/EsrbLogos/M.png".Replace("EsrbLogos", logoType));
+                return Resource.Drawable.Esrb_M; //Esrb_M;
             }
-            return rating.Equals(Enums.EsrbRatings.Ao) ? Uri.Parse("android.resource://UniCadeAndroid.UniCadeAndroid/drawable/EsrbLogos/AO.png".Replace("EsrbLogos", logoType)) : null;
+            if (rating.Equals(Enums.EsrbRatings.Ao))
+			{
+                return Resource.Drawable.Esrb_AO; //Esrb_M;
+			}
+            return Resource.Drawable.icon;
         }
     }
 }
