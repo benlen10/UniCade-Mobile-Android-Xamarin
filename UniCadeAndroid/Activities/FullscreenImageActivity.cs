@@ -17,19 +17,19 @@ namespace UniCadeAndroid.Activities
     [Activity(Label = "FullscreemImage")]
     public class FullscreenImageActivity : Activity
     {
-		#region Private Instance Variables
+        #region Private Instance Variables
 
-		private ImageView _scaleImage;
+        private ImageView _scaleImage;
 
-		private Button _importImageButton;
+        private Button _importImageButton;
 
-		private Button _deleteImageButton;
+        private Button _deleteImageButton;
 
-		private Button _closeButton;
+        private Button _closeButton;
 
-		#endregion
+        #endregion
 
-		protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -46,6 +46,28 @@ namespace UniCadeAndroid.Activities
             _importImageButton = FindViewById<Button>(Resource.Id.ImportImageButton);
             _deleteImageButton = FindViewById<Button>(Resource.Id.DeleteImageButton);
             _closeButton = FindViewById<Button>(Resource.Id.CloseImageButton);
+        }
+
+        private void CreateEventHandlers()
+        {
+            _importImageButton.Click += (sender, e) =>
+            {
+                Toast.MakeText(ApplicationContext, "Import new Image", ToastLength.Long).Show();
+                //TODO: Import imgae
+            };
+
+            _deleteImageButton.Click += (sender, e) =>
+            {
+                Toast.MakeText(ApplicationContext, "Delete Image", ToastLength.Long).Show();
+                //TODO: Delete image
+            };
+
+            _closeButton.Click += (sender, e) =>
+            {
+                Finish();
+            };
+
+
         }
     }
 }
