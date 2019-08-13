@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using Android.App;
 using Android.Content;
+using Android.Net;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -52,8 +53,10 @@ namespace UniCadeAndroid.Activities
         {
             _importImageButton.Click += (sender, e) =>
             {
-                Toast.MakeText(ApplicationContext, "Import new Image", ToastLength.Long).Show();
-                //TODO: Import imgae
+				var imageIntent = new Intent();
+				imageIntent.SetType("image/*");
+				imageIntent.SetAction(Intent.ActionGetContent);
+                StartActivityForResult(Intent.CreateChooser(imageIntent, $"Select new {_imageType} image"), 0);
             };
 
             _deleteImageButton.Click += (sender, e) =>
@@ -78,8 +81,27 @@ namespace UniCadeAndroid.Activities
             {
                 Finish();
             };
-
-
         }
+
+		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult(requestCode, resultCode, data);
+
+			if (resultCode == Result.Ok)
+			{
+				Uri imageUri = data.Data;
+                string imageFilePath = imageUri.Path;
+
+				var sdCardPath = Environment.ExternalStorageDirectory.Path;
+                string destImagePath = sdCardPath + ConstPaths.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.ConsoleName + $"_{_imageType}.jpg";
+                File.Copy(imageFilePath, destImagePath);
+                Toast.MakeText(ApplicationContext, "Image imported", ToastLength.Long).Show();
+			}
+            else{
+                Toast.MakeText(ApplicationContext, "Failed to import imgage", ToastLength.Long).Show();
+            }
+
+            Finish();
+		}
     }
 }
