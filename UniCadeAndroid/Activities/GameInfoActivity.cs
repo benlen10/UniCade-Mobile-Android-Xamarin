@@ -232,7 +232,8 @@ namespace UniCadeAndroid.Activities
             {
                 if(_boxFrontBitmap != null){
                     CurrentImageBitmap = _boxFrontBitmap;
-                    var intent = new Intent(this, typeof(FullscreemImage));
+                    var intent = new Intent(this, typeof(FullscreenImageActivity));
+                    intent.PutExtra("ImageType", "BoxFront");
 					StartActivity(intent);
                 }
                 else{
@@ -245,7 +246,8 @@ namespace UniCadeAndroid.Activities
                 if (_boxBackBitmap != null)
 				{
 					CurrentImageBitmap = _boxBackBitmap;
-					var intent = new Intent(this, typeof(FullscreemImage));
+					var intent = new Intent(this, typeof(FullscreenImageActivity));
+                    intent.PutExtra("ImageType", "BoxBack");
 					StartActivity(intent);
 				}
 				else
@@ -259,7 +261,8 @@ namespace UniCadeAndroid.Activities
                 if (_screenshotBitmap != null)
 				{
 					CurrentImageBitmap = _screenshotBitmap;
-					var intent = new Intent(this, typeof(FullscreemImage));
+					var intent = new Intent(this, typeof(FullscreenImageActivity));
+                    intent.PutExtra("ImageType", "Screenshot");
 					StartActivity(intent);
 				}
 				else

@@ -23,6 +23,8 @@ namespace UniCadeAndroid.Activities
 
         private Button _closeButton;
 
+        private string _imageType;
+
         #endregion
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -34,6 +36,8 @@ namespace UniCadeAndroid.Activities
             FindElementsById();
 
             _scaleImage.SetImageBitmap(GameInfoActivity.CurrentImageBitmap);
+
+            _imageType = Intent.GetStringExtra("ImageType");
         }
 
         private void FindElementsById()
@@ -58,7 +62,7 @@ namespace UniCadeAndroid.Activities
                 var sdCardPath = Environment.ExternalStorageDirectory.Path;
                 string consoleName = MainActivity.CurrentGame.ConsoleName;
                 string gameName = MainActivity.CurrentGame.ConsoleName;
-				string filePath = sdCardPath + ConstPaths.GameImagesPath + consoleName + "/" + gameName + "_BoxFront.jpg";
+                string filePath = sdCardPath + ConstPaths.GameImagesPath + consoleName + "/" + gameName + $"_{_imageType}.jpg";
 				if (File.Exists(filePath))
 				{
                     File.Delete(filePath);
