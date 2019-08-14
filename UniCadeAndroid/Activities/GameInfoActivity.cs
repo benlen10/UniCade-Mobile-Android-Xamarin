@@ -180,6 +180,9 @@ namespace UniCadeAndroid.Activities
             _boxBackImageView = FindViewById<ImageView>(Resource.Id.BoxBackImageView);
             _screenshotImageView = FindViewById<ImageView>(Resource.Id.ScreenshotImageView);
             _esrbLogoImageView = FindViewById<ImageView>(Resource.Id.EsrbLogoImageView);
+
+            //Allow the descripton textview to scroll vertically
+            _descriptionTextView.MovementMethod = new Android.Text.Method.ScrollingMovementMethod();
         }
 
         private void CreateEventHandlers(){

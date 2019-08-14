@@ -72,8 +72,10 @@
     <TextView
         p1:text="Descripton:"
         p1:textAppearance="?android:attr/textAppearanceMedium"
+        p1:scrollbars="vertical"
+        p1:maxLines="100"
         p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
+        p1:layout_height="109.5dp"
         p1:id="@+id/DescriptonTextView"
         p1:layout_marginLeft="11.0dp" />
     <CheckBox
@@ -85,7 +87,7 @@
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:layout_width="match_parent"
-        p1:layout_height="131.5dp"
+        p1:layout_height="158.0dp"
         p1:id="@+id/GameInfoViewRelativeLayout1">
         <ImageView
             p1:id="@+id/BoxFrontImageView"
@@ -108,12 +110,6 @@
             p1:layout_height="100.0dp"
             p1:layout_marginLeft="311.5dp" />
     </RelativeLayout>
-    <RelativeLayout
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:layout_width="match_parent"
-        p1:layout_height="57.0dp"
-        p1:id="@+id/GameInfoViewRelativeLayout2" />
     <RelativeLayout
         p1:minWidth="25px"
         p1:minHeight="25px"
