@@ -40,8 +40,14 @@ namespace UniCadeAndroid.Activities
 
             _imageType = Intent.GetStringExtra("ImageType");
 
-            Window.SetTitle(_imageType + " Image");
+            CreateEventHandlers();
         }
+
+		public override void OnAttachedToWindow()
+		{
+			base.OnAttachedToWindow();
+			Window.SetTitle(_imageType + " Image");
+		}
 
         private void FindElementsById()
         {

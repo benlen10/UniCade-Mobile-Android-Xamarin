@@ -110,30 +110,27 @@ namespace UniCadeAndroid.Backend
         /// <returns>The BitMap image corresponding to the rating enum</returns>
         internal static int GetEsrbLogoImage(Enums.EsrbRatings rating)
         {
-            //Choose between classic and modern logos
-            string logoType = Preferences.UseModernEsrbLogos ? "ModernEsrbLogos" : "EsrbLogos";
-
             if (rating.Equals(Enums.EsrbRatings.Everyone))
             {
-                return Resource.Drawable.Esrb_E; // Esrb_E;
+                return Resource.Drawable.Esrb_E; 
             }
             if (rating.Equals(Enums.EsrbRatings.Everyone10))
             {
-                return Resource.Drawable.Esrb_ET; //Esrb_E10;
+                return Resource.Drawable.Esrb_ET; 
             }
             if (rating.Equals(Enums.EsrbRatings.Teen))
             {
-                return Resource.Drawable.Esrb_T; //Esrb_T;
+                return Resource.Drawable.Esrb_T; 
             }
             if (rating.Equals(Enums.EsrbRatings.Mature))
             {
-                return Resource.Drawable.Esrb_M; //Esrb_M;
+                return Resource.Drawable.Esrb_M; 
             }
             if (rating.Equals(Enums.EsrbRatings.Ao))
 			{
-                return Resource.Drawable.Esrb_AO; //Esrb_M;
+                return Resource.Drawable.Esrb_AO; 
 			}
-            return Resource.Drawable.icon;
+            return 0;
         }
     }
 }

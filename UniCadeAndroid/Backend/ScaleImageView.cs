@@ -34,7 +34,7 @@ namespace UniCadeAndroid.Backend
 	{
 		private Context m_Context;
 
-		private float m_MaxScale = 4.0f;
+		private float m_MaxScale = 8.0f;
 
 		private Matrix m_Matrix;
 		private float[] m_MatrixValues = new float[9];
