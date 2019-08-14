@@ -4,11 +4,11 @@
     p1:layout_width="fill_parent"
     p1:layout_height="fill_parent">
     <UniCadeAndroid.Backend.ScaleImageView
-		p1:id="@+id/FullscreenImageViewId"
+        p1:id="@+id/FullscreenImageViewId"
         p1:layout_width="fill_parent"
-        p1:layout_height="fill_parent"
-        p1:src="@drawable/icon"/>
-	<RelativeLayout
+        p1:layout_height="510.0dp"
+        p1:layout_marginBottom="0.0dp" />
+    <RelativeLayout
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:layout_width="match_parent"
@@ -16,21 +16,22 @@
         p1:id="@+id/relativeLayout">
         <Button
             p1:text="Import"
-            p1:layout_width="128.0dp"
+            p1:layout_width="105.0dp"
             p1:layout_height="wrap_content"
             p1:id="@+id/ImportImageButton"
-            p1:layout_marginLeft="207.0dp" />
+            p1:layout_marginLeft="7.0dp" />
         <Button
             p1:text="Delete"
-            p1:layout_width="133.0dp"
+            p1:layout_width="105.0dp"
             p1:layout_height="wrap_content"
             p1:id="@+id/DeleteImageButton"
-            p1:layout_marginLeft="15.5dp" />
-		<Button
+            p1:layout_marginLeft="139.0dp" />
+        <Button
             p1:text="Close"
-            p1:layout_width="133.0dp"
+            p1:layout_width="105.0dp"
             p1:layout_height="wrap_content"
             p1:id="@+id/CloseImageButton"
-            p1:layout_marginLeft="50.5dp" />
+            p1:layout_marginLeft="267.0dp"
+            p1:layout_marginTop="2.0dp" />
     </RelativeLayout>
 </LinearLayout>

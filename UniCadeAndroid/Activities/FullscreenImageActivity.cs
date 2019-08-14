@@ -11,7 +11,7 @@ using UniCadeAndroid.Constants;
 namespace UniCadeAndroid.Activities
 {
 
-    [Activity(Label = "FullscreemImage")]
+    [Activity(Label = "")]
     public class FullscreenImageActivity : Activity
     {
         #region Private Instance Variables
@@ -39,6 +39,8 @@ namespace UniCadeAndroid.Activities
             _scaleImage.SetImageBitmap(GameInfoActivity.CurrentImageBitmap);
 
             _imageType = Intent.GetStringExtra("ImageType");
+
+            Window.SetTitle(_imageType + " Image");
         }
 
         private void FindElementsById()
@@ -53,10 +55,17 @@ namespace UniCadeAndroid.Activities
         {
             _importImageButton.Click += (sender, e) =>
             {
-				var imageIntent = new Intent();
-				imageIntent.SetType("image/*");
-				imageIntent.SetAction(Intent.ActionGetContent);
-                StartActivityForResult(Intent.CreateChooser(imageIntent, $"Select new {_imageType} image"), 0);
+                if (GameInfoActivity.CurrentImageBitmap != null)
+                {
+                    Toast.MakeText(ApplicationContext, "Please delete the current image first", ToastLength.Long).Show();
+                }
+                else
+                {
+                    var imageIntent = new Intent();
+                    imageIntent.SetType("image/*");
+                    imageIntent.SetAction(Intent.ActionGetContent);
+                    StartActivityForResult(Intent.CreateChooser(imageIntent, $"Select new {_imageType} image"), 0);
+                }
             };
 
             _deleteImageButton.Click += (sender, e) =>
@@ -70,6 +79,7 @@ namespace UniCadeAndroid.Activities
 				{
                     File.Delete(filePath);
                     Toast.MakeText(ApplicationContext, "Image deleted", ToastLength.Long).Show();
+                    GameInfoActivity.CurrentImageBitmap = null;
 				}
                 else{
                     Toast.MakeText(ApplicationContext, "Could not delete imgae", ToastLength.Long).Show();

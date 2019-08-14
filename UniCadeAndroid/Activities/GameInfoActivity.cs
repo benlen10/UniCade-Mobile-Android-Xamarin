@@ -230,45 +230,38 @@ namespace UniCadeAndroid.Activities
             
             _boxFrontImageView.Click += (sender, e) =>
             {
-                if(_boxFrontBitmap != null){
-                    CurrentImageBitmap = _boxFrontBitmap;
-                    var intent = new Intent(this, typeof(FullscreenImageActivity));
-                    intent.PutExtra("ImageType", "BoxFront");
-					StartActivity(intent);
-                }
-                else{
+                if(_boxFrontBitmap == null){
                     DisplayToast("No box front image present");
                 }
+				CurrentImageBitmap = _boxFrontBitmap;
+				var intent = new Intent(this, typeof(FullscreenImageActivity));
+				intent.PutExtra("ImageType", "BoxFront");
+				StartActivity(intent);
             };
 
             _boxBackImageView.Click += (sender, e) =>
             {
                 if (_boxBackBitmap != null)
-				{
+                {
+					DisplayToast("No box back image present");
+				}
 					CurrentImageBitmap = _boxBackBitmap;
 					var intent = new Intent(this, typeof(FullscreenImageActivity));
                     intent.PutExtra("ImageType", "BoxBack");
 					StartActivity(intent);
-				}
-				else
-				{
-					DisplayToast("No box back image present");
-				}
+
             };
 
             _screenshotImageView.Click += (sender, e) =>
             {
-                if (_screenshotBitmap != null)
-				{
+                if (_screenshotBitmap == null)
+                {
+                    DisplayToast("No screenshot image present");
+                }
 					CurrentImageBitmap = _screenshotBitmap;
 					var intent = new Intent(this, typeof(FullscreenImageActivity));
                     intent.PutExtra("ImageType", "Screenshot");
 					StartActivity(intent);
-				}
-				else
-				{
-					DisplayToast("No screenshot image present");
-				}
             };
 
             _downloadInfoButton.Click += (sender, e) =>
