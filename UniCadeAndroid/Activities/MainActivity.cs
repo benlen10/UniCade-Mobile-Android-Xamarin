@@ -18,7 +18,7 @@ using Android.Support.V4.Hardware.Fingerprint;
 
 namespace UniCadeAndroid.Activities
 {
-    [Activity(Label = "UniCade Mobile", MainLauncher = true, Icon = "@drawable/UniCadeIcon")]
+    [Activity(Label = "UniCade Mobile", MainLauncher = true, ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation, ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class MainActivity : Activity
     {
 
@@ -201,7 +201,7 @@ namespace UniCadeAndroid.Activities
                         var item = new GameListObject
                         {
                             Title = gameTitle,
-                            Console = currentConsoleName,
+                            Console = consoleName,
                             ImageResourceId = 0
                         };
                         if ((_searchText.Length > 0 && item.Title.ContainsIgnoreCase(_searchText)) || _searchText.Length == 0)

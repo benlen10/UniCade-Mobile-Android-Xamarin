@@ -11,7 +11,7 @@ using Android.Content;
 
 namespace UniCadeAndroid.Activities
 {
-    [Activity(Label = "Game Info")]
+    [Activity(Label = "Game Info", ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation, ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class GameInfoActivity : Activity
     {
 

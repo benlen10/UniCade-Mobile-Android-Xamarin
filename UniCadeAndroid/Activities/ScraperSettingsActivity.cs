@@ -9,7 +9,7 @@ using UniCadeAndroid.Network;
 
 namespace UniCadeAndroid.Activities
 {
-    [Activity(Label = "UniCAde Web Scraper Settings")]
+    [Activity(Label = "UniCAde Web Scraper Settings", ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation, ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class ScraperSettingsActivity : Activity
     {
         #region Private Instance Variables

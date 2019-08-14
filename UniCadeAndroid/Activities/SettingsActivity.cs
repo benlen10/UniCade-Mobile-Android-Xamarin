@@ -9,7 +9,7 @@ using UniCadeAndroid.Security;
 
 namespace UniCadeAndroid.Activities
 {
-    [Activity(Label = "UniCade Mobile Settings")]
+    [Activity(Label = "UniCade Mobile Settings", ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation, ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class SettingsActivity : Activity
     {
         #region Private Instance Variables
@@ -80,7 +80,7 @@ namespace UniCadeAndroid.Activities
 
         private void PopulateSettings(){
             _showSplashScreenCheckbox.Checked = Preferences.ShowSplashScreen;
-            _passwordProtectSettingsCheckBox.Checked = (Preferences.PasswordProtection == null);
+            _passwordProtectSettingsCheckBox.Checked = (Preferences.PasswordProtection != null);
              _enableFingerprintProtectionCheckbox.Checked = Preferences.FingerprintProtectionEnabled;
             _displayModernEsrbIconsCheckBox.Checked = Preferences.UseModernEsrbLogos;
         }
@@ -201,7 +201,8 @@ namespace UniCadeAndroid.Activities
                     Toast.MakeText(this, "Fingerprint Authentication Enabled", ToastLength.Short).Show();
                 }
                 else{
-                    Preferences.FingerprintProtectionEnabled = true;
+                    Preferences.FingerprintProtectionEnabled = false;
+                    Toast.MakeText(this, "Fingerprint Authentication Disabled", ToastLength.Short).Show();
                 }
             };
 

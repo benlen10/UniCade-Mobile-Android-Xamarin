@@ -11,7 +11,7 @@ using UniCadeAndroid.Constants;
 namespace UniCadeAndroid.Activities
 {
 
-    [Activity(Label = "")]
+    [Activity(Label = "", ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation, ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class FullscreenImageActivity : Activity
     {
         #region Private Instance Variables
