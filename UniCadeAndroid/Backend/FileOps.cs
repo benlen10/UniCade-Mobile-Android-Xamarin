@@ -12,7 +12,7 @@ using UniCadeAndroid.Interfaces;
 using UniCadeAndroid.Objects;
 using UniCadeAndroid.Security;
 using Console = UniCadeAndroid.Objects.Console;
-
+using Environment = Android.OS.Environment;
 
 namespace UniCadeAndroid.Backend
 {
@@ -27,7 +27,7 @@ namespace UniCadeAndroid.Backend
         /// <returns>false if the database file does not exist</returns>
         public static bool LoadDatabase(string path = ConstPaths.DatabaseFilePath)
         {
-            var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
+            var sdCardPath = Environment.ExternalStorageDirectory.Path;
             var filePath = sdCardPath + path;
 
             if (!File.Exists(filePath))
@@ -53,12 +53,12 @@ namespace UniCadeAndroid.Backend
         /// </summary>
         public static bool SaveDatabase(string path = ConstPaths.DatabaseFilePath)
         {
-            var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
+            var sdCardPath = Environment.ExternalStorageDirectory.Path;
             var filePath = sdCardPath + path;
 
             var consoleList = Database.GetConsoleList().Select(consoleName => (Console)Database.GetConsole(consoleName)).ToList();
             
-            var xmlWriterSettings = new XmlWriterSettings()
+            var xmlWriterSettings = new XmlWriterSettings
             {
                 Indent = true,
                 IndentChars = "\t"
@@ -80,7 +80,7 @@ namespace UniCadeAndroid.Backend
         [SuppressMessage("ReSharper", "PossibleNullReferenceException")]
         public static bool LoadPreferences(string path = ConstPaths.PreferencesFilePath)
         {
-            var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
+            var sdCardPath = Environment.ExternalStorageDirectory.Path;
             var filePath = sdCardPath + path;
 
             //First check if the database file exists
@@ -113,7 +113,7 @@ namespace UniCadeAndroid.Backend
         /// </summary>
         public static bool SavePreferences(string path = ConstPaths.PreferencesFilePath)
         {
-            var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
+            var sdCardPath = Environment.ExternalStorageDirectory.Path;
             var filePath = sdCardPath + path;
 
             var currentSettings = new CurrentSettings
@@ -131,7 +131,7 @@ namespace UniCadeAndroid.Backend
             }
 
 
-            var xmlWriterSettings = new XmlWriterSettings()
+            var xmlWriterSettings = new XmlWriterSettings
             {
                 Indent = true,
                 IndentChars = "\t"
@@ -256,7 +256,7 @@ namespace UniCadeAndroid.Backend
         public static bool StartupScan()
         {
 
-            var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
+            var sdCardPath = Environment.ExternalStorageDirectory.Path;
 
             //If preferences file does not exist, load default preference values and save a new file
             if (!LoadPreferences())
@@ -292,7 +292,7 @@ namespace UniCadeAndroid.Backend
         }
 
         public static void DeleteAllLocalMedia(){
-			var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
+			var sdCardPath = Environment.ExternalStorageDirectory.Path;
 			foreach (string consoleName in Database.GetConsoleList())
 			{
 				string consoleDirectory = sdCardPath + ConstPaths.GameImagesPath + consoleName;
@@ -309,7 +309,7 @@ namespace UniCadeAndroid.Backend
         #region Helper Methods
 
         private static void RegenerateMediaFolders(){
-            var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
+            var sdCardPath = Environment.ExternalStorageDirectory.Path;
 			foreach (string consoleName in Database.GetConsoleList())
 			{
 				string consoleDirectory = sdCardPath + ConstPaths.GameImagesPath + consoleName;

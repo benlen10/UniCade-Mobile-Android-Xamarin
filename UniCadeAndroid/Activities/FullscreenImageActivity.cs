@@ -1,17 +1,19 @@
 ﻿using System.IO;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Net;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using UniCadeAndroid.Constants;
 
 namespace UniCadeAndroid.Activities
 {
 
-    [Activity(Label = "", ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation, ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    /// <summary>
+    /// Backend logic for displaying a fullscreen image
+    /// </summary>
+    [Activity(Label = "", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class FullscreenImageActivity : Activity
     {
         #region Private Instance Variables
@@ -28,6 +30,10 @@ namespace UniCadeAndroid.Activities
 
         #endregion
 
+        /// <summary>
+        /// Set the view and initalize the activity
+        /// </summary>
+        /// <param name="savedInstanceState">Saved instance state.</param>
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -43,12 +49,18 @@ namespace UniCadeAndroid.Activities
             CreateEventHandlers();
         }
 
+        /// <summary>
+        /// Dynamically set the window title to specify the image type
+        /// </summary>
 		public override void OnAttachedToWindow()
 		{
 			base.OnAttachedToWindow();
 			Window.SetTitle(_imageType + " Image");
 		}
 
+        /// <summary>
+        /// Find all elements based on their unique ids
+        /// </summary>
         private void FindElementsById()
         {
             _scaleImage = FindViewById<ImageView>(Resource.Id.FullscreenImageViewId);
@@ -57,6 +69,9 @@ namespace UniCadeAndroid.Activities
             _closeButton = FindViewById<Button>(Resource.Id.CloseImageButton);
         }
 
+        /// <summary>
+        /// Create event handlers for all interactive elements within the current view
+        /// </summary>
         private void CreateEventHandlers()
         {
             _importImageButton.Click += (sender, e) =>
@@ -81,6 +96,8 @@ namespace UniCadeAndroid.Activities
                 string consoleName = MainActivity.CurrentGame.ConsoleName;
                 string gameName = MainActivity.CurrentGame.ConsoleName;
                 string filePath = sdCardPath + ConstPaths.GameImagesPath + consoleName + "/" + gameName + $"_{_imageType}.jpg";
+
+                //Attempt to delete the current image if it exists
 				if (File.Exists(filePath))
 				{
                     File.Delete(filePath);
@@ -88,9 +105,8 @@ namespace UniCadeAndroid.Activities
                     GameInfoActivity.CurrentImageBitmap = null;
 				}
                 else{
-                    Toast.MakeText(ApplicationContext, "Could not delete imgae", ToastLength.Long).Show();
+                    Toast.MakeText(ApplicationContext, "Could not delete image", ToastLength.Long).Show();
                 }
-                Finish();
             };
 
             _closeButton.Click += (sender, e) =>
@@ -99,6 +115,12 @@ namespace UniCadeAndroid.Activities
             };
         }
 
+        /// <summary>
+        /// Handles the result of the image import operation
+        /// </summary>
+        /// <param name="requestCode">Request code.</param>
+        /// <param name="resultCode">Result code.</param>
+        /// <param name="data">The target image URI</param>
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult(requestCode, resultCode, data);

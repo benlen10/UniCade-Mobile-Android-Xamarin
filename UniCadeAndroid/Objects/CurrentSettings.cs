@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using UniCadeAndroid.Constants;
 
 namespace UniCadeAndroid.Objects
 {

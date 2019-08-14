@@ -1,7 +1,7 @@
-﻿using Android.App;
+﻿using System.Collections.Generic;
+using Android.App;
 using Android.Views;
 using Android.Widget;
-using System.Collections.Generic;
 using UniCadeAndroid.Objects;
 
 namespace UniCadeAndroid.Activities

@@ -1,7 +1,7 @@
 ﻿﻿using System.Security.Cryptography;
-using System.Text;
-using UniCadeAndroid.Backend;
-using UniCadeAndroid.Constants;
+ using System.Text;
+ using UniCadeAndroid.Backend;
+ using UniCadeAndroid.Constants;
 
 namespace UniCadeAndroid.Security
 {
@@ -40,10 +40,8 @@ namespace UniCadeAndroid.Security
                 Preferences.IsLicenseValid = true;
                 return true;
             }
-            else{
-                Preferences.IsLicenseValid = false;
-                return false;
-            }
+            Preferences.IsLicenseValid = false;
+            return false;
         }
 
         #endregion

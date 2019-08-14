@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
 using UniCadeAndroid.Backend;
@@ -9,7 +10,7 @@ using UniCadeAndroid.Security;
 
 namespace UniCadeAndroid.Activities
 {
-    [Activity(Label = "UniCade Mobile Settings", ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation, ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    [Activity(Label = "UniCade Mobile Settings", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class SettingsActivity : Activity
     {
         #region Private Instance Variables

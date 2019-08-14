@@ -1,30 +1,38 @@
-﻿using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Widget;
-using UniCadeAndroid.Backend;
-using UniCadeAndroid.Security;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Android;
+using Android.App;
+using Android.Content;
 using Android.Content.PM;
+using Android.Hardware.Fingerprints;
+using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
-using UniCadeAndroid.Objects;
-using System;
-using Android.Hardware.Fingerprints;
-using Android.Views;
 using Android.Support.V4.Hardware.Fingerprint;
+using Android.Widget;
+using UniCadeAndroid.Backend;
+using UniCadeAndroid.Objects;
+using UniCadeAndroid.Security;
 
 namespace UniCadeAndroid.Activities
 {
-    [Activity(Label = "UniCade Mobile", MainLauncher = true, ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation, ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    [Activity(Label = "UniCade Mobile", MainLauncher = true, ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : Activity
     {
 
-        #region Private Instance Variables 
+		#region Properties
 
-        private Button _settingsButton;
+		/// <summary>
+		/// The currently selected IGame object
+		/// </summary>
+		public static Game CurrentGame;
+
+		#endregion
+
+		#region Private Instance Variables 
+
+		private Button _settingsButton;
 
         private ListView _gameSelectionListView;
 
@@ -52,16 +60,11 @@ namespace UniCadeAndroid.Activities
 
         #endregion
 
-        #region Properties
-
         /// <summary>
-        /// The currently selected IGame object
+        /// Set the view and initalize the activity
         /// </summary>
-        public static Game CurrentGame;
-
-        #endregion
-
-        protected override void OnCreate(Bundle bundle)
+        /// <param name="bundle"></param>
+		protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
@@ -94,7 +97,7 @@ namespace UniCadeAndroid.Activities
         }
 
         private bool SetupFingerprintScanner(){
-            FingerprintManager fingerprintManager = this.GetSystemService(FingerprintService) as FingerprintManager;
+            FingerprintManager fingerprintManager = GetSystemService(FingerprintService) as FingerprintManager;
             if (!fingerprintManager.IsHardwareDetected){
                 DisplayToast("Fingerprint hardware not detected");
                 return false;
@@ -106,8 +109,8 @@ namespace UniCadeAndroid.Activities
 			}
 
             //Check for permissions
-            Android.Content.PM.Permission permissionResult = ContextCompat.CheckSelfPermission(this, Manifest.Permission.UseFingerprint);
-            if(permissionResult == Android.Content.PM.Permission.Denied){
+            Permission permissionResult = ContextCompat.CheckSelfPermission(this, Manifest.Permission.UseFingerprint);
+            if(permissionResult == Permission.Denied){
                 DisplayToast("Fingerprint Permission Denied");
 				return false;
             }
@@ -241,11 +244,11 @@ namespace UniCadeAndroid.Activities
             var currentConsoleName = _consoleSelectionSpinner.SelectedItem.ToString();
             if (currentConsoleName == "All Games")
             {
-                _gameCountTextView.Text = "Total Games: " + Database.GetTotalGameCount().ToString();
+                _gameCountTextView.Text = "Total Games: " + Database.GetTotalGameCount();
             }
             else{
                 int consoleGameCount = Database.GetConsole(currentConsoleName).GetGameCount();
-				_gameCountTextView.Text = "Total Games: " + Database.GetTotalGameCount().ToString() + " Console Games: " + consoleGameCount;
+				_gameCountTextView.Text = "Total Games: " + Database.GetTotalGameCount() + " Console Games: " + consoleGameCount;
             }
         }
 

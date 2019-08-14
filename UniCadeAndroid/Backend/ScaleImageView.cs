@@ -1,20 +1,18 @@
-﻿﻿﻿using System;
-
-using Android.Content;
-using Android.Graphics;
-using Android.Util;
-using Android.Views;
-using Android.Widget;
+﻿﻿﻿using Android.Content;
+  using Android.Graphics;
+  using Android.Util;
+  using Android.Views;
+  using Android.Widget;
 
 namespace UniCadeAndroid.Backend
 {
 
 	public class ScaleImageViewGestureDetector : GestureDetector.SimpleOnGestureListener
 	{
-		private readonly ScaleImageView m_ScaleImageView;
+		private readonly ScaleImageView _mScaleImageView;
 		public ScaleImageViewGestureDetector(ScaleImageView imageView)
 		{
-			m_ScaleImageView = imageView;
+			_mScaleImageView = imageView;
 		}
 
 		public override bool OnDown(MotionEvent e)
@@ -24,200 +22,191 @@ namespace UniCadeAndroid.Backend
 
 		public override bool OnDoubleTap(MotionEvent e)
 		{
-			m_ScaleImageView.MaxZoomTo((int)e.GetX(), (int)e.GetY());
-			m_ScaleImageView.Cutting();
+			_mScaleImageView.MaxZoomTo((int)e.GetX(), (int)e.GetY());
+			_mScaleImageView.Cutting();
 			return true;
 		}
 	}
 
 	public class ScaleImageView : ImageView, View.IOnTouchListener
 	{
-		private Context m_Context;
+		private readonly Context _mContext;
 
-		private float m_MaxScale = 8.0f;
+		private readonly float _mMaxScale = 8.0f;
 
-		private Matrix m_Matrix;
-		private float[] m_MatrixValues = new float[9];
-		private int m_Width;
-		private int m_Height;
-		private int m_IntrinsicWidth;
-		private int m_IntrinsicHeight;
-		private float m_Scale;
-		private float m_MinScale;
-		private float m_PreviousDistance;
-		private int m_PreviousMoveX;
-		private int m_PreviousMoveY;
+		private Matrix _mMatrix;
+		private readonly float[] _mMatrixValues = new float[9];
+		private int _mWidth;
+		private int _mHeight;
+		private int _mIntrinsicWidth;
+		private int _mIntrinsicHeight;
+		private float _mScale;
+		private float _mMinScale;
+		private float _mPreviousDistance;
+		private int _mPreviousMoveX;
+		private int _mPreviousMoveY;
 
-		private bool m_IsScaling;
-		private GestureDetector m_GestureDetector;
+		private bool _mIsScaling;
+		private GestureDetector _mGestureDetector;
 
 		public ScaleImageView(Context context, IAttributeSet attrs) :
 			base(context, attrs)
 		{
-			m_Context = context;
+			_mContext = context;
 			Initialize();
 		}
 
 		public ScaleImageView(Context context, IAttributeSet attrs, int defStyle) :
 			base(context, attrs, defStyle)
 		{
-			m_Context = context;
+			_mContext = context;
 			Initialize();
 		}
 
 		public override void SetImageBitmap(Bitmap bm)
 		{
 			base.SetImageBitmap(bm);
-			this.Initialize();
+			Initialize();
 		}
 
 		public override void SetImageResource(int resId)
 		{
 			base.SetImageResource(resId);
-			this.Initialize();
+			Initialize();
 		}
 
 		private void Initialize()
 		{
-			this.SetScaleType(ScaleType.Matrix);
-			m_Matrix = new Matrix();
+			SetScaleType(ScaleType.Matrix);
+			_mMatrix = new Matrix();
 
 			if (Drawable != null)
 			{
-				m_IntrinsicWidth = Drawable.IntrinsicWidth;
-				m_IntrinsicHeight = Drawable.IntrinsicHeight;
-				this.SetOnTouchListener(this);
+				_mIntrinsicWidth = Drawable.IntrinsicWidth;
+				_mIntrinsicHeight = Drawable.IntrinsicHeight;
+				SetOnTouchListener(this);
 			}
 
-			m_GestureDetector = new GestureDetector(m_Context, new ScaleImageViewGestureDetector(this));
+			_mGestureDetector = new GestureDetector(_mContext, new ScaleImageViewGestureDetector(this));
 		}
 
 		protected override bool SetFrame(int l, int t, int r, int b)
 		{
-			m_Width = r - l;
-			m_Height = b - t;
+			_mWidth = r - l;
+			_mHeight = b - t;
 
-			m_Matrix.Reset();
-			var r_norm = r - l;
-			m_Scale = (float)r_norm / (float)m_IntrinsicWidth;
+			_mMatrix.Reset();
+			var rNorm = r - l;
+			_mScale = rNorm / (float)_mIntrinsicWidth;
 
 			var paddingHeight = 0;
 			var paddingWidth = 0;
-			if (m_Scale * m_IntrinsicHeight > m_Height)
+			if (_mScale * _mIntrinsicHeight > _mHeight)
 			{
-				m_Scale = (float)m_Height / (float)m_IntrinsicHeight;
-				m_Matrix.PostScale(m_Scale, m_Scale);
-				paddingWidth = (r - m_Width) / 2;
+				_mScale = _mHeight / (float)_mIntrinsicHeight;
+				_mMatrix.PostScale(_mScale, _mScale);
+				paddingWidth = (r - _mWidth) / 2;
 			}
 			else
 			{
-				m_Matrix.PostScale(m_Scale, m_Scale);
-				paddingHeight = (b - m_Height) / 2;
+				_mMatrix.PostScale(_mScale, _mScale);
+				paddingHeight = (b - _mHeight) / 2;
 			}
 
-			m_Matrix.PostTranslate(paddingWidth, paddingHeight);
-			ImageMatrix = m_Matrix;
-			m_MinScale = m_Scale;
-			ZoomTo(m_Scale, m_Width / 2, m_Height / 2);
+			_mMatrix.PostTranslate(paddingWidth, paddingHeight);
+			ImageMatrix = _mMatrix;
+			_mMinScale = _mScale;
+			ZoomTo(_mScale, _mWidth / 2, _mHeight / 2);
 			Cutting();
 			return base.SetFrame(l, t, r, b);
 		}
 
 		private float GetValue(Matrix matrix, int whichValue)
 		{
-			matrix.GetValues(m_MatrixValues);
-			return m_MatrixValues[whichValue];
+			matrix.GetValues(_mMatrixValues);
+			return _mMatrixValues[whichValue];
 		}
 
 
 
-		public float Scale
-		{
-			get { return this.GetValue(m_Matrix, Matrix.MscaleX); }
-		}
+		public float Scale => GetValue(_mMatrix, Matrix.MscaleX);
 
-		public float TranslateX
-		{
-			get { return this.GetValue(m_Matrix, Matrix.MtransX); }
-		}
+	    public float TranslateX => GetValue(_mMatrix, Matrix.MtransX);
 
-		public float TranslateY
-		{
-			get { return this.GetValue(m_Matrix, Matrix.MtransY); }
-		}
+	    public float TranslateY => GetValue(_mMatrix, Matrix.MtransY);
 
-		public void MaxZoomTo(int x, int y)
+	    public void MaxZoomTo(int x, int y)
 		{
-			if (this.m_MinScale != this.Scale && (Scale - m_MinScale) > 0.1f)
+			if (_mMinScale != Scale && (Scale - _mMinScale) > 0.1f)
 			{
-				var scale = m_MinScale / Scale;
+				var scale = _mMinScale / Scale;
 				ZoomTo(scale, x, y);
 			}
 			else
 			{
-				var scale = m_MaxScale / Scale;
+				var scale = _mMaxScale / Scale;
 				ZoomTo(scale, x, y);
 			}
 		}
 
 		public void ZoomTo(float scale, int x, int y)
 		{
-			if (Scale * scale < m_MinScale)
+			if (Scale * scale < _mMinScale)
 			{
-				scale = m_MinScale / Scale;
+				scale = _mMinScale / Scale;
 			}
 			else
 			{
-				if (scale >= 1 && Scale * scale > m_MaxScale)
+				if (scale >= 1 && Scale * scale > _mMaxScale)
 				{
-					scale = m_MaxScale / Scale;
+					scale = _mMaxScale / Scale;
 				}
 			}
-			m_Matrix.PostScale(scale, scale);
+			_mMatrix.PostScale(scale, scale);
 			//move to center
-			m_Matrix.PostTranslate(-(m_Width * scale - m_Width) / 2, -(m_Height * scale - m_Height) / 2);
+			_mMatrix.PostTranslate(-(_mWidth * scale - _mWidth) / 2, -(_mHeight * scale - _mHeight) / 2);
 
 			//move x and y distance
-			m_Matrix.PostTranslate(-(x - (m_Width / 2)) * scale, 0);
-			m_Matrix.PostTranslate(0, -(y - (m_Height / 2)) * scale);
-			ImageMatrix = m_Matrix;
+			_mMatrix.PostTranslate(-(x - (_mWidth / 2)) * scale, 0);
+			_mMatrix.PostTranslate(0, -(y - (_mHeight / 2)) * scale);
+			ImageMatrix = _mMatrix;
 		}
 
 		public void Cutting()
 		{
-			var width = (int)(m_IntrinsicWidth * Scale);
-			var height = (int)(m_IntrinsicHeight * Scale);
-			if (TranslateX < -(width - m_Width))
+			var width = (int)(_mIntrinsicWidth * Scale);
+			var height = (int)(_mIntrinsicHeight * Scale);
+			if (TranslateX < -(width - _mWidth))
 			{
-				m_Matrix.PostTranslate(-(TranslateX + width - m_Width), 0);
+				_mMatrix.PostTranslate(-(TranslateX + width - _mWidth), 0);
 			}
 
 			if (TranslateX > 0)
 			{
-				m_Matrix.PostTranslate(-TranslateX, 0);
+				_mMatrix.PostTranslate(-TranslateX, 0);
 			}
 
-			if (TranslateY < -(height - m_Height))
+			if (TranslateY < -(height - _mHeight))
 			{
-				m_Matrix.PostTranslate(0, -(TranslateY + height - m_Height));
+				_mMatrix.PostTranslate(0, -(TranslateY + height - _mHeight));
 			}
 
 			if (TranslateY > 0)
 			{
-				m_Matrix.PostTranslate(0, -TranslateY);
+				_mMatrix.PostTranslate(0, -TranslateY);
 			}
 
-			if (width < m_Width)
+			if (width < _mWidth)
 			{
-				m_Matrix.PostTranslate((m_Width - width) / 2, 0);
+				_mMatrix.PostTranslate((_mWidth - width) / 2, 0);
 			}
 
-			if (height < m_Height)
+			if (height < _mHeight)
 			{
-				m_Matrix.PostTranslate(0, (m_Height - height) / 2);
+				_mMatrix.PostTranslate(0, (_mHeight - height) / 2);
 			}
 
-			ImageMatrix = m_Matrix;
+			ImageMatrix = _mMatrix;
 		}
 
 		private float Distance(float x0, float x1, float y0, float y1)
@@ -229,15 +218,15 @@ namespace UniCadeAndroid.Backend
 
 		private float DispDistance()
 		{
-			return FloatMath.Sqrt(m_Width * m_Width + m_Height * m_Height);
+			return FloatMath.Sqrt(_mWidth * _mWidth + _mHeight * _mHeight);
 		}
 
 		public override bool OnTouchEvent(MotionEvent e)
 		{
-			if (m_GestureDetector.OnTouchEvent(e))
+			if (_mGestureDetector.OnTouchEvent(e))
 			{
-				m_PreviousMoveX = (int)e.GetX();
-				m_PreviousMoveY = (int)e.GetY();
+				_mPreviousMoveX = (int)e.GetX();
+				_mPreviousMoveY = (int)e.GetY();
 				return true;
 			}
 
@@ -250,34 +239,34 @@ namespace UniCadeAndroid.Backend
 					{
 						if (touchCount >= 2)
 						{
-							var distance = this.Distance(e.GetX(0), e.GetX(1), e.GetY(0), e.GetY(1));
-							m_PreviousDistance = distance;
-							m_IsScaling = true;
+							var distance = Distance(e.GetX(0), e.GetX(1), e.GetY(0), e.GetY(1));
+							_mPreviousDistance = distance;
+							_mIsScaling = true;
 						}
 					}
 					break;
 
 				case MotionEventActions.Move:
 					{
-						if (touchCount >= 2 && m_IsScaling)
+						if (touchCount >= 2 && _mIsScaling)
 						{
-							var distance = this.Distance(e.GetX(0), e.GetX(1), e.GetY(0), e.GetY(1));
-							var scale = (distance - m_PreviousDistance) / this.DispDistance();
-							m_PreviousDistance = distance;
+							var distance = Distance(e.GetX(0), e.GetX(1), e.GetY(0), e.GetY(1));
+							var scale = (distance - _mPreviousDistance) / DispDistance();
+							_mPreviousDistance = distance;
 							scale += 1;
 							scale = scale * scale;
-							this.ZoomTo(scale, m_Width / 2, m_Height / 2);
-							this.Cutting();
+							ZoomTo(scale, _mWidth / 2, _mHeight / 2);
+							Cutting();
 						}
-						else if (!m_IsScaling)
+						else if (!_mIsScaling)
 						{
-							var distanceX = m_PreviousMoveX - (int)e.GetX();
-							var distanceY = m_PreviousMoveY - (int)e.GetY();
-							m_PreviousMoveX = (int)e.GetX();
-							m_PreviousMoveY = (int)e.GetY();
+							var distanceX = _mPreviousMoveX - (int)e.GetX();
+							var distanceY = _mPreviousMoveY - (int)e.GetY();
+							_mPreviousMoveX = (int)e.GetX();
+							_mPreviousMoveY = (int)e.GetY();
 
-							m_Matrix.PostTranslate(-distanceX, -distanceY);
-							this.Cutting();
+							_mMatrix.PostTranslate(-distanceX, -distanceY);
+							Cutting();
 						}
 					}
 					break;
@@ -287,7 +276,7 @@ namespace UniCadeAndroid.Backend
 					{
 						if (touchCount <= 1)
 						{
-							m_IsScaling = false;
+							_mIsScaling = false;
 						}
 					}
 					break;

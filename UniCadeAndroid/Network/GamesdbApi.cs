@@ -8,6 +8,7 @@ using UniCadeAndroid.Backend;
 using UniCadeAndroid.Interfaces;
 using UniCadeAndroid.Objects;
 using Console = UniCadeAndroid.Objects.Console;
+using Environment = Android.OS.Environment;
 
 namespace UniCadeAndroid.Network
 {
@@ -145,7 +146,7 @@ namespace UniCadeAndroid.Network
 
                             //If the media directory does not exist, create it
           
-                            string directoryPath = Android.OS.Environment.ExternalStorageDirectory.Path + @"/UniCade/Media/Games/" + game.ConsoleName + "//";
+                            string directoryPath = Environment.ExternalStorageDirectory.Path + @"/UniCade/Media/Games/" + game.ConsoleName + "//";
                             if (!Directory.Exists(directoryPath))
                             {
                                 Directory.CreateDirectory(directoryPath);

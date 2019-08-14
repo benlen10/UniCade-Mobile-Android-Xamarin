@@ -1,9 +1,9 @@
 ﻿﻿using System;
-using Android.Security.Keystore;
-using Android.Support.V4.Hardware.Fingerprint;
-using Android.Util;
-using Java.Security;
-using Javax.Crypto;
+ using Android.Security.Keystore;
+ using Android.Support.V4.Hardware.Fingerprint;
+ using Android.Util;
+ using Java.Security;
+ using Javax.Crypto;
 
 namespace UniCadeAndroid.Security
 {

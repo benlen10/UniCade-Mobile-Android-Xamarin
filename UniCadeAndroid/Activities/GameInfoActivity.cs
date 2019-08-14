@@ -1,23 +1,31 @@
-﻿using Android.App;
+﻿using System;
 using System.IO;
-using System;
+using Android.App;
+using Android.Content;
+using Android.Content.PM;
 using Android.Graphics;
 using Android.OS;
 using Android.Widget;
-using UniCadeAndroid.Constants;
 using UniCadeAndroid.Backend;
+using UniCadeAndroid.Constants;
 using UniCadeAndroid.Network;
-using Android.Content;
+using Environment = Android.OS.Environment;
 
 namespace UniCadeAndroid.Activities
 {
-    [Activity(Label = "Game Info", ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation, ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    [Activity(Label = "Game Info", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class GameInfoActivity : Activity
     {
 
+		#region Properties
+
+		public static Bitmap CurrentImageBitmap;
+
+		#endregion
+
 		#region Private Instance Variables
 
-        private TextView _titleTextView;
+		private TextView _titleTextView;
 
         private TextView _consoleTextView;
 
@@ -57,16 +65,13 @@ namespace UniCadeAndroid.Activities
 
 		private Bitmap _screenshotBitmap;
 
-        #endregion
+		#endregion
 
-
-        #region Properties
-
-        public static Bitmap CurrentImageBitmap;
-
-        #endregion
-
-        protected override void OnCreate(Bundle savedInstanceState)
+		/// <summary>
+		/// Set the view and initalize the activity
+		/// </summary>
+		/// <param name="savedInstanceState">Saved instance state.</param>
+		protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -84,7 +89,7 @@ namespace UniCadeAndroid.Activities
 
         private void RefreshGameInfo()
         {
-            System.Console.WriteLine("Debug");
+            Console.WriteLine("Debug");
             _titleTextView.Text = "Title: " + MainActivity.CurrentGame.Title;
             _consoleTextView.Text = "Console: " + MainActivity.CurrentGame.ConsoleName;
             _publisherTextView.Text = "Publisher: " + MainActivity.CurrentGame.PublisherName;
@@ -92,7 +97,7 @@ namespace UniCadeAndroid.Activities
             _playersTextView.Text = "Player Count: " + MainActivity.CurrentGame.SupportedPlayerCount;
             _esrbRatingTextView.Text = "ESRB Rating: " + MainActivity.CurrentGame.EsrbRating.GetStringValue();
             _esrbDescriptorsTextView.Text = "ESRB Descriptors: " + MainActivity.CurrentGame.GetEsrbDescriptorsString();
-            _launchCountTextView.Text = "Launch Count: " + MainActivity.CurrentGame.GetLaunchCount().ToString();
+            _launchCountTextView.Text = "Launch Count: " + MainActivity.CurrentGame.GetLaunchCount();
             _releaseDateTextView.Text = "Release Date: " + MainActivity.CurrentGame.ReleaseDate;
             _descriptionTextView.Text = "Description:" + MainActivity.CurrentGame.Description;
             _esrbLogoImageView.SetImageResource(Utilties.GetEsrbLogoImage(MainActivity.CurrentGame.EsrbRating));
@@ -121,7 +126,7 @@ namespace UniCadeAndroid.Activities
 
 		private void PopulateGameImages()
         {
-            var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
+            var sdCardPath = Environment.ExternalStorageDirectory.Path;
             string imagePath = sdCardPath + ConstPaths.GameImagesPath + MainActivity.CurrentGame.ConsoleName + "/" + MainActivity.CurrentGame.Title + "_BoxFront.jpg";
             if (File.Exists(imagePath))
             {
@@ -326,7 +331,7 @@ namespace UniCadeAndroid.Activities
 		{
 			try
 			{
-                MainActivity.CurrentGame.EsrbRating = Backend.Utilties.ParseEsrbRating(text);
+                MainActivity.CurrentGame.EsrbRating = Utilties.ParseEsrbRating(text);
 			}
 			catch (ArgumentException exception)
 			{

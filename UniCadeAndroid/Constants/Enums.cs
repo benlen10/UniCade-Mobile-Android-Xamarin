@@ -15,7 +15,7 @@ namespace UniCadeAndroid.Constants
         {
             [StringValue("ThegamesDB")] ThegamesDb,
             [StringValue("IGDB")] Igdb,
-            [StringValue("MobyGames")] MobyGames,
+            [StringValue("MobyGames")] MobyGames
         }
 
         /// <summary>

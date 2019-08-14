@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Android.Content.Res;
-using Java.IO;
-using UniCadeAndroid.Activities;
 using UniCadeAndroid.Constants;
-using Uri = Android.Net.Uri;
 
 namespace UniCadeAndroid.Backend
 {

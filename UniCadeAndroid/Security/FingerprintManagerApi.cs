@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using Android.App;
 using Android.Hardware.Fingerprints;
 using Android.OS;
@@ -40,11 +40,7 @@ namespace UniCadeAndroid.Security
 
         CryptoObjectHelper CryptObjectHelper { get; set; }
 
-        bool IsScanningForFingerprints
-        {
-            // ReSharper disable once ConvertPropertyToExpressionBody
-            get { return _cancellationSignal != null; }
-        }
+        bool IsScanningForFingerprints => _cancellationSignal != null;
 
         public static FingerprintManagerApi NewInstance(FingerprintManagerCompat fingerprintManager)
         {

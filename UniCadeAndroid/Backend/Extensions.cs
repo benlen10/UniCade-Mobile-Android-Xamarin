@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace UniCadeAndroid.Backend
 {
 		public static class Extensions

@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Data.SQLite;
 using System.IO;
 using System.Text;
-using System.Data.SQLite;
 using UniCadeAndroid.Backend;
 using UniCadeAndroid.Constants;
 using UniCadeAndroid.Interfaces;
 using UniCadeAndroid.Objects;
-
+using Environment = Android.OS.Environment;
 
 namespace UniCadeAndroid.Network
 {
@@ -34,7 +34,7 @@ namespace UniCadeAndroid.Network
         internal static void Connect()
         {
             //If the sql database file does not exist, create it
-            var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
+            var sdCardPath = Environment.ExternalStorageDirectory.Path;
             if (!File.Exists(sdCardPath + ConstPaths.SqlDatabaseFilePath))
             {
                 SQLiteConnection.CreateFile(sdCardPath + ConstPaths.SqlDatabaseFilePath);
