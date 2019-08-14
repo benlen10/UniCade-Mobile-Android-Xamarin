@@ -43,6 +43,8 @@ namespace UniCadeAndroid.Activities
 
         private Button _closeSettingsButton;
 
+        private TextView _licenseStatusTextView;
+
         private string _licenseName;
 
         #endregion
@@ -77,7 +79,8 @@ namespace UniCadeAndroid.Activities
             _enterLicenseButton = FindViewById<Button>(Resource.Id.EnterLicenseKeyButton);
             _applyButton = FindViewById<Button>(Resource.Id.ApplyButton);
             _closeSettingsButton = FindViewById<Button>(Resource.Id.CloseButton);
-		}
+		    _licenseStatusTextView = FindViewById<TextView>(Resource.Id.LicenseStatusTextView);
+        }
 
         private void PopulateSettings(){
             _showSplashScreenCheckbox.Checked = Preferences.ShowSplashScreen;
@@ -114,11 +117,25 @@ namespace UniCadeAndroid.Activities
 		{
             if(CryptoEngine.ValidateLicense(_licenseName, text)){
                 Toast.MakeText(this, "License is valid", ToastLength.Short).Show();
+
             }
             else{
                 Toast.MakeText(this, "License is invalid", ToastLength.Short).Show();
             }
+		    UpdateLicenseStatusText();
 		}
+
+        public void UpdateLicenseStatusText()
+        {
+            if (Preferences.IsLicenseValid)
+            {
+                _licenseStatusTextView.Text = "UniCade License Status: Valid";
+            }
+            else
+            {
+                _licenseStatusTextView.Text = "UniCade License Status: Invalid";
+            }
+        }
 
 		private void HandleSetPassword(string text)
 		{
@@ -209,7 +226,7 @@ namespace UniCadeAndroid.Activities
 
 		    _enterLicenseButton.Click += (sender, e) =>
 		    {
-                ShowInputDialog("Enter License Key", HandleLicenseKey);
+                ShowInputDialog("Enter License Key", HandleLicenseName);
 		    };
 
             _closeSettingsButton.Click += (sender, e) =>

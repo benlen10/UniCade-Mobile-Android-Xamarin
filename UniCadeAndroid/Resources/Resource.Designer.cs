@@ -278,6 +278,9 @@ namespace UniCadeAndroid
 			// aapt resource value: 0x7f070011
 			public const int LaunchCountTextView = 2131165201;
 			
+			// aapt resource value: 0x7f070051
+			public const int LicenseStatusTextView = 2131165265;
+			
 			// aapt resource value: 0x7f070043
 			public const int LoadBackupButton = 2131165251;
 			

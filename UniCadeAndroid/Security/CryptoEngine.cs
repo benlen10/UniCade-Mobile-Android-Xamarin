@@ -41,6 +41,7 @@ namespace UniCadeAndroid.Security
                 return true;
             }
             Preferences.IsLicenseValid = false;
+
             return false;
         }
 

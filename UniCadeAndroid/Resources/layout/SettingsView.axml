@@ -119,4 +119,9 @@
             p1:id="@+id/ApplyButton"
             p1:layout_marginLeft="15.5dp" />
     </RelativeLayout>
+    <TextView
+        p1:text="Current License Status: "
+        p1:layout_width="match_parent"
+        p1:layout_height="30.0dp"
+        p1:id="@+id/LicenseStatusTextView" />
 </LinearLayout>

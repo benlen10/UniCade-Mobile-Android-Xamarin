@@ -285,6 +285,7 @@ namespace UniCadeAndroid.Backend
                     return false;
                 }
             }
+
             //Generate folders within the Console directory
             RegenerateMediaFolders();
 

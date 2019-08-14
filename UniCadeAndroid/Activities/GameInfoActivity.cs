@@ -274,6 +274,7 @@ namespace UniCadeAndroid.Activities
 
             _downloadInfoButton.Click += (sender, e) =>
             {
+                Toast.MakeText(ApplicationContext, $"Fetching metadata from {WebOps.CurrentApi.GetStringValue()}... This may take awhile", ToastLength.Long).Show();
                 WebOps.ScrapeInfo(MainActivity.CurrentGame);
                 Toast.MakeText(ApplicationContext, "Game Metadata Downloaded", ToastLength.Long).Show();
             };
