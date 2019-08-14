@@ -195,11 +195,6 @@ namespace UniCadeAndroid.Constants
         /// </summary>
         internal const string MobyGamesApiKey = "xkaobsFA5xGdr8PEBtT8Zg==";
 
-        /// <summary>
-        /// The current path for the SQL database file
-        /// </summary>
-        internal const string SqlDatabaseFileName = @"/UniCade/Unicade.sqlite";
-
         #endregion
 
         #region  Static Readonly Fields

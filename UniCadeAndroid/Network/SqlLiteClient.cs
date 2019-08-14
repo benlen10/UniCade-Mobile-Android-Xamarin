@@ -34,12 +34,13 @@ namespace UniCadeAndroid.Network
         internal static void Connect()
         {
             //If the sql database file does not exist, create it
-            if (!File.Exists(Directory.GetCurrentDirectory() + ConstValues.SqlDatabaseFileName))
+            var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.Path;
+            if (!File.Exists(sdCardPath + ConstPaths.SqlDatabaseFilePath))
             {
-                SQLiteConnection.CreateFile(Directory.GetCurrentDirectory() + ConstValues.SqlDatabaseFileName);
+                SQLiteConnection.CreateFile(sdCardPath + ConstPaths.SqlDatabaseFilePath);
 
                 //Connect to the new database
-                _connection = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory() + ConstValues.SqlDatabaseFileName};Version=3;");
+                _connection = new SQLiteConnection($"Data Source={sdCardPath + ConstPaths.SqlDatabaseFilePath};Version=3;");
                 _connection.Open();
 
                 //Create a new table to store all user info
@@ -48,7 +49,7 @@ namespace UniCadeAndroid.Network
 
             if (_connection == null)
             {
-                _connection = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory() + ConstValues.SqlDatabaseFileName};Version=3;");
+                _connection = new SQLiteConnection($"Data Source={sdCardPath + ConstPaths.SqlDatabaseFilePath};Version=3;");
                 _connection.Open();
             }
         }

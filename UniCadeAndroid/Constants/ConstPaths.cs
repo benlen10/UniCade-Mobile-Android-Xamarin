@@ -39,6 +39,11 @@
         /// </summary>
         internal const string GameImagesPath = @"/UniCade/Media/Games/";
 
+		/// <summary>
+		/// The current path for the SQL database file
+		/// </summary>
+		internal const string SqlDatabaseFilePath = @"/UniCade/Unicade.sqlite";
+
         #endregion
     }
 }
