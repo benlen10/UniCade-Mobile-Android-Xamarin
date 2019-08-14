@@ -38,11 +38,10 @@
     <TextView
         p1:id="@+id/GameCountTextView"
         p1:layout_width="250.5dp"
-        p1:layout_height="25.0dp"
-        p1:layout_marginTop="514.0dp"
-        p1:layout_marginLeft="1.5dp"
-        p1:text="Game Count"
-        p1:layout_below="@id/GameSelectionListView" />
+        p1:layout_height="30.0dp"
+        p1:layout_marginTop="515.0dp"
+        p1:layout_marginLeft="4.0dp"
+        p1:text="Game Count" />
     <Spinner
         p1:id="@+id/ConsoleSelectionSpinner"
         p1:layout_width="250.5dp"
